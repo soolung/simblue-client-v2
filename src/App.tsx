@@ -4,6 +4,7 @@ import { RecoilRoot } from "recoil";
 import { Layout } from "./components/layout/Layout";
 import { AuthRequired } from "./components/shared/authRequired/AuthRequired";
 import { Create } from "./components/shared/create/Create";
+import { Footer } from "./components/shared/footer/Footer";
 import { Header } from "./components/shared/header/Header";
 import { Login } from "./pages/auth/login/Login";
 import { Look } from "./pages/auth/look/Look";
@@ -38,6 +39,7 @@ function App() {
             />
           </Routes>
         </Layout>
+        <Footer />
       </BrowserRouter>
     </RecoilRoot>
   );
