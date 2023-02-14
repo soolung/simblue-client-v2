@@ -4,6 +4,10 @@
   --vh: 100%;
 }
 
+main {
+  color: #f36e67;
+}
+
 * {
   margin: 0;
   padding: 0;
