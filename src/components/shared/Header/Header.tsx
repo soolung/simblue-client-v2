@@ -13,11 +13,19 @@ export const Header = () => {
   return (
     <Layout bgColor="white">
       <S.HeaderNav>
-        <img onClick={() => (window.location.href = "/")} src="/assets/logo.svg" />
+        <img
+          onClick={() => (window.location.href = "/")}
+          src="/assets/logo.svg"
+        />
         <S.NavLink to="look">둘러보기</S.NavLink>
         {user.authority && <S.NavLink to="record">기록보기</S.NavLink>}
         <S.SearchBar>
-          <S.SearchInput value={searchText} onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="검색어를 입력해주세요." />
+          <S.SearchInput
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            type="text"
+            placeholder="검색어를 입력해주세요."
+          />
           {searchText && <S.CancelIcon onClick={() => setSearchText("")} />}
           <img alt="설치" src="/assets/search.svg" />
         </S.SearchBar>
