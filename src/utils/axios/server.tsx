@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import { accessTokenExpired } from "../../apis/token";
 
 const server = axios.create({
@@ -7,19 +7,19 @@ const server = axios.create({
 });
 
 server.interceptors.request.use(
-  (config: any) => {
+  (config: InternalAxiosRequestConfig) => {
     return config;
   },
-  (error: any) => {
+  (error) => {
     return Promise.reject(error);
   }
 );
 
 server.interceptors.response.use(
-  (response: any) => {
+  (response: AxiosResponse) => {
     return response;
   },
-  (error: any) => {
+  (error) => {
     console.log(error.response.data.message);
     if (error.response.status === 401) {
       accessTokenExpired();
@@ -27,4 +27,5 @@ server.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
 export default server;

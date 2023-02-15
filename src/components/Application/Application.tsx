@@ -1,8 +1,16 @@
-//Application components
-
 import { Link } from "react-router-dom";
 import * as S from "./Application.style";
-export const Application = (props: any) => {
+
+interface Props {
+  id: string;
+  title: string;
+  emoji: string;
+  description: string;
+  isAlways: boolean;
+  endDate: string;
+}
+
+export const Application = (props: Props) => {
   return (
     <Link to={`/application/${props.id}`}>
       <S.Application>
