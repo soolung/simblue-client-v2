@@ -7,7 +7,7 @@ const server = axios.create({
 });
 
 server.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
+  (config) => {
     return config;
   },
   (error) => {
@@ -16,7 +16,7 @@ server.interceptors.request.use(
 );
 
 server.interceptors.response.use(
-  (response: AxiosResponse) => {
+  (response) => {
     return response;
   },
   (error) => {

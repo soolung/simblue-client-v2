@@ -19,6 +19,7 @@ export const Look = () => {
     Categories.latest,
     Categories.always,
   ];
+
   const { data, refetch } = useQuery(
     ["getApplications"],
     () => getApplications(selectedCategory.uri),
