@@ -1,15 +1,13 @@
 import server from "../utils/axios/server";
 import { authorization } from "../utils/config/authorization";
-import { UserData } from "../pages/auth/login/Login";
+import { LoginAuth, ResetPassword } from "../types/LoginAuth.type";
 
-export interface ResetPassword {
-  code: string;
-  newPassword: string;
-  oldPassword: string;
-}
-export interface LoginAuth {
-  email: string;
-  password: string;
+interface UserData {
+  accessToken: string;
+  refreshToken: string;
+  authority: string;
+  name: string;
+  login: boolean;
 }
 
 export const getGoogleAuthLink = async () => {

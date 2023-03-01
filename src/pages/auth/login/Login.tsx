@@ -1,18 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { getGoogleAuthLink, loginUser, LoginAuth } from "../../../apis/auth";
+import { getGoogleAuthLink, loginUser } from "../../../apis/auth";
+import { LoginAuth } from "../../../types/LoginAuth.type";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../../atoms/user";
 import * as S from "./Login.style";
-
-export interface UserData {
-  accessToken: string;
-  refreshToken: string;
-  authority: string;
-  name: string;
-  login: boolean;
-}
 
 export const Login = () => {
   const navigate = useNavigate();
