@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Categories from "./Categories";
 import { getApplications } from "../../../apis/application";
 import { Application } from "../../../components/Application/Application";
+import * as KEY from "../../../constants/key.constant";
 interface Category {
   text: string;
   description: string;
@@ -21,7 +22,7 @@ export const Look = () => {
   ];
 
   const { data, refetch } = useQuery(
-    ["getApplications"],
+    [KEY.GET_APP],
     () => getApplications(selectedCategory.uri),
     {
       onSuccess: () => {},

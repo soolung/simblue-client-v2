@@ -5,12 +5,19 @@ import { getGoogleAuthLink, loginUser } from "../../../apis/auth";
 import { LoginAuth } from "../../../types/LoginAuth.type";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../../atoms/user";
+import {
+  ACCESS_TOKEN,
+  REFRESH_TOKEN,
+  AUTHORITY,
+  NAME,
+} from "../../../constants/token.constant";
+import { GOOGLE_AUTH } from "../../../constants/key.constant";
 import * as S from "./Login.style";
 
 export const Login = () => {
   const navigate = useNavigate();
   const setUser = useSetRecoilState(userState);
-  const { data } = useQuery(["getGoogleAuthLink"], getGoogleAuthLink);
+  const { data } = useQuery([GOOGLE_AUTH], getGoogleAuthLink);
   const [request, setRequest] = useState<LoginAuth>({
     email: "",
     password: "",
@@ -18,10 +25,10 @@ export const Login = () => {
 
   const { mutate } = useMutation(loginUser, {
     onSuccess: data => {
-      localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem("refreshToken", data.refreshToken);
-      localStorage.setItem("authority", data.authority);
-      localStorage.setItem("name", data.name);
+      localStorage.setItem(ACCESS_TOKEN, data.accessToken);
+      localStorage.setItem(REFRESH_TOKEN, data.refreshToken);
+      localStorage.setItem(AUTHORITY, data.authority);
+      localStorage.setItem(NAME, data.name);
       setUser({
         accessToken: data.accessToken,
         refreshToken: data.refreshToken,
