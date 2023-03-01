@@ -41,9 +41,9 @@ function App() {
               path="/look"
               element={
                 <QueryClientProvider client={queryClient}>
-                  <AuthRequired>
-                    <Look />
-                  </AuthRequired>
+                  {/* <AuthRequired> */}
+                  <Look />
+                  {/* </AuthRequired> */}
                 </QueryClientProvider>
               }
             />

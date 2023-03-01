@@ -30,6 +30,7 @@ export const Look = () => {
   useEffect(() => {
     refetch();
   }, [selectedCategory]);
+  console.log(data);
   return (
     <S.Look>
       <S.Header>
@@ -49,7 +50,7 @@ export const Look = () => {
         ))}
       </S.Categories>
       <S.Application>
-        {data?.map((a: any, index: any) => (
+        {data?.map((a: any, index: number) => (
           <Application
             id={a.id}
             title={a.title}
