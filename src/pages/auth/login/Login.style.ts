@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Colors } from "../../../constants/colors";
 export const Login = styled.div`
   display: flex;
   width: 100%;
@@ -15,6 +15,9 @@ export const ImgBox = styled.div`
   justify-content: center;
   align-items: center;
   row-gap: 20px;
+  @media screen and (max-width: 680px) {
+    display: none;
+  }
 `;
 
 export const Img = styled.img`
@@ -31,6 +34,12 @@ export const Form = styled.div`
   row-gap: 15px;
   padding: 4%;
   width: 35%;
+  @media screen and (max-width: 965px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 680px) {
+    width: 75%;
+  }
 `;
 
 export const Title = styled.div`
@@ -50,7 +59,7 @@ export const LoginImg = styled.img`
 `;
 
 export const SubTitle = styled.div`
-  color: grey;
+  color: ${Colors.darkGray};
   font-size: 14px;
   font-weight: 400;
   padding-top: 5px;
@@ -63,14 +72,13 @@ export const InputBox = styled.div`
   row-gap: 4px;
 `;
 
-//나중에 TextBox스타일든는 따로 common으로 뷴류해서 할 것
 export const TextBox = styled.input`
   border: 0.5px solid grey;
   width: 100%;
   height: 6vh;
   padding: 0 15px;
   &:focus {
-    border: 1px solid $medium-grey;
+    border: 1px solid ${Colors.mediumGray};
     outline: none;
   }
 
@@ -81,7 +89,7 @@ export const TextBox = styled.input`
 `;
 
 export const LoginBtn = styled.button`
-  background-color: red;
+  background-color: ${Colors.mainRed};
   height: 45px;
   color: white;
   font-weight: 600;
@@ -104,13 +112,13 @@ export const GoogleImg = styled.img`
 
 export const SignUp = styled.div`
   text-align: center;
-  color: grey;
+  color: ${Colors.mediumGray};
   font-size: 11px;
 `;
 
 export const Span = styled.span`
   word-break: keep-all;
-  color: red;
+  color: ${Colors.mainRed};
   font-weight: 600;
   cursor: pointer;
 `;
