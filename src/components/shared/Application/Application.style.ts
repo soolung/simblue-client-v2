@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../constants/colors";
+import { Colors } from "../../../constants/colors";
 export const Application = styled.div`
   &:hover {
     cursor: pointer;

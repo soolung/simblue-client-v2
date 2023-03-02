@@ -1,6 +1,5 @@
 import { atom } from "recoil";
-
-interface UserState {
+export interface UserState {
   accessToken: string | null;
   refreshToken: string | null;
   authority: string | null;

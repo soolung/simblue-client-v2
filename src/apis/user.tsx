@@ -5,6 +5,8 @@ export interface StudentInfo {
   admissionYear: number;
   name: string;
   password: string;
+  passwordCheck: string;
+  email: string;
   studentNumber: number;
 }
 export const joinStudent = async ({
