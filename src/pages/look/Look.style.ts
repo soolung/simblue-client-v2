@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+import { Colors } from "../../constants/colors";
 interface CategoriesTypes {
   selectedCategory: any;
   selected: any;
@@ -20,7 +20,7 @@ export const Title = styled.p`
 `;
 
 export const Description = styled.p`
-  color: #707070;
+  color: ${Colors.darkGray};
   font-size: 20px;
   font-weight: 400;
 `;
@@ -39,8 +39,8 @@ export const Section = styled.p<CategoriesTypes>`
     selectedCategory === selected
       ? css`
           font-weight: 600;
-          color: #f36e67;
-          border-bottom: 2px solid #f36e67;
+          color: ${Colors.mainRed};
+          border-bottom: 2px solid ${Colors.mainRed};
         `
       : ""}
 `;

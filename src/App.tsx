@@ -7,7 +7,7 @@ import { Create } from "./components/shared/create/Create";
 import { Footer } from "./components/shared/footer/Footer";
 import { Header } from "./components/shared/Header/Header";
 import { Login } from "./pages/auth/login/Login";
-import { Look } from "./pages/auth/look/Look";
+import { Look } from "./pages/look/Look";
 import { SignUp } from "./pages/auth/signUp/SignUp";
 import { Home } from "./pages/home/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

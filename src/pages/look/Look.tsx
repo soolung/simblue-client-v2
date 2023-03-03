@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import * as S from "./Look.style";
 import { useQuery } from "@tanstack/react-query";
 import Categories from "./Categories";
-import { getApplications } from "../../../apis/application";
-import { Application } from "../../../components/Application/Application";
+import { getApplications } from "../../apis/application";
+import { Application } from "../../components/Application/Application";
 interface Category {
   text: string;
   description: string;
@@ -49,7 +49,7 @@ export const Look = () => {
         ))}
       </S.Categories>
       <S.Application>
-        {data?.map((a: any, index: any) => (
+        {data?.map((a: any, index: number) => (
           <Application
             id={a.id}
             title={a.title}
