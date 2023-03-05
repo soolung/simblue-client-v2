@@ -26,6 +26,17 @@ export const NavLink = styled(Link)`
   }
 `;
 
+export const Name = styled.button`
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background-color: white;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 5px;
+`;
+
 export const SearchBar = styled.div`
   display: inline-block;
   position: relative;
