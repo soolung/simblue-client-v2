@@ -9,7 +9,7 @@ type PropsType = {
 
 export const Application = ({ key, data }: PropsType) => {
   return (
-    <S.AppBox>
+    <S.AppBox to={`application/${key}`}>
       <div>
         <S.TopBox>
           <S.Title>{data.title}</S.Title>
