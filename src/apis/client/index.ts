@@ -1,5 +1,5 @@
 import axios from "axios";
-import { accessTokenExpired } from "../../utils/auth/token";
+import { accessTokenExpired } from "../../utils/auth";
 
 const server = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
