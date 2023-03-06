@@ -3,7 +3,7 @@ import * as S from "./Look.style";
 import { useQuery } from "@tanstack/react-query";
 import Categories from "./Categories";
 import { getApplications } from "../../apis/application";
-import { Application } from "../../components/Application/Application";
+import { Application } from "../../components/shared/Application/Application";
 interface Category {
   text: string;
   description: string;
