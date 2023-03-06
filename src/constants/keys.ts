@@ -1,1 +1,1 @@
-export const GET_FOUR_LATEST_APPLICATION = "getFourLatestApplication";
+export const GET_PAGING_APPLICATION = "getFourLatestApplication";

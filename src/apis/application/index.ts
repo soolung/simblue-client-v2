@@ -4,6 +4,6 @@ export const getApplication = async (type: string) => {
   return (await server.get(`/application?type=${type}`)).data;
 };
 
-export const getFourLatestApplication = async () => {
+export const getPagingApplication = async () => {
   return (await server.get("/application/paging")).data;
 };
