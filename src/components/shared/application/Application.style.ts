@@ -13,6 +13,7 @@ export const AppBox = styled(Link)`
   text-decoration: none;
   border: 1px solid #d9d9d9;
   border-radius: 18px;
+  background-color: white;
 
   @media screen and (max-width: 950px) {
     width: 31.3%;
