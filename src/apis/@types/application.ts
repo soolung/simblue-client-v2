@@ -12,13 +12,17 @@ export type APPLICATION = {
   title: string;
 };
 
+export type ANSWER = {
+  answer: string;
+};
+
 export type QUESTION = {
   id: number;
   question: string;
   description: string;
   isRequired: boolean;
   type: string;
-  answerList: [];
+  answerList: ANSWER[];
   replyDetailList: string | null;
 };
 
