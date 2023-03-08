@@ -1,7 +1,5 @@
 import React from "react";
-
-type Props = { children: React.ReactNode; bgColor?: string };
-
+import { Props } from "./type";
 export const Layout = ({ children, bgColor }: Props) => {
   return (
     <div style={{ display: "flex", width: "100%", justifyContent: "center", backgroundColor: bgColor }}>
