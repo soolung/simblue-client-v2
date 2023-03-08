@@ -31,13 +31,11 @@ export const Header = () => {
         </S.SearchBar>
         {user.authority ? (
           <div style={{ position: "relative" }}>
-            <button onClick={() => setIsOpen(true)}>{user.name}</button>
+            <S.Name onClick={() => setIsOpen((prev) => !prev)}>{user.name}</S.Name>
             {isOpen && <ProfilePopover close={() => setIsOpen(false)} />}
           </div>
         ) : (
-          <S.NavLink to="login" onClick={() => setIsOpen((prev) => !prev)}>
-            로그인
-          </S.NavLink>
+          <S.NavLink to="login">로그인</S.NavLink>
         )}
       </S.HeaderNav>
     </Layout>
