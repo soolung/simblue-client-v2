@@ -7,7 +7,6 @@ export const DetailLayout = ({ children, bgColor }: Props) => {
       style={{
         display: "flex",
         width: "100vw",
-        height: "80vh",
         flexDirection: "row",
         marginLeft: "calc(-50vw + 50%)",
       }}>
