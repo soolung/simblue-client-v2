@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../atoms/user";
+import { HeaderLayout } from "../../layout/HeaderLayout";
 import { Layout } from "../../layout/Layout";
 import * as S from "./Header.style";
 import { ProfilePopover } from "./profilePopover/ProfilePopover";
@@ -11,7 +12,7 @@ export const Header = () => {
   const user = useRecoilValue(userState);
 
   return (
-    <Layout bgColor="white">
+    <HeaderLayout bgColor="white">
       <S.HeaderNav>
         <img onClick={() => (window.location.href = "/")} src="/assets/logo.svg" />
         <S.NavLink to="look">둘러보기</S.NavLink>
@@ -30,6 +31,6 @@ export const Header = () => {
           <S.NavLink to="login">로그인</S.NavLink>
         )}
       </S.HeaderNav>
-    </Layout>
+    </HeaderLayout>
   );
 };
