@@ -10,7 +10,9 @@ export const ProfilePopover = ({ close }: { close: Function }) => {
   const setUser = useSetRecoilState(userState);
   return (
     <Popover>
-      <button onClick={() => navigate("/user/update/password")}>비밀번호 변경</button>
+      <button onClick={() => navigate("/user/update/password")}>
+        비밀번호 변경
+      </button>
       <button
         onClick={() => {
           localStorage.clear();
@@ -22,7 +24,8 @@ export const ProfilePopover = ({ close }: { close: Function }) => {
           });
           navigate("/");
           close();
-        }}>
+        }}
+      >
         로그아웃
       </button>
       <Ggoranji />

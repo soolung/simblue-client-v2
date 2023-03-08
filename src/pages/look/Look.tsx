@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./Look.style";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
 import Categories from "./Categories";
 import { getApplications } from "../../apis/application";
 import { Application } from "../../components/shared/Application/Application";

@@ -22,7 +22,7 @@ export const Header = () => {
         <S.SearchBar>
           <S.SearchInput
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={e => setSearchText(e.target.value)}
             type="text"
             placeholder="검색어를 입력해주세요."
           />
@@ -35,7 +35,7 @@ export const Header = () => {
             {isOpen && <ProfilePopover close={() => setIsOpen(false)} />}
           </div>
         ) : (
-          <S.NavLink to="login" onClick={() => setIsOpen((prev) => !prev)}>
+          <S.NavLink to="login" onClick={() => setIsOpen(prev => !prev)}>
             로그인
           </S.NavLink>
         )}

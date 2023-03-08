@@ -10,13 +10,13 @@ import { Login } from "./pages/auth/login/Login";
 import { Look } from "./pages/look/Look";
 import { SignUp } from "./pages/auth/signUp/SignUp";
 import { Home } from "./pages/home/Home";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
+import { QueryClient, QueryClientProvider } from "react-query";
 function App() {
   const queryClient = new QueryClient();
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Header />
           <Layout>
@@ -44,8 +44,8 @@ function App() {
           </Layout>
           <Footer />
         </BrowserRouter>
-      </RecoilRoot>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </RecoilRoot>
   );
 }
 
