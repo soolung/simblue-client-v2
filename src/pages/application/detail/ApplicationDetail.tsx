@@ -20,14 +20,21 @@ export const ApplicationDetail = () => {
           return <Notice notice={n} />;
         })}
       </S.Notices>
-      <S.Article>
-        <S.Title>
-          {data?.emoji} {data?.title}
-        </S.Title>
-        <S.SubTitle>{data?.description}</S.SubTitle>
-        <S.SubTitle>{data?.endDate}</S.SubTitle>
-        <Question quest={data?.questionList} />
-      </S.Article>
+      <S.RightSide>
+        <S.Section>
+          <S.Top>
+            <S.Title>
+              {data?.emoji} {data?.title}
+            </S.Title>
+            <S.SubTitle>{data?.description}</S.SubTitle>
+            <S.SubTitle>{data?.endDate || "- 상시"}</S.SubTitle>
+          </S.Top>
+          {data?.questionList.map((q, index) => {
+            return <Question quest={q} questIndex={index} />;
+          })}
+        </S.Section>
+        <S.SubmitBtn>제출하기</S.SubmitBtn>
+      </S.RightSide>
     </DetailLayout>
   );
 };
