@@ -1,9 +1,11 @@
 import styled, { css } from "styled-components";
 import { Colors } from "../../constants/colors";
+
 interface CategoriesTypes {
   selectedCategory: any;
   selected: any;
 }
+
 export const Look = styled.div`
   width: 70vw;
   margin: 0 auto;
@@ -44,4 +46,5 @@ export const Section = styled.p<CategoriesTypes>`
         `
       : ""}
 `;
+
 export const Application = styled.p``;

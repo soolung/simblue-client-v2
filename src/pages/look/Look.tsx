@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Categories from "./Categories";
 import { getApplications } from "../../apis/application";
 import { Application } from "../../components/shared/Application/Application";
+
 interface Category {
   text: string;
   description: string;
@@ -14,6 +15,7 @@ export const Look = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category>(
     Categories.deadline
   );
+
   const categories: Category[] = [
     Categories.deadline,
     Categories.latest,
@@ -27,9 +29,11 @@ export const Look = () => {
       onSuccess: () => {},
     }
   );
+
   useEffect(() => {
     refetch();
   }, [selectedCategory]);
+
   return (
     <S.Look>
       <S.Header>
