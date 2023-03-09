@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { QUESTION } from "../../../../apis/@types/application";
 import * as S from "./Question.style";
 
-export const Question = ({ quest, questIndex }: { quest?: QUESTION; questIndex?: number }) => {
+type Props = {
+  quest?: QUESTION;
+  questIndex: number;
+  handleRequest(a: string[], index: number): void;
+};
+
+export const Question = ({ quest, questIndex, handleRequest }: Props) => {
+  const [reply, setReply] = useState<string[]>([]);
+  const [check, setCheck] = useState<string[]>([]);
+
+  const handleAnswer = (type: string, value: string, checked: boolean): void => {
+    if (type === "checkbox") {
+      if (checked) setCheck([...check, value]);
+      else if (!checked) setCheck(check.filter((el) => el !== value));
+    } else if (type === "radio") {
+      setReply([value]);
+    }
+  };
+
+  useEffect(() => {
+    handleRequest(reply, questIndex);
+  }, [reply]);
+
+  useEffect(() => {
+    handleRequest(check, questIndex);
+  }, [check]);
+
   return (
     <div style={{ marginTop: "20px" }} key={questIndex}>
       <S.QuestTitle>
@@ -14,13 +40,19 @@ export const Question = ({ quest, questIndex }: { quest?: QUESTION; questIndex?:
           quest?.answerList.map((a, index) => {
             return (
               <S.AnswerBox>
-                <input name={`${quest.type + questIndex}`} type={quest.type} id={`answer${index}`} />
+                <input
+                  onChange={(e) => handleAnswer(e.target.type, e.target.value, e.target.checked)}
+                  value={a.answer}
+                  name={`${quest.type + questIndex}`}
+                  type={quest.type}
+                  id={`answer${index}`}
+                />
                 <label htmlFor={`answer${index}`}>{a.answer}</label>
               </S.AnswerBox>
             );
           })}
-        {(quest?.type === "TEXT" || quest?.type === "LINK") && <S.Text type={quest?.type} />}
-        {quest?.type === "TEXTAREA" && <S.Textarea type={quest?.type} />}
+        {(quest?.type === "TEXT" || quest?.type === "LINK") && <S.Text onChange={(e) => setReply([e.target.value])} type={quest?.type} />}
+        {quest?.type === "TEXTAREA" && <S.Textarea onChange={(e) => setReply([e.target.value])} type={quest?.type} />}
       </div>
     </div>
   );
