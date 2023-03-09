@@ -38,3 +38,5 @@ export type APPLICATION_DETAIL = APPLICATION & {
   questionList: QUESTION[];
   noticeList: NOTICE[];
 };
+
+export type REQUEST = { id: number; replyDetailList: string[] }[];
