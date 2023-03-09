@@ -16,7 +16,7 @@ export const RightSide = styled.div`
   margin-left: 24%;
   width: 70%;
   min-height: 75vh;
-  padding: 4%;
+  padding: 3% 5%;
   justify-content: space-between;
   flex-direction: column;
 `;
