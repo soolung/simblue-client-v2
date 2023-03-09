@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import * as S from "./Look.style";
 import { useQuery } from "react-query";
 import Categories from "./Categories";
-import { getApplications } from "../../apis/application";
-import { Application } from "../../components/shared/Application/Application";
+import { getApplication } from "../../apis/application/index";
+import { Application } from "../../components/shared/application/Application";
+import { APPLICATION } from "../../apis/@types/application";
 
 interface Category {
   text: string;
@@ -15,6 +16,7 @@ export const Look = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category>(
     Categories.deadline
   );
+
   const categories: Category[] = [
     Categories.deadline,
     Categories.latest,
@@ -22,15 +24,17 @@ export const Look = () => {
   ];
 
   const { data, refetch } = useQuery(
-    ["getApplications"],
-    () => getApplications(selectedCategory.uri),
+    "getApplication",
+    () => getApplication(selectedCategory.uri),
     {
       onSuccess: () => {},
     }
   );
+
   useEffect(() => {
     refetch();
   }, [selectedCategory]);
+
   return (
     <S.Look>
       <S.Header>
@@ -50,16 +54,8 @@ export const Look = () => {
         ))}
       </S.Categories>
       <S.Application>
-        {data?.map((a: any, index: number) => (
-          <Application
-            id={a.id}
-            title={a.title}
-            emoji={a.emoji}
-            description={a.description}
-            endDate={a.endDate}
-            isAlways={a.isAlways}
-            key={index}
-          />
+        {data?.map((a: APPLICATION, index: number) => (
+          <Application data={a} key={index} />
         ))}
       </S.Application>
     </S.Look>

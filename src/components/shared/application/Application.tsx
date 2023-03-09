@@ -2,7 +2,7 @@ import React from "react";
 import { APPLICATION } from "../../../apis/@types/application";
 import * as S from "./Application.style";
 
-type PropsType = {
+export type PropsType = {
   key: number;
   data: APPLICATION;
 };
@@ -17,7 +17,9 @@ export const Application = ({ key, data }: PropsType) => {
         </S.TopBox>
         <S.Desc>{data.description}</S.Desc>
       </div>
-      <S.EndDate>{data.status === "ALWAYS" ? "- 상시" : `~ ${data.endDate}`}</S.EndDate>
+      <S.EndDate>
+        {data.status === "ALWAYS" ? "- 상시" : `~ ${data.endDate}`}
+      </S.EndDate>
     </S.AppBox>
   );
 };

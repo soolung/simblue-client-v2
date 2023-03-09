@@ -7,14 +7,12 @@ export const AppBox = styled(Link)`
   width: 23.5%;
   padding: 2%;
   justify-content: space-between;
-
   aspect-ratio: 1/1;
   color: black;
   text-decoration: none;
   border: 1px solid #d9d9d9;
   border-radius: 18px;
   background-color: white;
-
   @media screen and (max-width: 950px) {
     width: 31.3%;
   }
@@ -29,7 +27,6 @@ export const TopBox = styled.div`
   width: 100%;
   font-size: 25px;
   margin-bottom: 3%;
-
   @media screen and (max-width: 700px) {
     font-size: 18px;
   }
@@ -45,13 +42,11 @@ export const Desc = styled.p`
   margin: 8px 0;
   font-weight: 300;
   width: 100%;
-
   display: -webkit-box;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   text-overflow: ellipsis;
   overflow: hidden;
-
   -webkit-line-clamp: 2;
 `;
 
