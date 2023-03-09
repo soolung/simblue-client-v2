@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../atoms/user";
 import { HeaderLayout } from "../../layout/HeaderLayout";
-import { Layout } from "../../layout/Layout";
 import * as S from "./Header.style";
 import { ProfilePopover } from "./profilePopover/ProfilePopover";
 
