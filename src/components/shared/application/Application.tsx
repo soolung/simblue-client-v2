@@ -2,7 +2,7 @@ import React from "react";
 import { APPLICATION } from "../../../apis/@types/application";
 import * as S from "./Application.style";
 
-export type PropsType = {
+type PropsType = {
   key: number;
   data: APPLICATION;
 };

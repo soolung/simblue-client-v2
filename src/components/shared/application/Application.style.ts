@@ -36,6 +36,12 @@ export const Title = styled.span`
   max-width: 80%;
   word-break: keep-all;
   font-weight: 500;
+  @media screen and (max-width: 1000px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 2vw;
+  }
 `;
 
 export const Desc = styled.p`
@@ -48,6 +54,12 @@ export const Desc = styled.p`
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-line-clamp: 2;
+  @media screen and (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+  }
 `;
 
 export const EndDate = styled.p`
@@ -56,4 +68,7 @@ export const EndDate = styled.p`
   font-size: 1vw;
   text-align: right;
   white-space: nowrap;
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+  }
 `;
