@@ -49,7 +49,6 @@ export const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(request);
 
   const login = () => {
     if (!request.email.endsWith("@bssm.hs.kr")) {

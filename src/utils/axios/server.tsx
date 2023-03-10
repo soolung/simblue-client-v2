@@ -7,19 +7,19 @@ const server = axios.create({
 });
 
 server.interceptors.request.use(
-  (config) => {
+  config => {
     return config;
   },
-  (error) => {
+  error => {
     return Promise.reject(error);
   }
 );
 
 server.interceptors.response.use(
-  (response) => {
+  response => {
     return response;
   },
-  (error) => {
+  error => {
     console.log(error.response.data.message);
     if (error.response.status === 401) {
       accessTokenExpired();

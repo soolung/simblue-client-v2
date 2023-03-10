@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../../../constants/colors";
+
 export const Login = styled.div`
   display: flex;
   width: 100%;
@@ -101,7 +102,7 @@ export const GoogleBtn = styled.button`
   align-items: center;
   justify-content: center;
   background-color: white;
-  border: 1px solid #c2c2c2;
+  border: 1px solid ${Colors.mediumGray};
   border-radius: 2px;
   column-gap: 5px;
 `;

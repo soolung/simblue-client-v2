@@ -1,13 +1,19 @@
 import styled, { css } from "styled-components";
 import { Colors } from "../../constants/colors";
+import { Category } from "./Look";
+
 interface CategoriesTypes {
-  selectedCategory: any;
-  selected: any;
+  selectedCategory: Category;
+  selected: Category;
 }
-export const Look = styled.div`
+
+export const Look = styled.section`
   width: 70vw;
   margin: 0 auto;
   padding: 50px 10px;
+  @media screen and (max-width: 700px) {
+    width: 80vw;
+  }
 `;
 
 export const Header = styled.div`
@@ -44,4 +50,16 @@ export const Section = styled.p<CategoriesTypes>`
         `
       : ""}
 `;
-export const Application = styled.p``;
+
+export const Application = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.3vw 1.3%;
+  width: 100%;
+`;
+
+export const None = styled.p`
+  color: ${Colors.darkGray};
+  text-align: center;
+  padding-top: 50px;
+`;

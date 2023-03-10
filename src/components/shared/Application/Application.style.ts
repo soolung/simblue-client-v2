@@ -1,53 +1,74 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Colors } from "../../../constants/colors";
-export const Application = styled.div`
-  &:hover {
-    cursor: pointer;
-    background-color: ${Colors.lightGray};
-  }
+
+export const AppBox = styled(Link)`
   display: flex;
   flex-direction: column;
-  border: 1px solid $grey;
-  background-color: white;
+  width: 23.5%;
+  padding: 2%;
+  justify-content: space-between;
+  aspect-ratio: 1/1;
+  color: black;
+  text-decoration: none;
+  border: 1px solid #d9d9d9;
   border-radius: 18px;
-  padding: 20px;
-  aspect-ratio: 1 / 1;
+  background-color: white;
+  @media screen and (max-width: 950px) {
+    width: 31.3%;
+  }
+  @media screen and (max-width: 700px) {
+    width: 47%;
+    padding: 5%;
+  }
 `;
-
-export const Title = styled.div`
+export const TopBox = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-size: 1.8vw;
+  font-size: 25px;
+  margin-bottom: 3%;
+  @media screen and (max-width: 700px) {
+    font-size: 18px;
+  }
 `;
 
-export const SecondTitle = styled.span`
+export const Title = styled.span`
   max-width: 80%;
   word-break: keep-all;
   font-weight: 500;
+  @media screen and (max-width: 1000px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 2vw;
+  }
 `;
 
-export const Comment = styled.p`
+export const Desc = styled.p`
   margin: 8px 0;
   font-weight: 300;
   width: 100%;
-
   display: -webkit-box;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   text-overflow: ellipsis;
   overflow: hidden;
-
   -webkit-line-clamp: 2;
+  @media screen and (max-width: 1000px) {
+    font-size: 15px;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+  }
 `;
 
 export const EndDate = styled.p`
-  margin-top: auto;
   float: bottom;
   font-weight: 300;
   font-size: 1vw;
   text-align: right;
   white-space: nowrap;
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+  }
 `;
-
-export const Emoji = styled.span``;

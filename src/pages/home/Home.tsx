@@ -10,7 +10,10 @@ import { GET_PAGING_APPLICATION } from "../../constants/keys";
 
 export const Home = () => {
   const navigate = useNavigate();
-  const { data } = useQuery<{ applicationList: APPLICATION[] }>([GET_PAGING_APPLICATION], getPagingApplication);
+  const { data } = useQuery<{ applicationList: APPLICATION[] }>(
+    [GET_PAGING_APPLICATION],
+    getPagingApplication
+  );
 
   return (
     <div>

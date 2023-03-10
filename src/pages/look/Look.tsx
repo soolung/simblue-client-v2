@@ -6,7 +6,7 @@ import { getApplication } from "../../apis/application/index";
 import { Application } from "../../components/shared/application/Application";
 import { APPLICATION } from "../../apis/@types/application";
 
-interface Category {
+export interface Category {
   text: string;
   description: string;
   uri: string;
@@ -23,12 +23,8 @@ export const Look = () => {
     Categories.always,
   ];
 
-  const { data, refetch } = useQuery(
-    "getApplication",
-    () => getApplication(selectedCategory.uri),
-    {
-      onSuccess: () => {},
-    }
+  const { data, refetch } = useQuery("getApplication", () =>
+    getApplication(selectedCategory.uri)
   );
 
   useEffect(() => {
@@ -53,11 +49,15 @@ export const Look = () => {
           </S.Section>
         ))}
       </S.Categories>
-      <S.Application>
-        {data?.map((a: APPLICATION, index: number) => (
-          <Application data={a} key={index} />
-        ))}
-      </S.Application>
+      {data?.length > 0 ? (
+        <S.Application>
+          {data?.map((a: APPLICATION) => (
+            <Application data={a} key={a.id} />
+          ))}
+        </S.Application>
+      ) : (
+        <S.None>{selectedCategory.description}이 없습니다.</S.None>
+      )}
     </S.Look>
   );
 };
