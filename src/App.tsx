@@ -28,9 +28,9 @@ function App() {
               <Route
                 path="/look"
                 element={
-                  // <AuthRequired>
-                  <Look />
-                  /* </AuthRequired> */
+                  <AuthRequired>
+                    <Look />
+                  </AuthRequired>
                 }
               />
               <Route

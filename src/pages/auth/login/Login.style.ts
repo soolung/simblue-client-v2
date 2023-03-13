@@ -74,7 +74,7 @@ export const InputBox = styled.div`
 `;
 
 export const TextBox = styled.input`
-  border: 0.5px solid grey;
+  border: 0.5px solid ${Colors.mediumGray};
   width: 100%;
   height: 6vh;
   padding: 0 15px;
@@ -84,7 +84,7 @@ export const TextBox = styled.input`
   }
 
   &::placeholder {
-    color: $medium-grey;
+    color: ${Colors.mediumGray};
     font-weight: 300;
   }
 `;
