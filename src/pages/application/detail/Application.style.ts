@@ -10,7 +10,10 @@ export const Notices = styled.aside`
   height: calc(var(--vh, 1vh) * 100);
   padding: 2%;
   gap: 20px;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 `;
+
 export const RightSide = styled.div`
   display: flex;
   margin-left: 24%;
@@ -19,6 +22,8 @@ export const RightSide = styled.div`
   padding: 3% 5%;
   justify-content: space-between;
   flex-direction: column;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 `;
 
 export const Section = styled.section`
@@ -56,4 +61,21 @@ export const SubmitBtn = styled.button`
   border: none;
   font-weight: 700;
   font-size: 18px;
+`;
+
+export const Arrow = styled.img`
+  width: 10%;
+  align-self: flex-end;
+`;
+
+export const OpenArrow = styled.img`
+  width: 25px;
+  transform: rotate(180deg);
+`;
+
+export const ReOpen = styled.div`
+  position: absolute;
+  padding: 20px 20px;
+  background-color: ${Colors.lightGray};
+  border-radius: 0 15px 15px 0;
 `;

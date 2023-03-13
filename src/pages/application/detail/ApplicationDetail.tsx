@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { APPLICATION_DETAIL, REQUEST } from "../../../apis/@types/application";
@@ -16,8 +16,12 @@ import { userState } from "../../../atoms/user";
 export const ApplicationDetail = () => {
   const { application_id } = useParams();
   const user = useRecoilValue(userState);
+  const notice = useRef<HTMLDivElement>(null);
+  const rightSide = useRef<HTMLDivElement>(null);
+  const arrow = useRef<HTMLDivElement>(null);
   const { data } = useQuery<APPLICATION_DETAIL>([GET_APPLICATION_DETAIL], () => getApplicationDetail(Number(application_id)));
   const [request, setRequest] = useState<REQUEST>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const { mutate } = useMutation(replyApplication, {
     onSuccess: () => {
@@ -45,14 +49,26 @@ export const ApplicationDetail = () => {
     } else console.log("다 입력 안 됨");
   };
 
+  const handleNotice = (hide: boolean) => {
+    notice!.current!.style.animationName = hide ? "hide" : "open";
+    rightSide!.current!.style.animationName = hide ? "toCenter" : "toRight";
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <DetailLayout>
-      <S.Notices>
+      {!isOpen && (
+        <S.ReOpen onClick={() => handleNotice(false)}>
+          <S.OpenArrow src="/assets/left-double-arrow.svg" />
+        </S.ReOpen>
+      )}
+      <S.Notices ref={notice}>
+        <S.Arrow onClick={() => handleNotice(true)} src="/assets/left-double-arrow.svg" />
         {data?.noticeList.map((n) => {
           return <Notice notice={n} />;
         })}
       </S.Notices>
-      <S.RightSide>
+      <S.RightSide ref={rightSide}>
         <S.Section>
           <S.Top>
             <S.Title>
@@ -61,7 +77,7 @@ export const ApplicationDetail = () => {
             <S.SubTitle>{data?.description}</S.SubTitle>
             <S.SubTitle>{data?.endDate || "- 상시"}</S.SubTitle>
           </S.Top>
-          {data?.questionList.map((q, index) => {
+          {data?.questionList.map((q) => {
             return <Question handleRequest={handleRequest} quest={q} />;
           })}
         </S.Section>
