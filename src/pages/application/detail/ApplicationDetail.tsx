@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { APPLICATION_DETAIL, REQUEST } from "../../../apis/@types/application";
 import { getApplicationDetail } from "../../../apis/application";
@@ -8,11 +8,23 @@ import { Notice } from "./notice/Notice";
 import { Question } from "./question/Question";
 import * as S from "./Application.style";
 import { DetailLayout } from "../../../components/layout/DetailLayout";
+import { replyApplication } from "../../../apis/post";
 
 export const ApplicationDetail = () => {
   const { application_id } = useParams();
   const { data } = useQuery<APPLICATION_DETAIL>([GET_APPLICATION_DETAIL], () => getApplicationDetail(Number(application_id)));
   const [request, setRequest] = useState<REQUEST>([]);
+
+  const { mutate } = useMutation(replyApplication, {
+    onSuccess: () => {
+      alert("성공!");
+      window.location.href = "/";
+    },
+    onError: (err: { response: { data: { message: string } } }) => {
+      const errMessage = err.response.data.message;
+      alert(errMessage);
+    },
+  });
 
   const handleRequest = (a: string[], index: number): void => {
     const i = request.findIndex((r) => r.id === index);
@@ -25,9 +37,10 @@ export const ApplicationDetail = () => {
 
   const reply = () => {
     if (request.length === data?.questionList.length && !request.find((r) => r.replyDetailList.length < 1 || r.replyDetailList[0] === "")) {
-      console.log("다 입력 됨");
+      mutate({ applicationId: Number(application_id), replyList: request });
     } else console.log("다 입력 안 됨");
   };
+
   return (
     <DetailLayout>
       <S.Notices>
@@ -45,7 +58,7 @@ export const ApplicationDetail = () => {
             <S.SubTitle>{data?.endDate || "- 상시"}</S.SubTitle>
           </S.Top>
           {data?.questionList.map((q, index) => {
-            return <Question handleRequest={handleRequest} quest={q} questIndex={index} />;
+            return <Question handleRequest={handleRequest} quest={q} />;
           })}
         </S.Section>
         <S.SubmitBtn onClick={reply}>제출하기</S.SubmitBtn>

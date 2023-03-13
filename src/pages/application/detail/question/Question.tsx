@@ -4,11 +4,11 @@ import * as S from "./Question.style";
 
 type Props = {
   quest?: QUESTION;
-  questIndex: number;
-  handleRequest(a: string[], index: number): void;
+  handleRequest(a: string[], index?: number): void;
 };
 
-export const Question = ({ quest, questIndex, handleRequest }: Props) => {
+export const Question = ({ quest, handleRequest }: Props) => {
+  const questIndex = quest?.id;
   const [reply, setReply] = useState<string[]>([]);
   const [check, setCheck] = useState<string[]>([]);
 
