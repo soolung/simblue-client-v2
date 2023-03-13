@@ -5,6 +5,7 @@ export const ButtonStyle = styled.button`
   background-color: ${Colors.mainRed};
   cursor: pointer;
   width: 100%;
+  min-height: 50px;
   padding: 1%;
   align-self: flex-end;
   border-radius: 8px;
