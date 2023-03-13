@@ -26,6 +26,7 @@ export const Section = styled.section`
   flex-direction: column;
   width: 100%;
   row-gap: 18px;
+  margin-bottom: 100px;
 `;
 
 export const Title = styled.span`

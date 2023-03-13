@@ -9,9 +9,13 @@ import { Question } from "./question/Question";
 import * as S from "./Application.style";
 import { DetailLayout } from "../../../components/layout/DetailLayout";
 import { replyApplication } from "../../../apis/post";
+import { Button } from "../../../components/shared/button/Button";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../../atoms/user";
 
 export const ApplicationDetail = () => {
   const { application_id } = useParams();
+  const user = useRecoilValue(userState);
   const { data } = useQuery<APPLICATION_DETAIL>([GET_APPLICATION_DETAIL], () => getApplicationDetail(Number(application_id)));
   const [request, setRequest] = useState<REQUEST>([]);
 
@@ -61,7 +65,7 @@ export const ApplicationDetail = () => {
             return <Question handleRequest={handleRequest} quest={q} />;
           })}
         </S.Section>
-        <S.SubmitBtn onClick={reply}>제출하기</S.SubmitBtn>
+        <Button text={user.authority ? "제출하기" : "로그인 후 응답할 수 있어요"} disabled={user.authority ? false : true} event={reply} />
       </S.RightSide>
     </DetailLayout>
   );
