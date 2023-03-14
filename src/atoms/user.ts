@@ -1,5 +1,10 @@
 import { atom } from "recoil";
-
+import {
+  ACCESS_KEY,
+  REFRESH_KEY,
+  AUTHORITY,
+  NAME,
+} from "../constants/token.constant";
 interface UserState {
   accessToken: string | null;
   refreshToken: string | null;
@@ -10,9 +15,9 @@ interface UserState {
 export const userState = atom<UserState>({
   key: "user",
   default: {
-    accessToken: localStorage.getItem("access-token"),
-    refreshToken: localStorage.getItem("refresh-token"),
-    authority: localStorage.getItem("authority"),
-    name: localStorage.getItem("name"),
+    accessToken: localStorage.getItem(ACCESS_KEY),
+    refreshToken: localStorage.getItem(REFRESH_KEY),
+    authority: localStorage.getItem(AUTHORITY),
+    name: localStorage.getItem(NAME),
   },
 });
