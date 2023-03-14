@@ -29,11 +29,7 @@ function App() {
               <Route path="/application/:applicationId" element={<ApplicationDetail />} />
               <Route
                 path="/look"
-                element={
-                  <AuthRequired>
-                    <Look />
-                  </AuthRequired>
-                }
+                element={<Look />}
               />
               <Route
                 path="/create"

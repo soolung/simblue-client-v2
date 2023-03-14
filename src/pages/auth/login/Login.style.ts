@@ -94,6 +94,7 @@ export const LoginBtn = styled.button`
   height: 45px;
   color: white;
   font-weight: 600;
+  border: none;
 `;
 
 export const GoogleBtn = styled.button`

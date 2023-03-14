@@ -1,6 +1,6 @@
-import server from "../utils/axios/server";
-import { authorization } from "../utils/config/authorization";
-import { LoginAuth, ResetPassword } from "../types/LoginAuth.type";
+import { authorization } from "../../utils/config/authorization";
+import { LoginAuth, ResetPassword } from "../../types/LoginAuth.type";
+import server from '../client';
 
 interface UserData {
   accessToken: string;
@@ -21,9 +21,9 @@ export const getAccessTokenByGoogle = async (
 };
 
 export const loginUser = async ({
-  email,
-  password,
-}: LoginAuth): Promise<UserData> => {
+                                  email,
+                                  password,
+                                }: LoginAuth): Promise<UserData> => {
   return (
     await server.post("/auth", {
       email: email,
@@ -33,9 +33,9 @@ export const loginUser = async ({
 };
 
 export const updatePassword = async ({
-  newPassword,
-  oldPassword,
-}: ResetPassword): Promise<ResetPassword> => {
+                                       newPassword,
+                                       oldPassword,
+                                     }: ResetPassword): Promise<ResetPassword> => {
   return await server.patch(
     "/user/password",
     {
