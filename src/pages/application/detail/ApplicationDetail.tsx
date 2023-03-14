@@ -9,7 +9,7 @@ import { Question } from "./question/Question";
 import * as S from "./Application.style";
 import { DetailLayout } from "../../../components/layout/DetailLayout";
 import { replyApplication } from "../../../apis/application";
-import { Button } from "../../../components/shared/button/Button";
+import { Button } from "../../../components/shared/Button/Button";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../atoms/user";
 
