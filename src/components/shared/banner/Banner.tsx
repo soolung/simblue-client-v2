@@ -22,7 +22,8 @@ export const Banner = () => {
       slidesPerView={1}
       pagination={true}
       autoplay={{ delay: 5000 }}
-      watchOverflow={true}>
+      watchOverflow={true}
+    >
       {bannerImg.map((b, index) => (
         <SwiperSlide key={index}>
           <S.BannerImg src={b.img} alt="banner" />

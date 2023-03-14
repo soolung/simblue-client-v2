@@ -1,4 +1,4 @@
-import axios, { AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios from "axios";
 import { accessTokenExpired } from "../../apis/token";
 
 const server = axios.create({
