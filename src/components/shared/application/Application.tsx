@@ -3,13 +3,12 @@ import { APPLICATION } from "../../../apis/@types/application";
 import * as S from "./Application.style";
 
 type PropsType = {
-  key: number;
   data: APPLICATION;
 };
 
-export const Application = ({ key, data }: PropsType) => {
+export const Application = ({ data }: PropsType) => {
   return (
-    <S.AppBox to={`application/${key}`}>
+    <S.AppBox to={`application/${data.id}`}>
       <div>
         <S.TopBox>
           <S.Title>{data.title}</S.Title>

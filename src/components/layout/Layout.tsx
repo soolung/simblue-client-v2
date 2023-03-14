@@ -1,11 +1,9 @@
 import React from "react";
-
-type Props = { children: React.ReactNode; bgColor?: string };
-
+import { Props } from "./type";
 export const Layout = ({ children, bgColor }: Props) => {
   return (
     <div style={{ display: "flex", width: "100%", justifyContent: "center", backgroundColor: bgColor }}>
-      <div style={{ width: "75%" }}>{children}</div>
+      <div style={{ width: "75%", marginTop: "75px" }}>{children}</div>
     </div>
   );
 };

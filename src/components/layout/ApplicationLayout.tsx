@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Props } from "./type";
 
-type Props = { children: React.ReactNode; bgColor?: string };
-
-export const ApplicationLayout = ({ children, bgColor }: Props) => {
+export const ApplicationLayout = ({ children }: Props) => {
   return <LayoutStyle>{children}</LayoutStyle>;
 };
 

@@ -11,6 +11,7 @@ import { Look } from "./pages/look/Look";
 import { SignUp } from "./pages/auth/signUp/SignUp";
 import { Home } from "./pages/home/Home";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ApplicationDetail } from "./pages/application/detail/ApplicationDetail";
 function App() {
   const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/application/:applicationId" element={<ApplicationDetail />} />
               <Route
                 path="/look"
                 element={
