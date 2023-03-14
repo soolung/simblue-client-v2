@@ -8,7 +8,7 @@ import { Notice } from "./notice/Notice";
 import { Question } from "./question/Question";
 import * as S from "./Application.style";
 import { DetailLayout } from "../../../components/layout/DetailLayout";
-import { replyApplication } from "../../../apis/post";
+import { replyApplication } from "../../../apis/application";
 import { Button } from "../../../components/shared/button/Button";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../atoms/user";
@@ -94,7 +94,9 @@ export const ApplicationDetail = () => {
             return <Question handleRequest={handleRequest} quest={q} />;
           })}
         </S.Section>
-        <Button text={user.authority ? "제출하기" : "로그인 후 응답할 수 있어요"} disabled={user.authority ? false : true} event={reply} />
+        <Button disabled={user.authority ? false : true} event={reply}>
+          {user.authority ? "제출하기" : "로그인 후 응답할 수 있어요"}
+        </Button>
       </S.RightSide>
     </DetailLayout>
   );

@@ -1,3 +1,5 @@
+import { authorization } from "../../utils/auth";
+import { REQUEST } from "../@types/application";
 import server from "../client";
 
 export const getApplication = async (type: string) => {
@@ -10,4 +12,8 @@ export const getPagingApplication = async () => {
 
 export const getApplicationDetail = async (id: number) => {
   return (await server.get(`/application/${id}`)).data;
+};
+
+export const replyApplication = async (request: { applicationId: number; replyList: REQUEST }) => {
+  return (await server.post(`/reply`, request, authorization())).data;
 };
