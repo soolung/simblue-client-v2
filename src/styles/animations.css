@@ -1,0 +1,56 @@
+/* Web */
+@keyframes hide {
+  to {
+    margin-left: -30%;
+  }
+}
+
+@keyframes open {
+  from {
+    margin-left: -30%;
+  }
+  to {
+    margin-left: 0%;
+  }
+}
+
+@keyframes toCenter {
+  to {
+    margin-left: 20%;
+    width: 60%;
+  }
+}
+
+@keyframes toRight {
+  from {
+    margin-left: 20%;
+    width: 60%;
+  }
+  to {
+    margin-left: 24%;
+    width: 70%;
+  }
+}
+
+/* Mobile */
+@keyframes hideMobile {
+  to {
+    margin-left: -100%;
+  }
+}
+
+@keyframes openMobile {
+  from {
+    margin-left: -100%;
+  }
+  to {
+    margin-left: 0%;
+  }
+}
+
+@keyframes toCenterMobile {
+  to {
+    margin-left: 10%;
+    width: 80%;
+  }
+}

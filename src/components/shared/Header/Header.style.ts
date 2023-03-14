@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { Colors } from "../../../constants/colors";
 
 export const HeaderNav = styled.nav`
+  position: fixed;
   display: flex;
-  width: 100%;
+  width: 75%;
   height: 75px;
   align-items: center;
   justify-content: space-between;

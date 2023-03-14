@@ -18,11 +18,9 @@ export const Footer = () => {
 
 const FooterStyle = styled.footer`
   width: 100%;
-  position: absolute;
   color: ${Colors.mediumGray};
   font-size: 15px;
   padding: 15px 0;
-  bottom: 0;
 
   p {
     cursor: default;
