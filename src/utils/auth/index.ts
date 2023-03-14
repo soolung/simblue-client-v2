@@ -13,3 +13,11 @@ export const accessTokenExpired = async () => {
     ).data.accessToken
   );
 };
+
+export const authorization = () => {
+  return {
+    headers: {
+      Authorization: `Bearer ${localStorage.accessToken}`,
+    },
+  };
+};

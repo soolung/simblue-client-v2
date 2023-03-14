@@ -6,8 +6,8 @@ import { LoginAuth } from "../../../types/LoginAuth.type";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../../atoms/user";
 import {
-  ACCESS_TOKEN,
-  REFRESH_TOKEN,
+  ACCESS_KEY,
+  REFRESH_KEY,
   AUTHORITY,
   NAME,
 } from "../../../constants/token.constant";
@@ -25,8 +25,8 @@ export const Login = () => {
 
   const { mutate } = useMutation(loginUser, {
     onSuccess: data => {
-      localStorage.setItem(ACCESS_TOKEN, data.accessToken);
-      localStorage.setItem(REFRESH_TOKEN, data.refreshToken);
+      localStorage.setItem(ACCESS_KEY, data.accessToken);
+      localStorage.setItem(REFRESH_KEY, data.refreshToken);
       localStorage.setItem(AUTHORITY, data.authority);
       localStorage.setItem(NAME, data.name);
       setUser({

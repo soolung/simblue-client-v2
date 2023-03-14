@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 export type APPLICATION = {
   allowsDuplication: boolean;
   description: string;
@@ -9,3 +11,32 @@ export type APPLICATION = {
   status: string;
   title: string;
 };
+
+export type ANSWER = {
+  answer: string;
+};
+
+export type QUESTION = {
+  id: number;
+  question: string;
+  description: string;
+  isRequired: boolean;
+  type: string;
+  answerList: ANSWER[];
+  replyDetailList: string | null;
+};
+
+export type NOTICE = {
+  author: string;
+  createdAt: Dayjs;
+  id: number;
+  isPinned: boolean;
+  notice: string;
+};
+
+export type APPLICATION_DETAIL = APPLICATION & {
+  questionList: QUESTION[];
+  noticeList: NOTICE[];
+};
+
+export type REQUEST = { id: number; replyDetailList: string[] }[];
