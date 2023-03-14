@@ -1,5 +1,5 @@
 import { authorization } from "../../utils/auth";
-import { REQUEST } from "../@types/application";
+import { REQUEST } from "../../types/application.type";
 import server from "../client";
 
 export const getApplication = async (type: string) => {
