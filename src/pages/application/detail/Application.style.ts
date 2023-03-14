@@ -12,6 +12,12 @@ export const Notices = styled.aside`
   gap: 20px;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  p {
+    margin-top: 32vh;
+    font-size: 14px;
+    color: ${Colors.mediumGray};
+    text-align: center;
+  }
 `;
 
 export const RightSide = styled.div`
@@ -64,7 +70,7 @@ export const SubmitBtn = styled.button`
 `;
 
 export const Arrow = styled.img`
-  width: 10%;
+  width: 25px;
   align-self: flex-end;
 `;
 
@@ -75,7 +81,12 @@ export const OpenArrow = styled.img`
 
 export const ReOpen = styled.div`
   position: absolute;
+  left: 0;
   padding: 20px 20px;
   background-color: ${Colors.lightGray};
   border-radius: 0 15px 15px 0;
+
+  @media screen and (max-width: 500px) {
+    padding: 10px 10px;
+  }
 `;
