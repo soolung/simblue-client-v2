@@ -14,11 +14,11 @@ import { useRecoilValue } from "recoil";
 import { userState } from "../../../atoms/user";
 
 export const ApplicationDetail = () => {
-  const { application_id } = useParams();
+  const { applicationId } = useParams();
   const user = useRecoilValue(userState);
   const notice = useRef<HTMLDivElement>(null);
   const rightSide = useRef<HTMLDivElement>(null);
-  const { data } = useQuery<APPLICATION_DETAIL>([GET_APPLICATION_DETAIL], () => getApplicationDetail(Number(application_id)));
+  const { data } = useQuery<APPLICATION_DETAIL>([GET_APPLICATION_DETAIL], () => getApplicationDetail(Number(applicationId)));
   const [request, setRequest] = useState<REQUEST>([]);
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
@@ -44,7 +44,7 @@ export const ApplicationDetail = () => {
 
   const reply = () => {
     if (request.length === data?.questionList.length && !request.find((r) => r.replyDetailList.length < 1 || r.replyDetailList[0] === "")) {
-      mutate({ applicationId: Number(application_id), replyList: request });
+      mutate({ applicationId: Number(applicationId), replyList: request });
     } else console.log("다 입력 안 됨");
   };
 
