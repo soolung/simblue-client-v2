@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { APPLICATION } from "../../apis/@types/application";
 import { getPagingApplication } from "../../apis/application";
 import { ApplicationLayout } from "../../components/layout/ApplicationLayout";
-import { Application } from "../../components/shared/application/Application";
+import { Application } from "../../components/shared/Application/Application";
 import { Banner } from "../../components/shared/Banner/Banner";
 import { GET_PAGING_APPLICATION } from "../../constants/keys";
 

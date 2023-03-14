@@ -3,7 +3,7 @@ import * as S from "./Look.style";
 import { useQuery } from "react-query";
 import Categories from "./Categories";
 import { getApplication } from "../../apis/application/index";
-import { Application } from "../../components/shared/application/Application";
+import { Application } from "../../components/shared/Application/Application";
 import { APPLICATION } from "../../apis/@types/application";
 
 export interface Category {

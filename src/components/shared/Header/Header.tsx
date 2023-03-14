@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 import { userState } from "../../../atoms/user";
 import { HeaderLayout } from "../../layout/HeaderLayout";
 import * as S from "./Header.style";
-import { ProfilePopover } from "./profilePopover/ProfilePopover";
+import { ProfilePopover } from "./ProfilePopover/ProfilePopover";
 
 export const Header = () => {
   const [searchText, setSearchText] = useState<string>();
@@ -16,6 +16,7 @@ export const Header = () => {
         <img
           onClick={() => (window.location.href = "/")}
           src="/assets/logo.svg"
+          alt="logo"
         />
         <S.NavLink to="look">둘러보기</S.NavLink>
         {user.authority && <S.NavLink to="record">기록보기</S.NavLink>}
@@ -26,13 +27,13 @@ export const Header = () => {
             type="text"
             placeholder="검색어를 입력해주세요."
           />
-          {searchText && <S.CancelIcon onClick={() => setSearchText("")} />}
-          <img alt="설치" src="/assets/search.svg" />
+          {searchText && <S.CancelIcon onClick={() => setSearchText("")}/>}
+          <img alt="설치" src="/assets/search.svg"/>
         </S.SearchBar>
         {user.authority ? (
           <div style={{ position: "relative" }}>
             <S.Name onClick={() => setIsOpen((prev) => !prev)}>{user.name}</S.Name>
-            {isOpen && <ProfilePopover close={() => setIsOpen(false)} />}
+            {isOpen && <ProfilePopover close={() => setIsOpen(false)}/>}
           </div>
         ) : (
           <S.NavLink to="login">로그인</S.NavLink>
