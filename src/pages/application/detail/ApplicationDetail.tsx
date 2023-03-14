@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { APPLICATION_DETAIL, REQUEST } from "../../../apis/@types/application";
@@ -18,7 +18,6 @@ export const ApplicationDetail = () => {
   const user = useRecoilValue(userState);
   const notice = useRef<HTMLDivElement>(null);
   const rightSide = useRef<HTMLDivElement>(null);
-  const arrow = useRef<HTMLDivElement>(null);
   const { data } = useQuery<APPLICATION_DETAIL>([GET_APPLICATION_DETAIL], () => getApplicationDetail(Number(application_id)));
   const [request, setRequest] = useState<REQUEST>([]);
   const [isOpen, setIsOpen] = useState<boolean>(true);
@@ -50,10 +49,26 @@ export const ApplicationDetail = () => {
   };
 
   const handleNotice = (hide: boolean) => {
-    notice!.current!.style.animationName = hide ? "hide" : "open";
-    rightSide!.current!.style.animationName = hide ? "toCenter" : "toRight";
-    setIsOpen((prev) => !prev);
+    if (window.innerWidth < 500) {
+      notice!.current!.style.width = "100%";
+      notice!.current!.style.animationName = hide ? "hideMobile" : "openMobile";
+      rightSide!.current!.style.animationName = hide ? "toCenterMobile" : "toRight";
+    } else {
+      notice!.current!.style.animationName = hide ? "hide" : "open";
+      rightSide!.current!.style.animationName = hide ? "toCenter" : "toRight";
+    }
+    setIsOpen(!hide);
   };
+
+  useEffect(() => {
+    if (window.innerWidth < 500) handleNotice(false);
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 500) {
+        notice!.current!.style.width = "100%";
+        if (isOpen) handleNotice(false);
+      } else notice!.current!.style.width = "24%";
+    });
+  }, []);
 
   return (
     <DetailLayout>
@@ -64,9 +79,7 @@ export const ApplicationDetail = () => {
       )}
       <S.Notices ref={notice}>
         <S.Arrow onClick={() => handleNotice(true)} src="/assets/left-double-arrow.svg" />
-        {data?.noticeList.map((n) => {
-          return <Notice notice={n} />;
-        })}
+        {!(data?.noticeList.length === 0) ? data?.noticeList.map((n) => <Notice notice={n} />) : <p>공지사항이 없습니다.</p>}
       </S.Notices>
       <S.RightSide ref={rightSide}>
         <S.Section>
