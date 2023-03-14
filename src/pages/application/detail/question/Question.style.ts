@@ -90,6 +90,13 @@ export const Textarea = styled.input`
   }
 `;
 
+export const Questions = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+`;
+
 export const QuestTitle = styled.span`
   font-weight: 500;
   font-size: 18px;

@@ -35,7 +35,7 @@ export const Question = ({ quest, handleRequest }: Props) => {
         {quest?.question} {quest?.isRequired && <span>*</span>}
       </S.QuestTitle>
       <S.Desc>{quest?.description}</S.Desc>
-      <div style={{ display: "flex", alignItems: "center", columnGap: "15px" }}>
+      <S.Questions>
         {(quest?.type === "RADIO" || quest?.type === "CHECKBOX") &&
           quest?.answerList.map((a, index) => {
             return (
@@ -53,7 +53,7 @@ export const Question = ({ quest, handleRequest }: Props) => {
           })}
         {(quest?.type === "TEXT" || quest?.type === "LINK") && <S.Text onChange={(e) => setReply([e.target.value])} type={quest?.type} />}
         {quest?.type === "TEXTAREA" && <S.Textarea onChange={(e) => setReply([e.target.value])} type={quest?.type} />}
-      </div>
+      </S.Questions>
     </div>
   );
 };
