@@ -1,25 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useResetRecoilState } from "recoil";
 import styled from "styled-components";
 import { userState } from "../../../../atoms/user";
-import { Colors } from "../../../../constants/colors";
+import { Colors } from "../../../../constants/colors.constant";
 
 export const ProfilePopover = ({ close }: { close: Function }) => {
   const navigate = useNavigate();
-  const setUser = useSetRecoilState(userState);
+  const resetUser = useResetRecoilState(userState);
   return (
     <Popover>
       <button onClick={() => navigate("/auth/update/password")}>비밀번호 변경</button>
       <button
         onClick={() => {
           localStorage.clear();
-          setUser({
-            accessToken: null,
-            refreshToken: null,
-            authority: null,
-            name: null,
-          });
+          resetUser();
           navigate("/");
           close();
         }}>
