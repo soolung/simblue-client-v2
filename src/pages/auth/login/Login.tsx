@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "react-query";
 import { getGoogleAuthLink, loginUser } from "../../../apis/auth";
-import { LoginAuth } from "../../../types/userAuth";
+import { LoginAuth } from "../../../types/userAuth.type";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../../atoms/user";
 import {
