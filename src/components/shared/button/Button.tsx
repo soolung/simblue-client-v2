@@ -7,5 +7,5 @@ interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = (props: BtnProps) => {
-  return <ButtonStyle {...props} className={props.disabled ? "disabled" : ""} />;
+  return <ButtonStyle {...props} onClick={props.event} className={props.disabled ? "disabled" : ""} />;
 };
