@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../../constants/colors.constant";
+import { Colors } from "../../../constants/colors";
 
 export const ButtonStyle = styled.button`
   background-color: ${Colors.mainRed};
