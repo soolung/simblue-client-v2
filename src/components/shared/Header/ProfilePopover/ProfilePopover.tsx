@@ -16,6 +16,7 @@ export const ProfilePopover = ({ close }: { close: Function }) => {
           localStorage.clear();
           resetUser();
           navigate("/");
+          window.location.reload();
           close();
         }}>
         로그아웃
