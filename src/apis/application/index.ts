@@ -17,3 +17,7 @@ export const getApplicationDetail = async (id: number) => {
 export const replyApplication = async (request: { applicationId: number; replyList: REQUEST }) => {
   return (await server.post(`/reply`, request, authorization())).data;
 };
+
+export const getMyApplications = async () => {
+  return (await server.get(`/application/my`, authorization())).data;
+};

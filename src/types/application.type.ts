@@ -40,3 +40,26 @@ export type APPLICATION_DETAIL = APPLICATION & {
 };
 
 export type REQUEST = { id: number; replyDetailList: string[] }[];
+
+export type TEACHER_APPLICATION = {
+  applicationId: number;
+  canUpdate: boolean;
+  emoji: string;
+  endDate: string;
+  numberOfReplies: number;
+  repliedAt: string | null;
+  replyId: number | null;
+  startDate: string;
+  status: "ALWAYS" | "NOT_STARTED" | "IN_PROGRESS" | "DONE";
+  title: string;
+};
+
+export type TECHER_RECORDS = {
+  applicationMap: {
+    ALWAYS: TEACHER_APPLICATION[];
+    DONE: TEACHER_APPLICATION[];
+    IN_PROGRESS: TEACHER_APPLICATION[];
+    NOT_STARTED: TEACHER_APPLICATION[];
+  };
+  authority: string;
+};
