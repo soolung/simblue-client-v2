@@ -16,6 +16,8 @@ import { SeperateAccess } from "./components/shared/AuthRequired/SeperateAccess"
 import { RecordStudent } from "./pages/record/student/RecordStudent";
 import { OnlyTeacher } from "./components/shared/AuthRequired/OnlyTeacher";
 import { RecordTeacher } from "./pages/record/teacher/RecordTeacher";
+import ReactModal from "react-modal";
+import { ModalProvider } from "./components/shared/Modal/ModalProvider";
 
 function App() {
   const queryClient = new QueryClient();
@@ -60,9 +62,12 @@ function App() {
           </Layout>
           <Footer />
         </BrowserRouter>
+        <ModalProvider />
       </QueryClientProvider>
     </RecoilRoot>
   );
 }
 
 export default App;
+
+ReactModal.setAppElement("#root");
