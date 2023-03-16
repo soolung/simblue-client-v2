@@ -9,4 +9,5 @@ export const Colors = {
   mainTurquoise: "#233A26",
   inputText: "#424242",
   black: "#484848",
+  green: "#66BB6A",
 };
