@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "react-query";
 import { getGoogleAuthLink, loginUser } from "../../../apis/auth";
-import { LoginAuth } from "../../../types/userAuth.type";
+import { AuthInfo } from "../../../types/userAuth.type";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../../atoms/user";
 import {
@@ -18,9 +18,12 @@ export const Login = () => {
   const navigate = useNavigate();
   const setUser = useSetRecoilState(userState);
   const { data } = useQuery([GOOGLE_AUTH_LINK], getGoogleAuthLink);
-  const [request, setRequest] = useState<LoginAuth>({
+  const [request, setRequest] = useState<AuthInfo>({
     email: "",
+    name: "",
     password: "",
+    passwordCheck: "",
+    studentNumber: "",
   });
 
   const { mutate } = useMutation(loginUser, {
@@ -57,6 +60,9 @@ export const Login = () => {
     mutate({
       email: request.email,
       password: request.password,
+      name: "",
+      passwordCheck: "",
+      studentNumber: "",
     });
   };
 

@@ -1,15 +1,10 @@
-export interface LoginAuth {
-  email: string;
-  password: string;
-}
-
 export interface ResetPassword {
   code: string;
   newPassword: string;
   oldPassword: string;
 }
 
-export interface SignAuth {
+export interface AuthInfo {
   email: string;
   name: string;
   password: string;

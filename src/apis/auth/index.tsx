@@ -1,14 +1,6 @@
 import { authorization } from "../../utils/config/authorization";
-import { LoginAuth, ResetPassword } from "../../types/userAuth.type";
+import { AuthInfo, ResetPassword } from "../../types/userAuth.type";
 import server from "../client";
-
-interface UserData {
-  accessToken: string;
-  refreshToken: string;
-  authority: string;
-  name: string;
-  login: boolean;
-}
 
 export const getGoogleAuthLink = async () => {
   return (await server.get("/auth/google")).data;
@@ -20,10 +12,7 @@ export const getAccessTokenByGoogle = async (
   return (await server.post(`/auth/google/callback?code=${code}`)).data;
 };
 
-export const loginUser = async ({
-  email,
-  password,
-}: LoginAuth): Promise<UserData> => {
+export const loginUser = async ({ email, password }: AuthInfo) => {
   return (
     await server.post("/auth", {
       email: email,
@@ -35,7 +24,7 @@ export const loginUser = async ({
 export const updatePassword = async ({
   newPassword,
   oldPassword,
-}: ResetPassword): Promise<ResetPassword> => {
+}: ResetPassword) => {
   return await server.patch(
     "/user/password",
     {
