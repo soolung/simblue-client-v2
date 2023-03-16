@@ -48,7 +48,7 @@ export type RECORD_APPLICATION = {
   endDate: string;
   numberOfReplies: number | null;
   repliedAt: string | null;
-  replyId: number | null;
+  replyId: number;
   startDate: string;
   status: "ALWAYS" | "NOT_STARTED" | "IN_PROGRESS" | "DONE";
   title: string;
