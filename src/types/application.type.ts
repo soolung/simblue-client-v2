@@ -41,12 +41,12 @@ export type APPLICATION_DETAIL = APPLICATION & {
 
 export type REQUEST = { id: number; replyDetailList: string[] }[];
 
-export type TEACHER_APPLICATION = {
+export type RECORD_APPLICATION = {
   applicationId: number;
   canUpdate: boolean;
   emoji: string;
   endDate: string;
-  numberOfReplies: number;
+  numberOfReplies: number | null;
   repliedAt: string | null;
   replyId: number | null;
   startDate: string;
@@ -56,10 +56,17 @@ export type TEACHER_APPLICATION = {
 
 export type TECHER_RECORDS = {
   applicationMap: {
-    ALWAYS: TEACHER_APPLICATION[];
-    DONE: TEACHER_APPLICATION[];
-    IN_PROGRESS: TEACHER_APPLICATION[];
-    NOT_STARTED: TEACHER_APPLICATION[];
+    ALWAYS: RECORD_APPLICATION[];
+    DONE: RECORD_APPLICATION[];
+    IN_PROGRESS: RECORD_APPLICATION[];
+    NOT_STARTED: RECORD_APPLICATION[];
+  };
+  authority: string;
+};
+
+export type STUDENT_RECORDS = {
+  applicationMap: {
+    applicationList: RECORD_APPLICATION[];
   };
   authority: string;
 };
