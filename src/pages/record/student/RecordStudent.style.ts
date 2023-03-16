@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Colors } from "../../../constants/colors.constant";
 
 export const Records = styled.div`
-  min-width: 350px;
   padding: 3% 0;
 `;
 

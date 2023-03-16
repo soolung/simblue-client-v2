@@ -16,6 +16,13 @@ export const Item = styled(Link)`
   &:hover {
     background-color: ${Colors.lightGray};
   }
+  @media screen and (max-width: 500px) {
+    /* width: 87%; */
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5%;
+    row-gap: 10px;
+  }
 `;
 
 export const Head = styled.div`
@@ -28,6 +35,15 @@ export const Head = styled.div`
     font-size: 14px;
     font-weight: 300;
     padding-left: 20px;
+    @media screen and (max-width: 500px) {
+      padding-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: flex-start;
   }
 `;
 
@@ -46,4 +62,8 @@ export const DeleteBtn = styled.img`
 export const RightSide = styled.div`
   display: flex;
   column-gap: 5px;
+
+  @media screen and (max-width: 500px) {
+    align-self: flex-end;
+  }
 `;
