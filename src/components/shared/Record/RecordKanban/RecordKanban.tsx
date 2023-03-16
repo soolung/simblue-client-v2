@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { TEACHER_APPLICATION } from "../../../../types/application.type";
+import { RECORD_APPLICATION } from "../../../../types/application.type";
 import * as S from "./RecordKanban.style";
 
-export const RecordKanban = ({ emoji, title, data }: { emoji: string; title: string; data?: TEACHER_APPLICATION[] }) => {
+export const RecordKanban = ({ emoji, title, data }: { emoji: string; title: string; data?: RECORD_APPLICATION[] }) => {
   return (
     <S.Kanban>
       <S.Head>
