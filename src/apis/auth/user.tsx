@@ -1,16 +1,11 @@
 import server from "../client";
 import { authorization } from "../../utils/auth";
 
-interface JoinStudent {
+interface JoinInfo {
   admissionYear: number;
   name: string;
   password: string;
   studentNumber: string;
-}
-
-interface JoinTeacher {
-  name: string;
-  password: string;
 }
 
 export const joinStudent = async ({
@@ -18,7 +13,7 @@ export const joinStudent = async ({
   name,
   password,
   studentNumber,
-}: JoinStudent) => {
+}: JoinInfo) => {
   return await server.post(
     "/user/student",
     {
@@ -31,7 +26,7 @@ export const joinStudent = async ({
   );
 };
 
-export const joinTeacher = async ({ name, password }: JoinTeacher) => {
+export const joinTeacher = async ({ name, password }: JoinInfo) => {
   return await server.post(
     "/user/teacher",
     {

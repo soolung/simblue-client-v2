@@ -54,19 +54,19 @@ export const SignUp = () => {
     if (request.password !== request.passwordCheck)
       alert("비밀번호가 다릅니다");
     setUser({ ...user, name: request.name });
-    if (authority === "ROLE_STUDENT") {
-      student.mutate({
-        admissionYear: parseInt(request.email.substring(0, 4)),
-        name: request.name,
-        password: request.password,
-        studentNumber: request.studentNumber,
-      });
-    } else {
-      teacher.mutate({
-        name: request.name,
-        password: request.password,
-      });
-    }
+    authority === "ROLE_STUDENT"
+      ? student.mutate({
+          admissionYear: parseInt(request.email.substring(0, 4)),
+          name: request.name,
+          password: request.password,
+          studentNumber: request.studentNumber,
+        })
+      : teacher.mutate({
+          admissionYear: 0,
+          studentNumber: "",
+          name: request.name,
+          password: request.password,
+        });
   };
 
   return (
