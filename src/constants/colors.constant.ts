@@ -10,4 +10,5 @@ export const Colors = {
   inputText: "#424242",
   black: "#484848",
   green: "#66BB6A",
+  deepRed: "#E94D45",
 };
