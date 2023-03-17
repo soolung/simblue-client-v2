@@ -12,12 +12,11 @@ import { SignUp } from "./pages/auth/signUp/SignUp";
 import { Home } from "./pages/home/Home";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ApplicationDetail } from "./pages/application/detail/ApplicationDetail";
-import { SeperateAccess } from "./components/shared/AuthRequired/SeperateAccess";
 import { RecordStudent } from "./pages/record/student/RecordStudent";
-import { OnlyTeacher } from "./components/shared/AuthRequired/OnlyTeacher";
 import { RecordTeacher } from "./pages/record/teacher/RecordTeacher";
 import ReactModal from "react-modal";
 import { ModalProvider } from "./components/shared/Modal/ModalProvider";
+import { STUDENT, TEACHER } from "./constants/user/auth.constant";
 
 function App() {
   const queryClient = new QueryClient();
@@ -33,31 +32,10 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/look" element={<Look />} />
-              <Route
-                path="/record"
-                element={
-                  <SeperateAccess>
-                    <RecordStudent />
-                  </SeperateAccess>
-                }
-              />
-              <Route
-                path="/record/teacher"
-                element={
-                  <OnlyTeacher>
-                    <RecordTeacher />
-                  </OnlyTeacher>
-                }
-              />
+              <Route path="/record" element={<AuthRequired children={<RecordStudent />} authority={STUDENT} />} />
+              <Route path="/record/teacher" element={<AuthRequired children={<RecordTeacher />} authority={TEACHER} />} />
               <Route path="/application/:applicationId" element={<ApplicationDetail />} />
-              <Route
-                path="/create"
-                element={
-                  <AuthRequired>
-                    <Create />
-                  </AuthRequired>
-                }
-              />
+              <Route path="/create" element={<AuthRequired children={<Create />} />} />
             </Routes>
           </Layout>
           <Footer />
