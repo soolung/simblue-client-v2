@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../../constants/colors";
+import { Colors } from "../../../constants/colors.constant";
 
 export const Notices = styled.aside`
   display: flex;

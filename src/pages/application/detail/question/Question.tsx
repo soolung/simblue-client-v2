@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { QUESTION } from "../../../../apis/@types/application";
+import { QUESTION } from "../../../../types/application.type";
 import * as S from "./Question.style";
 
 type Props = {

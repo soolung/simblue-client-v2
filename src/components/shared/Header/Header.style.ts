@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Colors } from "../../../constants/colors";
+import { Colors } from "../../../constants/colors.constant";
 
 export const HeaderNav = styled.nav`
   position: fixed;
