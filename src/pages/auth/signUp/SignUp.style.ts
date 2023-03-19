@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../../constants/colors";
+import { Colors } from "../../../constants/colors.constant";
 
 export const SignUp = styled.div`
   display: flex;
@@ -95,4 +95,7 @@ export const TextBox = styled.input`
   }
 `;
 
-export const Information = styled.div``;
+export const Information = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

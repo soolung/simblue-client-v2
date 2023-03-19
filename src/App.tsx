@@ -32,10 +32,32 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/look" element={<Look />} />
-              <Route path="/record" element={<AuthRequired children={<RecordStudent />} authority={STUDENT} />} />
-              <Route path="/record/teacher" element={<AuthRequired children={<RecordTeacher />} authority={TEACHER} />} />
-              <Route path="/application/:applicationId" element={<ApplicationDetail />} />
-              <Route path="/create" element={<AuthRequired children={<Create />} />} />
+              <Route
+                path="/record"
+                element={
+                  <AuthRequired
+                    children={<RecordStudent />}
+                    authority={STUDENT}
+                  />
+                }
+              />
+              <Route
+                path="/record/teacher"
+                element={
+                  <AuthRequired
+                    children={<RecordTeacher />}
+                    authority={TEACHER}
+                  />
+                }
+              />
+              <Route
+                path="/application/:applicationId"
+                element={<ApplicationDetail />}
+              />
+              <Route
+                path="/create"
+                element={<AuthRequired children={<Create />} />}
+              />
             </Routes>
           </Layout>
           <Footer />

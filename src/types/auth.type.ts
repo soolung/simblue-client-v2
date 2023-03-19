@@ -3,6 +3,14 @@ export type LOGIN_AUTH = {
   password: string;
 };
 
+export type SignAuth = {
+  email: string;
+  name: string;
+  password: string;
+  passwordCheck: string;
+  studentNumber: string;
+};
+
 export type RESET_REQUEST = {
   code: string;
   newPassword: string;

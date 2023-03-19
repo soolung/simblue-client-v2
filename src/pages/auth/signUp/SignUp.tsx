@@ -5,7 +5,7 @@ import { useMutation } from "react-query";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { userState } from "../../../atoms/user";
-import { AuthInfo } from "../../../types/userAuth.type";
+import { SignAuth } from "../../../types/auth.type";
 import { Button } from "../../../components/shared/Button/Button";
 import { joinStudent, joinTeacher } from "../../../apis/auth/user";
 
@@ -13,7 +13,7 @@ export const SignUp = () => {
   const navigate = useNavigate();
   const [user, setUser] = useRecoilState(userState);
   const [authority, setAutority] = useState("");
-  const [request, setRequest] = useState<AuthInfo>({
+  const [request, setRequest] = useState<SignAuth>({
     email: "",
     name: "",
     password: "",
@@ -38,7 +38,7 @@ export const SignUp = () => {
     setRequest({
       ...request,
       email: user.accessToken
-        ? jwtDecode<AuthInfo>(user?.accessToken).email
+        ? jwtDecode<SignAuth>(user?.accessToken).email
         : "",
     });
   }, [user]);
