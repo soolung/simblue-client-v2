@@ -13,7 +13,7 @@ import {
 } from "../../../constants/user/auth.constant";
 import { GOOGLE_AUTH_LINK } from "../../../constants/keys/auth.keys";
 import * as S from "./Login.style";
-import { Storage } from "../../../lib/storage/Storage";
+import { Storage } from "../../../lib/storage/storage";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -28,8 +28,9 @@ export const Login = () => {
     onSuccess: (data) => {
       Storage.setItem(ACCESS_KEY, data.accessToken);
       Storage.setItem(REFRESH_KEY, data.refreshToken);
-      // Storage.setItem(AUTHORITY, data.authority);
-      // Storage.setItem(NAME, data.name);
+      // getUser api 만들면 useUSer 만들겠습니다
+      localStorage.setItem(AUTHORITY, data.authority);
+      localStorage.setItem(NAME, data.name);
       setUser({
         accessToken: data.accessToken,
         refreshToken: data.refreshToken,

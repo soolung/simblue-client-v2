@@ -1,6 +1,6 @@
 import server from "../../apis/client/index";
 import { ACCESS_KEY } from "../../constants/user/auth.constant";
-import { Storage } from "../../lib/storage/Storage";
+import { Storage } from "../../lib/storage/storage";
 
 export const accessTokenExpired = async () => {
   try {
