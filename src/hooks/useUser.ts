@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { getUserData } from "../apis/user";
 import { GET_USER_DATA } from "../constants/keys/user.key";
@@ -20,14 +21,12 @@ export const useUser = () => {
     }
   );
 
-  console.log(data);
-
   return {
     user: data || {
-      authority: "",
-      email: "",
-      name: "",
-      roleId: "",
+      authority: null,
+      email: null,
+      name: null,
+      roleId: null,
     },
   };
 };
