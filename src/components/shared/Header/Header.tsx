@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
-import { userState } from "../../../atoms/user";
 import { TEACHER } from "../../../constants/user/auth.constant";
+import { useUser } from "../../../hooks/useUser";
 import { HeaderLayout } from "../../layout/HeaderLayout";
 import * as S from "./Header.style";
 import { ProfilePopover } from "./ProfilePopover/ProfilePopover";
@@ -9,7 +8,8 @@ import { ProfilePopover } from "./ProfilePopover/ProfilePopover";
 export const Header = () => {
   const [searchText, setSearchText] = useState<string>();
   const [isOpen, setIsOpen] = useState(false);
-  const user = useRecoilValue(userState);
+
+  const { user } = useUser();
 
   return (
     <HeaderLayout bgColor="white">

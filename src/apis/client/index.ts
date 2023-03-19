@@ -20,8 +20,11 @@ server.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.log(error.response.data.message);
-    if (error.response.status === 401) {
+    console.log(error.response.data.code);
+    if (
+      error.response.status === 401 &&
+      error.response.code === "EXPIRED_TOKEN"
+    ) {
       accessTokenExpired();
     }
     return Promise.reject(error);

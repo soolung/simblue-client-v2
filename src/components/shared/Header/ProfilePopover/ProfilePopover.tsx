@@ -1,24 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useResetRecoilState } from "recoil";
 import styled from "styled-components";
-import { userState } from "../../../../atoms/user";
 import { Colors } from "../../../../constants/colors.constant";
 
 export const ProfilePopover = ({ close }: { close: Function }) => {
   const navigate = useNavigate();
-  const resetUser = useResetRecoilState(userState);
   return (
     <Popover>
-      <button onClick={() => navigate("/auth/update/password")}>비밀번호 변경</button>
+      <button onClick={() => navigate("/auth/update/password")}>
+        비밀번호 변경
+      </button>
       <button
         onClick={() => {
           localStorage.clear();
-          resetUser();
           navigate("/");
           window.location.reload();
           close();
-        }}>
+        }}
+      >
         로그아웃
       </button>
       <Ggoranji />

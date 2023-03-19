@@ -7,30 +7,23 @@ import {
 import { Storage } from "../../lib/storage/storage";
 import { useMutation } from "react-query";
 import { loginUser } from "../../apis/auth";
-import { useSetRecoilState } from "recoil";
-import { userState } from "../../atoms/user";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_AUTH } from "../../types/auth.type";
 
 export const LoginFeature = (request: LOGIN_AUTH) => {
   const navigate = useNavigate();
-  const setUser = useSetRecoilState(userState);
 
   const { mutate } = useMutation(loginUser, {
-    onSuccess: (data) => {
-      Storage.setItem(ACCESS_KEY, data.accessToken);
-      Storage.setItem(REFRESH_KEY, data.refreshToken);
-      // getUser api 만들면 useUser 만들겠습니다
-      localStorage.setItem(AUTHORITY, data.authority);
-      localStorage.setItem(NAME, data.name);
-      setUser({
-        accessToken: data.accessToken,
-        refreshToken: data.refreshToken,
-        authority: data.authority,
-        name: data.name,
-      });
+    onSuccess: (res) => {
+      alert("로그인 성공");
+      const { accessToken, refreshToken, authority, name } = res;
 
-      if (!data?.login) {
+      Storage.setItem(ACCESS_KEY, accessToken);
+      Storage.setItem(REFRESH_KEY, refreshToken);
+      localStorage.setItem(AUTHORITY, authority);
+      localStorage.setItem(NAME, name);
+
+      if (!res?.login) {
         navigate("/signup");
       } else {
         navigate("/");
@@ -39,6 +32,7 @@ export const LoginFeature = (request: LOGIN_AUTH) => {
   });
 
   const login = () => {
+    console.log(request);
     if (!request.email.endsWith("@bssm.hs.kr")) {
       request.email += "@bssm.hs.kr";
     }

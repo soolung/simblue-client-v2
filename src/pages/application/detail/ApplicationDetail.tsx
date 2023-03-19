@@ -7,9 +7,8 @@ import { Question } from "./question/Question";
 import * as S from "./Application.style";
 import { DetailLayout } from "../../../components/layout/DetailLayout";
 import { Button } from "../../../components/shared/Button/Button";
-import { useRecoilValue } from "recoil";
-import { userState } from "../../../atoms/user";
 import { ApplicationDetailFeature } from "../../../features/application/applicationDetail.feature";
+import { useUser } from "../../../hooks/useUser";
 
 export const ApplicationDetail = () => {
   const { applicationId } = useParams();
@@ -18,7 +17,8 @@ export const ApplicationDetail = () => {
   const notice = useRef<HTMLDivElement>(null);
   const rightSide = useRef<HTMLDivElement>(null);
 
-  const user = useRecoilValue(userState);
+  const { user } = useUser();
+
   const [request, setRequest] = useState<REQUEST>([]);
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
