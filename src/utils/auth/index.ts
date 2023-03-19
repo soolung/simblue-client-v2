@@ -1,5 +1,5 @@
 import server from "../../apis/client/index";
-import { ACCESS_KEY } from "../../constants/token";
+import { ACCESS_KEY } from "../../constants/user/auth.constant";
 
 export const accessTokenExpired = async () => {
   localStorage.setItem(

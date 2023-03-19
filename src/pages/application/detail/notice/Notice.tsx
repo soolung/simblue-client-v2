@@ -1,5 +1,5 @@
 import React from "react";
-import { NOTICE } from "../../../../apis/@types/application";
+import { NOTICE } from "../../../../types/application.type";
 import { getTimeDiff } from "../../../../utils/common/getTimeDiff";
 import * as S from "./Notice.style";
 

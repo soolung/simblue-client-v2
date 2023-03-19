@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { APPLICATION_DETAIL, REQUEST } from "../../../apis/@types/application";
+import { APPLICATION_DETAIL, REQUEST } from "../../../types/application.type";
 import { getApplicationDetail } from "../../../apis/application";
-import { GET_APPLICATION_DETAIL } from "../../../constants/keys";
+import { GET_APPLICATION_DETAIL } from "../../../constants/keys/application.key";
 import { Notice } from "./notice/Notice";
 import { Question } from "./question/Question";
 import * as S from "./Application.style";

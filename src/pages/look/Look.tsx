@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import Categories from "./Categories";
 import { getApplication } from "../../apis/application/index";
 import { Application } from "../../components/shared/Application/Application";
-import { APPLICATION } from "../../apis/@types/application";
+import { APPLICATION } from "../../types/application.type";
 
 export interface Category {
   text: string;
@@ -13,19 +13,9 @@ export interface Category {
 }
 
 export const Look = () => {
-  const [selectedCategory, setSelectedCategory] = useState<Category>(
-    Categories.deadline
-  );
-
-  const categories: Category[] = [
-    Categories.deadline,
-    Categories.latest,
-    Categories.always,
-  ];
-
-  const { data, refetch } = useQuery("getApplication", () =>
-    getApplication(selectedCategory.uri)
-  );
+  const [selectedCategory, setSelectedCategory] = useState<Category>(Categories.deadline);
+  const categories: Category[] = [Categories.deadline, Categories.latest, Categories.always];
+  const { data, refetch } = useQuery("getApplication", () => getApplication(selectedCategory.uri));
 
   useEffect(() => {
     refetch();
@@ -39,12 +29,7 @@ export const Look = () => {
       </S.Header>
       <S.Categories>
         {categories.map((c, index) => (
-          <S.Section
-            key={index}
-            onClick={() => setSelectedCategory(c)}
-            selectedCategory={selectedCategory}
-            selected={c}
-          >
+          <S.Section key={index} onClick={() => setSelectedCategory(c)} selectedCategory={selectedCategory} selected={c}>
             {c.text}
           </S.Section>
         ))}

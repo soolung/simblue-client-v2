@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Colors } from "../../../constants/colors";
+import { Colors } from "../../../constants/colors.constant";
 
 export const Footer = () => {
   return (
