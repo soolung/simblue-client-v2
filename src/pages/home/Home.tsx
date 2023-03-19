@@ -8,14 +8,17 @@ import { Banner } from "../../components/shared/Banner/Banner";
 import { GET_PAGING_APPLICATION } from "../../constants/keys/application.key";
 
 export const Home = () => {
-  const { data } = useQuery<{ applicationList: APPLICATION[] }>([GET_PAGING_APPLICATION], getPagingApplication);
+  const { data } = useQuery<{ applicationList: APPLICATION[] }>(
+    [GET_PAGING_APPLICATION],
+    getPagingApplication
+  );
 
   return (
     <div>
       <Banner />
       <ApplicationLayout>
         {data?.applicationList?.map((a) => {
-          return <Application data={a} />;
+          return <Application key={a.id} data={a} />;
         })}
       </ApplicationLayout>
     </div>

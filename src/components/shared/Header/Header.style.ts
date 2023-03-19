@@ -80,6 +80,7 @@ export const CancelIcon = styled.button`
   width: 36px;
   height: 36px;
   border: 0;
-  background: url(https://res.kurly.com/pc/ico/2010/ico_search_del.svg) no-repeat 50% 50%;
+  background: url(https://res.kurly.com/pc/ico/2010/ico_search_del.svg)
+    no-repeat 50% 50%;
   background-size: 12px 12px;
 `;

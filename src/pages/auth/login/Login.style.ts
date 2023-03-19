@@ -95,6 +95,7 @@ export const LoginBtn = styled.button`
   color: white;
   font-weight: 600;
   border: none;
+  cursor: pointer;
 `;
 
 export const GoogleBtn = styled.button`
@@ -106,6 +107,7 @@ export const GoogleBtn = styled.button`
   border: 1px solid ${Colors.mediumGray};
   border-radius: 2px;
   column-gap: 5px;
+  cursor: pointer;
 `;
 
 export const GoogleImg = styled.img`
