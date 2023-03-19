@@ -5,13 +5,12 @@ import {
   NAME,
 } from "../../constants/user/auth.constant";
 import { Storage } from "../../lib/storage/storage";
-import { useMutation, useQuery } from "react-query";
-import { getGoogleAuthLink, loginUser } from "../../apis/auth";
+import { useMutation } from "react-query";
+import { loginUser } from "../../apis/auth";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../atoms/user";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_AUTH } from "../../types/auth.type";
-import { GOOGLE_AUTH_LINK } from "../../constants/keys/auth.keys";
 
 export const LoginFeature = (request: LOGIN_AUTH) => {
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ export const LoginFeature = (request: LOGIN_AUTH) => {
     onSuccess: (data) => {
       Storage.setItem(ACCESS_KEY, data.accessToken);
       Storage.setItem(REFRESH_KEY, data.refreshToken);
-      // getUser api 만들면 useUSer 만들겠습니다
+      // getUser api 만들면 useUser 만들겠습니다
       localStorage.setItem(AUTHORITY, data.authority);
       localStorage.setItem(NAME, data.name);
       setUser({
@@ -50,10 +49,4 @@ export const LoginFeature = (request: LOGIN_AUTH) => {
   };
 
   return { login };
-};
-
-export const GetGoogleAuthLink = () => {
-  const { data } = useQuery([GOOGLE_AUTH_LINK], getGoogleAuthLink);
-
-  return { data };
 };

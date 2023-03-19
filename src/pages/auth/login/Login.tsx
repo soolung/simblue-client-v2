@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { LOGIN_AUTH } from "../../../types/auth.type";
 import * as S from "./Login.style";
-import {
-  GetGoogleAuthLink,
-  LoginFeature,
-} from "../../../features/auth/login.feature";
+import { LoginFeature } from "../../../features/auth/login.feature";
+import { useQuery } from "react-query";
+import { GOOGLE_AUTH_LINK } from "../../../constants/keys/auth.keys";
+import { getGoogleAuthLink } from "../../../apis/auth";
 
 export const Login = () => {
   const [request, setRequest] = useState<LOGIN_AUTH>({
@@ -12,7 +12,7 @@ export const Login = () => {
     password: "",
   });
   const { login } = LoginFeature(request);
-  const { data } = GetGoogleAuthLink();
+  const { data } = useQuery([GOOGLE_AUTH_LINK], getGoogleAuthLink);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRequest({
