@@ -17,6 +17,7 @@ import { RecordTeacher } from "./pages/record/teacher/RecordTeacher";
 import ReactModal from "react-modal";
 import { ModalProvider } from "./components/shared/Modal/ModalProvider";
 import { STUDENT, TEACHER } from "./constants/user/auth.constant";
+import { Form } from "./pages/form/Form";
 
 function App() {
   const queryClient = new QueryClient();
@@ -32,10 +33,29 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/look" element={<Look />} />
-              <Route path="/record" element={<AuthRequired children={<RecordStudent />} authority={STUDENT} />} />
-              <Route path="/record/teacher" element={<AuthRequired children={<RecordTeacher />} authority={TEACHER} />} />
-              <Route path="/application/:applicationId" element={<ApplicationDetail />} />
-              <Route path="/create" element={<AuthRequired children={<Create />} />} />
+              <Route
+                path="/record"
+                element={
+                  <AuthRequired
+                    children={<RecordStudent />}
+                    authority={STUDENT}
+                  />
+                }
+              />
+              <Route
+                path="/record/teacher"
+                element={
+                  <AuthRequired
+                    children={<RecordTeacher />}
+                    authority={TEACHER}
+                  />
+                }
+              />
+              <Route
+                path="/application/:applicationId"
+                element={<ApplicationDetail />}
+              />
+              <Route path="/application/create" element={<Form />} />
             </Routes>
           </Layout>
           <Footer />
