@@ -21,3 +21,7 @@ export const replyApplication = async (request: { applicationId: number; replyLi
 export const getMyApplications = async () => {
   return (await server.get(`/application/my`, authorization())).data;
 };
+
+export const getApplicationResult = async (id: number) => {
+  return (await server.get(`/application/${id}/result`, authorization())).data;
+};
