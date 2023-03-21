@@ -17,9 +17,8 @@ export const ProfilePopover = ({ close }: { close: Function }) => {
       <button
         onClick={() => {
           localStorage.clear();
-          navigate("/");
-          window.location.reload();
           setUser(userEmpty);
+          navigate("/");
           close();
         }}
       >
