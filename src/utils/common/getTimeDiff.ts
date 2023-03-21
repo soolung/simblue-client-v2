@@ -3,7 +3,9 @@ import duration, { Duration } from "dayjs/plugin/duration";
 dayjs.extend(duration);
 
 export const getTimeDiff = (timeToCompare?: Dayjs): string => {
-  const timeDiffDuration: Duration = dayjs.duration(dayjs().diff(timeToCompare));
+  const timeDiffDuration: Duration = dayjs.duration(
+    dayjs().diff(timeToCompare)
+  );
   const yearDiff: number = parseInt(timeDiffDuration.format("Y"));
   const monthDiff: number = parseInt(timeDiffDuration.format("M"));
   const dateDiff: number = parseInt(timeDiffDuration.format("D"));
@@ -26,4 +28,15 @@ export const getTimeDiff = (timeToCompare?: Dayjs): string => {
   } else {
     return "";
   }
+};
+
+export const now = () => {
+  const now = new Date();
+  return (
+    now.getFullYear() +
+    "-" +
+    (now.getMonth() + 1).toString().padStart(2, "0") +
+    "-" +
+    now.getDate().toString().padStart(2, "0")
+  );
 };
