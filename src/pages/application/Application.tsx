@@ -15,7 +15,7 @@ export const Application = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const notice = useRef<HTMLDivElement>(null);
   const rightSide = useRef<HTMLDivElement>(null);
-  const { data, location } = ApplicationDetailFeature(Number(applicationId));
+  const { data, location } = ApplicationDetailFeature();
 
   const handleNotice = (hide: boolean) => {
     if (window.innerWidth < 500) {

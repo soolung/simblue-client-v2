@@ -1,9 +1,10 @@
 import React from "react";
-import { APPLICATION_DETAIL } from "../../../types/application.type";
+import { ApplicationDetailFeature } from "../../../features/application";
 import * as S from "../ApplicationDetail.style";
-import { ApplicationResult } from "./result/ApplicationResult";
 
-export const ApplicationManage = ({ data }: { data?: APPLICATION_DETAIL }) => {
+export const ApplicationManage = () => {
+  const { data } = ApplicationDetailFeature();
+
   return (
     <S.Section>
       <S.Top>

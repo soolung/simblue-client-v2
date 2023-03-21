@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import { REQUEST } from "../../../types/application.type";
 import { Question } from "./question/Question";
 import * as S from "../ApplicationDetail.style";
@@ -9,10 +8,9 @@ import { userState } from "../../../atoms/user";
 import { ApplicationDetailFeature } from "../../../features/application";
 
 export const ApplicationDetail = () => {
-  const { applicationId } = useParams();
   const user = useRecoilValue(userState);
   const [request, setRequest] = useState<REQUEST>([]);
-  const { reply, data } = ApplicationDetailFeature(Number(applicationId), request);
+  const { reply, data } = ApplicationDetailFeature(request);
 
   const handleRequest = (a: string[], index: number): void => {
     const i = request.findIndex((r) => r.id === index);
