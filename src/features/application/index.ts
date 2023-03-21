@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { getApplicationDetail, getApplicationResult, replyApplication } from "../../apis/application";
 import { GET_APPLICATION_DETAIL, GET_APPLICATION_RESULT } from "../../constants/keys/application.key";
 import { REQUEST, APPLICATION_DETAIL } from "../../types/application.type";
-import { useDownloadExcel } from "react-export-table-to-excel";
 
 export const ApplicationDetailFeature = (request?: REQUEST, tableRef?: React.RefObject<HTMLTableElement>) => {
   const { applicationId } = useParams();
@@ -32,11 +31,5 @@ export const ApplicationDetailFeature = (request?: REQUEST, tableRef?: React.Ref
     } else console.log("다 입력 안 됨"); // 심청이 alert 만들어서 넣기
   };
 
-  const { onDownload } = useDownloadExcel({
-    currentTableRef: tableRef?.current,
-    filename: data?.application.title ?? "신청 결과",
-    sheet: data?.application?.title,
-  });
-
-  return { reply, data, location, onDownload };
+  return { reply, data, location };
 };

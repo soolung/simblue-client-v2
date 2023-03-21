@@ -2,10 +2,16 @@ import React, { useRef } from "react";
 import { ApplicationDetailFeature } from "../../../features/application";
 import * as S from "../ApplicationDetail.style";
 import { ApplicationResult } from "./result/ApplicationResult";
+import { useDownloadExcel } from "react-export-table-to-excel";
 
 export const ApplicationManage = () => {
   const tableRef = useRef<HTMLTableElement>(null);
-  const { data, onDownload } = ApplicationDetailFeature(undefined, tableRef);
+  const { data } = ApplicationDetailFeature(undefined, tableRef);
+  const { onDownload } = useDownloadExcel({
+    currentTableRef: tableRef?.current,
+    filename: data?.application.title ?? "신청 결과",
+    sheet: data?.application?.title,
+  });
 
   return (
     <S.Section>
