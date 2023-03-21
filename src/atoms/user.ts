@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 import { USER_INFO } from "../types/user.type";
 
-const userEmpty: USER_INFO = {
+export const userEmpty: USER_INFO = {
   authority: "",
   email: "",
   name: "",

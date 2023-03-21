@@ -1,10 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { userEmpty, userState } from "../../../../atoms/user";
 import { Colors } from "../../../../constants/colors.constant";
 
 export const ProfilePopover = ({ close }: { close: Function }) => {
   const navigate = useNavigate();
+  const setUser = useSetRecoilState(userState);
 
   return (
     <Popover>
@@ -16,6 +19,7 @@ export const ProfilePopover = ({ close }: { close: Function }) => {
           localStorage.clear();
           navigate("/");
           window.location.reload();
+          setUser(userEmpty);
           close();
         }}
       >
