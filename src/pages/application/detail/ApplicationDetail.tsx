@@ -10,15 +10,16 @@ import * as S from "./Application.style";
 import { DetailLayout } from "../../../components/layout/DetailLayout";
 import { replyApplication } from "../../../apis/application";
 import { Button } from "../../../components/shared/Button/Button";
-import { useRecoilValue } from "recoil";
-import { userState } from "../../../atoms/user";
+import { useUser } from "../../../hooks/useUser";
 
 export const ApplicationDetail = () => {
   const { applicationId } = useParams();
-  const user = useRecoilValue(userState);
+  const { user } = useUser();
   const notice = useRef<HTMLDivElement>(null);
   const rightSide = useRef<HTMLDivElement>(null);
-  const { data } = useQuery<APPLICATION_DETAIL>([GET_APPLICATION_DETAIL], () => getApplicationDetail(Number(applicationId)));
+  const { data } = useQuery<APPLICATION_DETAIL>([GET_APPLICATION_DETAIL], () =>
+    getApplicationDetail(Number(applicationId))
+  );
   const [request, setRequest] = useState<REQUEST>([]);
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
@@ -39,11 +40,17 @@ export const ApplicationDetail = () => {
     if (i !== -1) {
       coArr[i] = { ...coArr[i], replyDetailList: a };
       setRequest(coArr);
-    } else if (!(a.length === 0)) setRequest([...request, { id: index, replyDetailList: a }]);
+    } else if (!(a.length === 0))
+      setRequest([...request, { id: index, replyDetailList: a }]);
   };
 
   const reply = () => {
-    if (request.length === data?.questionList.length && !request.find((r) => r.replyDetailList.length < 1 || r.replyDetailList[0] === "")) {
+    if (
+      request.length === data?.questionList.length &&
+      !request.find(
+        (r) => r.replyDetailList.length < 1 || r.replyDetailList[0] === ""
+      )
+    ) {
       mutate({ applicationId: Number(applicationId), replyList: request });
     } else console.log("다 입력 안 됨");
   };
@@ -52,7 +59,9 @@ export const ApplicationDetail = () => {
     if (window.innerWidth < 500) {
       notice!.current!.style.width = "100%";
       notice!.current!.style.animationName = hide ? "hideMobile" : "openMobile";
-      rightSide!.current!.style.animationName = hide ? "toCenterMobile" : "toRight";
+      rightSide!.current!.style.animationName = hide
+        ? "toCenterMobile"
+        : "toRight";
     } else {
       notice!.current!.style.animationName = hide ? "hide" : "open";
       rightSide!.current!.style.animationName = hide ? "toCenter" : "toRight";
@@ -78,8 +87,15 @@ export const ApplicationDetail = () => {
         </S.ReOpen>
       )}
       <S.Notices ref={notice}>
-        <S.Arrow onClick={() => handleNotice(true)} src="/assets/left-double-arrow.svg" />
-        {!(data?.noticeList.length === 0) ? data?.noticeList.map((n) => <Notice notice={n} />) : <p>공지사항이 없습니다.</p>}
+        <S.Arrow
+          onClick={() => handleNotice(true)}
+          src="/assets/left-double-arrow.svg"
+        />
+        {!(data?.noticeList.length === 0) ? (
+          data?.noticeList.map((n) => <Notice notice={n} />)
+        ) : (
+          <p>공지사항이 없습니다.</p>
+        )}
       </S.Notices>
       <S.RightSide ref={rightSide}>
         <S.Section>

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "react-query";
 import { getGoogleAuthLink, loginUser } from "../../../apis/auth";
 import { LOGIN_AUTH } from "../../../types/auth.type";
-import { useSetRecoilState } from "recoil";
-import { userState } from "../../../atoms/user";
 import {
   ACCESS_KEY,
   REFRESH_KEY,
@@ -13,10 +11,10 @@ import {
 } from "../../../constants/user/auth.constant";
 import { GOOGLE_AUTH_LINK } from "../../../constants/keys/auth.key";
 import * as S from "./Login.style";
+import { useUser } from "../../../hooks/useUser";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const setUser = useSetRecoilState(userState);
   const { data } = useQuery([GOOGLE_AUTH_LINK], getGoogleAuthLink);
   const [request, setRequest] = useState<LOGIN_AUTH>({
     email: "",
@@ -27,14 +25,6 @@ export const Login = () => {
     onSuccess: (data) => {
       localStorage.setItem(ACCESS_KEY, data.accessToken);
       localStorage.setItem(REFRESH_KEY, data.refreshToken);
-      localStorage.setItem(AUTHORITY, data.authority);
-      localStorage.setItem(NAME, data.name);
-      setUser({
-        accessToken: data.accessToken,
-        refreshToken: data.refreshToken,
-        authority: data.authority,
-        name: data.name,
-      });
 
       if (!data?.login) {
         navigate("/signup");
