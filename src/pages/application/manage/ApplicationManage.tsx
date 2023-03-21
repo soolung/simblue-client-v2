@@ -1,6 +1,5 @@
 import React from "react";
 import { ApplicationDetailFeature } from "../../../features/application";
-import { QUESTION } from "../../../types/application.type";
 import * as S from "../ApplicationDetail.style";
 import { ApplicationResult } from "./result/ApplicationResult";
 

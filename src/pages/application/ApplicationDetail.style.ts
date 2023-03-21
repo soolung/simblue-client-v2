@@ -43,15 +43,13 @@ export const ResultHead = styled.tr`
     padding: 3%;
     border-top: 1px solid ${Colors.gray};
     border-bottom: 1px solid ${Colors.gray};
-  }
-
-  td:first-child {
-    border-top-left-radius: 10px;
-    border-left: 1px solid ${Colors.gray};
-  }
-
-  td:last-child {
-    border-top-right-radius: 10px;
-    border-right: 1px solid ${Colors.gray};
+    &:first-child {
+      border-top-left-radius: 10px;
+      border-left: 1px solid ${Colors.gray};
+    }
+    &:last-child {
+      border-top-right-radius: 10px;
+      border-right: 1px solid ${Colors.gray};
+    }
   }
 `;
