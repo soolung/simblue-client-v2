@@ -34,9 +34,17 @@ export type NOTICE = {
   notice: string;
 };
 
+export type RESULT = {
+  name: string;
+  replyList: string[];
+  studentNumber: number;
+};
+
 export type APPLICATION_DETAIL = APPLICATION & {
-  questionList: QUESTION[];
+  questionList: (QUESTION[] & string[]) | QUESTION[];
   noticeList: NOTICE[];
+  application: APPLICATION;
+  resultList: RESULT[];
 };
 
 export type REQUEST = { id: number; replyDetailList: string[] }[];
