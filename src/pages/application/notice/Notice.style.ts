@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../constants/colors.constant";
 
 export const NoticeBox = styled.div`
   display: flex;
@@ -7,13 +8,15 @@ export const NoticeBox = styled.div`
   padding: 5%;
   row-gap: 5px;
   background-color: white;
-  border: 1px solid #d9d9d9;
+  border: 1px solid ${Colors.gray};
   border-radius: 15px;
 `;
 
 export const Content = styled.span`
   font-weight: 400;
   font-size: 20px;
+  word-break: keep-all;
+  white-space: pre-line;
 `;
 
 export const SubContent = styled.span`
@@ -22,7 +25,11 @@ export const SubContent = styled.span`
 `;
 
 export const SubBox = styled.div`
-  float: bottom;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
   font-weight: 300;
   font-size: 1vw;
   text-align: right;
@@ -37,8 +44,27 @@ export const PinBox = styled.div`
 
 export const Pin = styled.img`
   position: absolute;
-  right: -8%;
-  bottom: 8%;
+  right: 0;
   min-width: 20px;
   height: 20px;
+`;
+
+export const Option = styled.img`
+  height: 12px;
+`;
+
+export const FixationBox = styled.div`
+  display: flex;
+  position: absolute;
+  padding: 10px;
+  right: 60px;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid ${Colors.gray};
+  border-radius: 10px;
+
+  span {
+    cursor: pointer;
+    font-size: 14px;
+  }
 `;

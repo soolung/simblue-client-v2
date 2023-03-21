@@ -3,7 +3,7 @@ import { QUESTION } from "../../../../types/application.type";
 import * as S from "./Question.style";
 
 type Props = {
-  quest?: QUESTION;
+  quest: QUESTION;
   handleRequest(a: string[], index?: number): void;
 };
 
