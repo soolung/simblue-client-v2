@@ -19,7 +19,6 @@ export const useUser = () => {
 
   useEffect(() => {
     if (data) setUser(data);
-    console.log(data);
   }, [setUser, data, navigate]);
 
   return {
