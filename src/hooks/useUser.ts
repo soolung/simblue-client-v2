@@ -7,13 +7,14 @@ import { GET_USER_INFO } from "../constants/keys/user.key";
 import { ACCESS_KEY } from "../constants/user/auth.constant";
 import { USER_INFO } from "../types/user.type";
 import { useNavigate } from "react-router-dom";
+import { Storage } from "../lib/storage";
 
 export const useUser = () => {
   const navigate = useNavigate();
   const [user, setUser] = useRecoilState(userState);
 
   const { data } = useQuery<USER_INFO>([GET_USER_INFO], () => getUserInfo(), {
-    enabled: !!localStorage.getItem(ACCESS_KEY),
+    enabled: !!Storage.getItem(ACCESS_KEY),
   });
 
   useEffect(() => {

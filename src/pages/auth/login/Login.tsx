@@ -12,6 +12,7 @@ import {
 import { GOOGLE_AUTH_LINK } from "../../../constants/keys/auth.key";
 import * as S from "./Login.style";
 import { useUser } from "../../../hooks/useUser";
+import { Storage } from "../../../lib/storage";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -23,8 +24,8 @@ export const Login = () => {
 
   const { mutate } = useMutation(loginUser, {
     onSuccess: (data) => {
-      localStorage.setItem(ACCESS_KEY, data.accessToken);
-      localStorage.setItem(REFRESH_KEY, data.refreshToken);
+      Storage.setItem(ACCESS_KEY, data.accessToken);
+      Storage.setItem(REFRESH_KEY, data.refreshToken);
 
       if (!data?.login) {
         navigate("/signup");
