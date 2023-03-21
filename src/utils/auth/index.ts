@@ -11,7 +11,8 @@ export const accessTokenExpired = async () => {
     });
     Storage.setItem(ACCESS_KEY, data.accessToken);
   } catch {
-    alert("세션이 만료되었습니다");
+    alert("다시 로그인 해주세요");
+    window.location.href = "/login";
     localStorage.clear();
   }
 };
