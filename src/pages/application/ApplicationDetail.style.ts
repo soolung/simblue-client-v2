@@ -9,7 +9,9 @@ export const Section = styled.section`
   margin-bottom: 100px;
 `;
 
-export const Title = styled.span`
+export const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
   font-weight: 700;
   font-size: 30px;
 `;
