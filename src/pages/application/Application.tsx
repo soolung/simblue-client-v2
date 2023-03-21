@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { getApplicationDetail, getApplicationResult } from "../../apis/application";
 import { DetailLayout } from "../../components/layout/DetailLayout";
 import { AuthRequired } from "../../components/shared/AuthRequired/AuthRequired";
-import { GET_APPLICATION_DETAIL, GET_APPLICATION_RESULT } from "../../constants/keys/application.key";
 import { TEACHER } from "../../constants/user/auth.constant";
-import { APPLICATION_DETAIL } from "../../types/application.type";
+import { ApplicationDetailFeature } from "../../features/application";
 import * as S from "./Application.style";
 import { ApplicationDetail } from "./detail/ApplicationDetail";
 import { ApplicationManage } from "./manage/ApplicationManage";
@@ -18,12 +15,7 @@ export const Application = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const notice = useRef<HTMLDivElement>(null);
   const rightSide = useRef<HTMLDivElement>(null);
-  const location = window.location.pathname.split("/")[3] === "manage";
-
-  const { data } = useQuery<APPLICATION_DETAIL>([location ? GET_APPLICATION_RESULT : GET_APPLICATION_DETAIL], () => {
-    if (location) return getApplicationResult(Number(applicationId));
-    else return getApplicationDetail(Number(applicationId));
-  });
+  const { data, location } = ApplicationDetailFeature(Number(applicationId));
 
   const handleNotice = (hide: boolean) => {
     if (window.innerWidth < 500) {
@@ -66,7 +58,7 @@ export const Application = () => {
         </S.Notice>
       </S.Notices>
       <S.RightSide ref={rightSide}>
-        {location ? <AuthRequired children={<ApplicationManage data={data} />} authority={TEACHER} /> : <ApplicationDetail data={data} />}
+        {location ? <AuthRequired children={<ApplicationManage />} authority={TEACHER} /> : <ApplicationDetail />}
       </S.RightSide>
     </DetailLayout>
   );

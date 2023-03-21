@@ -1,28 +1,18 @@
 import React, { useState } from "react";
-import { useMutation } from "react-query";
 import { useParams } from "react-router-dom";
-import { APPLICATION_DETAIL, REQUEST } from "../../../types/application.type";
+import { REQUEST } from "../../../types/application.type";
 import { Question } from "./question/Question";
 import * as S from "../ApplicationDetail.style";
-import { replyApplication } from "../../../apis/application";
 import { Button } from "../../../components/shared/Button/Button";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../atoms/user";
+import { ApplicationDetailFeature } from "../../../features/application";
 
-export const ApplicationDetail = ({ data }: { data?: APPLICATION_DETAIL }) => {
+export const ApplicationDetail = () => {
   const { applicationId } = useParams();
   const user = useRecoilValue(userState);
   const [request, setRequest] = useState<REQUEST>([]);
-  const { mutate } = useMutation(replyApplication, {
-    onSuccess: () => {
-      alert("성공!");
-      window.location.href = "/";
-    },
-    onError: (err: { response: { data: { message: string } } }) => {
-      const errMessage = err.response.data.message;
-      alert(errMessage);
-    },
-  });
+  const { reply, data } = ApplicationDetailFeature(Number(applicationId), request);
 
   const handleRequest = (a: string[], index: number): void => {
     const i = request.findIndex((r) => r.id === index);
@@ -32,13 +22,6 @@ export const ApplicationDetail = ({ data }: { data?: APPLICATION_DETAIL }) => {
       setRequest(coArr);
     } else if (!(a.length === 0)) setRequest([...request, { id: index, replyDetailList: a }]);
   };
-
-  const reply = () => {
-    if (request.length === data?.questionList.length && !request.find((r) => r.replyDetailList.length < 1 || r.replyDetailList[0] === "")) {
-      mutate({ applicationId: Number(applicationId), replyList: request });
-    } else console.log("다 입력 안 됨");
-  };
-
   return (
     <>
       <S.Section>
