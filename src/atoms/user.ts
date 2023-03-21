@@ -1,12 +1,14 @@
 import { atom } from "recoil";
-import { USER } from "../types/auth.type";
+import { USER_INFO } from "../types/user.type";
 
-export const userState = atom<USER>({
+export const userEmpty: USER_INFO = {
+  authority: "",
+  email: "",
+  name: "",
+  roleId: 0,
+};
+
+export const userState = atom<USER_INFO>({
   key: "user",
-  default: {
-    accessToken: localStorage.accessToken,
-    refreshToken: localStorage.refreshToken,
-    authority: localStorage.authority,
-    name: localStorage.name,
-  },
+  default: userEmpty,
 });

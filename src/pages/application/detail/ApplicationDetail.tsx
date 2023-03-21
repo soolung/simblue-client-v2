@@ -6,9 +6,10 @@ import { Button } from "../../../components/shared/Button/Button";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../atoms/user";
 import { ApplicationDetailFeature } from "../../../features/application";
+import { useUser } from "../../../hooks/useUser";
 
 export const ApplicationDetail = () => {
-  const user = useRecoilValue(userState);
+  const {user} = useUser();
   const [request, setRequest] = useState<REQUEST>([]);
   const { reply, data } = ApplicationDetailFeature(request);
 
