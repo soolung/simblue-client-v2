@@ -1,24 +1,16 @@
 import React, { useState } from "react";
-import { useMutation, useQueryClient } from "react-query";
 import styled from "styled-components";
-import { addNotice } from "../../../apis/notice";
 import { Colors } from "../../../constants/colors.constant";
-import { GET_APPLICATION_RESULT } from "../../../constants/keys/application.key";
+import { NoticeFeature } from "../../../features/notice";
 
 export const AddNotice = ({ applicationId }: { applicationId: number }) => {
   const [notice, setNotice] = useState<string>("");
-  const queryClient = useQueryClient();
-  const { mutate } = useMutation(() => addNotice(applicationId, notice), {
-    onSuccess: () => {
-      setNotice("");
-      queryClient.invalidateQueries([GET_APPLICATION_RESULT]);
-    },
-  });
+  const { makeNotice } = NoticeFeature(Number(applicationId), notice, setNotice);
 
   return (
     <WriteNotice>
       <NoticeInput value={notice} onChange={(e) => setNotice(e.target.value)} />
-      <AddNoticeBtn onClick={() => (notice !== "" ? mutate() : alert("공지를 작성해주세요."))}>공지 하기</AddNoticeBtn>
+      <AddNoticeBtn onClick={() => (notice ? makeNotice.mutate() : alert("공지를 작성해주세요."))}>공지 하기</AddNoticeBtn>
     </WriteNotice>
   );
 };

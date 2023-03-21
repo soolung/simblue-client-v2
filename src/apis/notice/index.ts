@@ -1,7 +1,7 @@
 import { authorization } from "../../utils/auth";
 import server from "../client";
 
-export const addNotice = async (applicationId: number, notice: string) => {
+export const addNotice = async (applicationId: number, notice?: string) => {
   return await server.post(
     "/notice",
     {
