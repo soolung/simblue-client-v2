@@ -2,8 +2,6 @@ import styled from "styled-components";
 import * as S from "./Toggle.style";
 import { LabelHTMLAttributes } from "react";
 
-// LabelHTMLAttributes<HTMLLabelElement> &
-
 type ToggleProps = {
   value?: any;
   name?: string;

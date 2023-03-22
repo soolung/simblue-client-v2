@@ -50,15 +50,7 @@ function App() {
                   />
                 }
               />
-              <Route
-                path="/application/:applicationId/*"
-                element={<Application />}
-              />
-              <Route
-                path="/create"
-                // element={<AuthRequired children={<Create />} />}
-                element={<Create />}
-              />
+              <Route path="/application/create" element={<Create />} />
             </Routes>
           </Layout>
           <Footer />
