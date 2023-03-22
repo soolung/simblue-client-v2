@@ -5,7 +5,7 @@ import { LabelHTMLAttributes } from "react";
 // LabelHTMLAttributes<HTMLLabelElement> &
 
 type ToggleProps = {
-  value: any;
+  value?: any;
   name?: string;
   id?: string;
   onClick?: () => void;
@@ -24,7 +24,6 @@ const Toggle = ({ label, onClick, value, name, id, readOnly }: ToggleProps) => {
           id={id}
           readOnly={readOnly}
         />
-        $
         {value ? (
           <S.ToggleContainer></S.ToggleContainer>
         ) : (

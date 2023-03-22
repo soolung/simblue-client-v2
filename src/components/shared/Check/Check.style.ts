@@ -8,7 +8,7 @@ export const CheckLabel = styled.label`
   span {
     font-size: 18px;
     line-height: 24px;
-    color: ${Colors.inputText};
+    color: ${Colors.mediumGray};
   }
 `;
 

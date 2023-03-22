@@ -17,7 +17,7 @@ export const ToggleCircle = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: ${Colors.backgroundColor};
+  background-color: white;
   transition: 0.5s;
 `;
 
@@ -37,7 +37,7 @@ export const ToggleContainer = styled.div`
 
     ${ToggleCircle} {
       left: 4px;
-      transition: 0.5s;
+      transition: left 0.5s;
     }
   }
 `;

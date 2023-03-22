@@ -1,5 +1,12 @@
 import React from "react";
 
+import { Form } from "../../../pages/form/Form";
+
 export const Create = () => {
-  return <div>Create</div>;
+  return (
+    <>
+      <div>??</div>
+      <Form mode="create" />
+    </>
+  );
 };

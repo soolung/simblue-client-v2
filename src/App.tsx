@@ -16,11 +16,7 @@ import { RecordTeacher } from "./pages/record/teacher/RecordTeacher";
 import ReactModal from "react-modal";
 import { ModalProvider } from "./components/shared/Modal/ModalProvider";
 import { STUDENT, TEACHER } from "./constants/user/auth.constant";
-<<<<<<< HEAD
-import { Form } from "./pages/form/Form";
-=======
 import { Application } from "./pages/application/Application";
->>>>>>> c05158ebe81c6c0dd72d75f367e23484735def34
 
 function App() {
   const queryClient = new QueryClient();
@@ -36,7 +32,6 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/look" element={<Look />} />
-<<<<<<< HEAD
               <Route
                 path="/record"
                 element={
@@ -56,16 +51,14 @@ function App() {
                 }
               />
               <Route
-                path="/application/:applicationId"
-                element={<ApplicationDetail />}
+                path="/application/:applicationId/*"
+                element={<Application />}
               />
-              <Route path="/application/create" element={<Form />} />
-=======
-              <Route path="/record" element={<AuthRequired children={<RecordStudent />} authority={STUDENT} />} />
-              <Route path="/record/teacher" element={<AuthRequired children={<RecordTeacher />} authority={TEACHER} />} />
-              <Route path="/application/:applicationId/*" element={<Application />} />
-              <Route path="/create" element={<AuthRequired children={<Create />} />} />
->>>>>>> c05158ebe81c6c0dd72d75f367e23484735def34
+              <Route
+                path="/create"
+                // element={<AuthRequired children={<Create />} />}
+                element={<Create />}
+              />
             </Routes>
           </Layout>
           <Footer />
