@@ -8,7 +8,7 @@ type ToggleProps = {
   id?: string;
   onClick?: () => void;
   readOnly?: boolean;
-  label: string;
+  label?: string;
 };
 
 const Toggle = ({ label, onClick, value, name, id, readOnly }: ToggleProps) => {

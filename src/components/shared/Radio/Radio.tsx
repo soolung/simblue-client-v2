@@ -2,8 +2,15 @@ import * as S from "./Radio.style";
 import { InputHTMLAttributes } from "react";
 
 interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
+  labelClassName?: string;
+  label?: string;
+  className?: string;
   isChecked: boolean;
-  label: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  value?: string;
+  name?: string;
+  id?: string;
+  readOnly?: boolean;
 }
 
 const Radio = (props: PropsType) => {

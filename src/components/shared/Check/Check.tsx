@@ -2,8 +2,9 @@ import { InputHTMLAttributes } from "react";
 import * as S from "./Check.style";
 
 interface Proptypes extends InputHTMLAttributes<HTMLInputElement> {
-  isChecked: boolean;
-  label: string;
+  isChecked?: boolean;
+  label?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const Check = (props: Proptypes) => {

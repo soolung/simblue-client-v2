@@ -1,8 +1,16 @@
 import * as S from "./Text.style";
 import { forwardRef, InputHTMLAttributes } from "react";
 
-interface PropsType extends InputHTMLAttributes<HTMLInputElement> {}
-const Text = ({
+// interface PropsType
+//   extends Omit<InputHTMLAttributes<HTMLInputElement>, "value"> {
+//   value?: string;
+// }
+
+interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
+  value?: string;
+}
+
+const TextRef = ({
   onChange,
   onKeyDown,
   onFocus,
@@ -27,4 +35,5 @@ const Text = ({
   );
 };
 
+const Text = forwardRef(TextRef);
 export default Text;

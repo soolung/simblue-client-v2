@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 interface Proptypes {
   isAlways?: boolean;
   handleDate: (date: string) => void;
-  initialDate: string;
+  initialDate: any;
 }
 
 const DateBox = ({ isAlways = false, handleDate, initialDate }: Proptypes) => {
