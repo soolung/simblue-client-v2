@@ -14,10 +14,14 @@ export const getApplicationDetail = async (id: number) => {
   return (await server.get(`/application/${id}`)).data;
 };
 
-export const replyApplication = async (request: { applicationId: number; replyList: REQUEST }) => {
+export const replyApplication = async (request: { applicationId: number; replyList?: REQUEST }) => {
   return (await server.post(`/reply`, request, authorization())).data;
 };
 
 export const getMyApplications = async () => {
   return (await server.get(`/application/my`, authorization())).data;
+};
+
+export const getApplicationResult = async (id: number) => {
+  return (await server.get(`/application/${id}/result`, authorization())).data;
 };

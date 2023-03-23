@@ -20,7 +20,5 @@ export type RESET_REQUEST = {
 export type USER = {
   accessToken: string;
   refreshToken: string;
-  authority: string;
-  name: string;
   login?: boolean;
 };
