@@ -7,7 +7,6 @@ import { now } from "../../utils/common/getTimeDiff";
 import DateBox from "../../components/shared/Date/DateBox";
 import Toggle from "../../components/shared/Toggle/Toggle";
 import Check from "../../components/shared/Check/Check";
-import Answer from "../../components/shared/Create/Answer/Answer";
 
 interface Question {
   type: "TEXT" | "CHOICE";
@@ -15,20 +14,6 @@ interface Question {
   answerList: { answer: string }[];
   isRequired: boolean;
   description: string;
-}
-
-interface AnswerProps {
-  type: "TEXT" | "CHOICE";
-  answers: { answer: string }[];
-  addAnswer: () => void;
-  addNextAnswer: (answerIndex: number, questionIndex: number) => void;
-  handleAnswer: (
-    answer: string,
-    questionIndex: number,
-    answerIndex: number
-  ) => void;
-  deleteAnswer: (target: number, questionIndex: number) => void;
-  questionIndex: number;
 }
 
 type Request = {
@@ -168,17 +153,7 @@ export const Form = ({ mode }: any) => {
           });
         }}
       />
-      {questionList.map((question, index) => (
-        <Answer
-          type={question?.type}
-          answers={question?.answerList}
-          addAnswer={() => addAnswer(index)}
-          addNextAnswer={addNextAnswer}
-          handleAnswer={handleAnswer}
-          deleteAnswer={deleteAnswer}
-          questionIndex={index}
-        />
-      ))}
+
       <button onClick={addQuestion}>Add question</button>
     </>
   );

@@ -1,7 +1,33 @@
-import "./Question.scss";
 import Answer from "../Answer/Answer";
-import Toggle from "../../common/Toggle/Toggle";
-import Text from "../../common/Text/Text";
+import Toggle from "../../Toggle/Toggle";
+import Text from "../../Text/Text";
+
+interface Proptypes {
+  question: {
+    type: string;
+    answerList: { answer: string }[];
+    isRequired: boolean;
+    question: string;
+  };
+
+  handleQuestionChange: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => void;
+
+  index: number;
+  deleteQuestion: (target: number) => void;
+  addAnswer: (questionIndex: number) => void;
+  addNextAnswer: (answerIndex: number, questionIndex: number) => void;
+  handleAnswer: (
+    answer: string,
+    questionIndex: number,
+    answerIndex: number
+  ) => void;
+  deleteAnswer: (answerIndex: number, questionIndex: number) => void;
+  toggleIsRequired: (index: number) => void;
+  copyQuestion: (questionIndex: number) => void;
+}
 
 const Question = ({
   question,
@@ -14,7 +40,7 @@ const Question = ({
   deleteAnswer,
   toggleIsRequired,
   copyQuestion,
-}) => {
+}: Proptypes) => {
   return (
     <div className="question">
       <div className="question-header">
@@ -46,6 +72,7 @@ const Question = ({
         />
       </div>
       {/* 답안 */}
+
       <div className="QuestionDiv-answer">
         <Answer
           type={question?.type}
