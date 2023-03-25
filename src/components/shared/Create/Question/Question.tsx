@@ -1,6 +1,4 @@
-import Answer from "../Answer/Answer";
-import Toggle from "../../Toggle/Toggle";
-import Text from "../../Text/Text";
+import * as S from "./Question.style";
 
 interface Proptypes {
   question: {
@@ -11,7 +9,9 @@ interface Proptypes {
   };
 
   handleQuestionChange: (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>,
     index: number
   ) => void;
 
@@ -42,9 +42,9 @@ const Question = ({
   copyQuestion,
 }: Proptypes) => {
   return (
-    <div className="question">
-      <div className="question-header">
-        <input
+    <S.QuestionContainer>
+      <S.QuestionHeader>
+        <S.QuestionHeaderQuestion
           className="question-header-question"
           type="text"
           placeholder="질문"
@@ -52,8 +52,7 @@ const Question = ({
           name="question"
           onChange={(e) => handleQuestionChange(e, index)}
         />
-        <select
-          className="question-header-question-type"
+        <S.QuestionHeaderQuestionType
           name="type"
           onChange={(e) => handleQuestionChange(e, index)}
           value={question?.type}
@@ -63,50 +62,38 @@ const Question = ({
           <option value="LINK">링크</option>
           <option value="RADIO">객관식 질문</option>
           <option value="CHECKBOX">체크 박스</option>
-        </select>
-        <Text
-          className="question-header-description"
+        </S.QuestionHeaderQuestionType>
+        <S.QuestionHeaderDescription
           placeholder="설명"
           name="description"
           onChange={(e) => handleQuestionChange(e, index)}
-        />
-      </div>
-      {/* 답안 */}
-
-      <div className="QuestionDiv-answer">
-        <Answer
-          type={question?.type}
-          answers={question?.answerList}
-          addAnswer={() => addAnswer(index)}
-          addNextAnswer={addNextAnswer}
-          handleAnswer={handleAnswer}
-          deleteAnswer={deleteAnswer}
-          questionIndex={index}
-        />
-      </div>
-      {/* 설정 */}
-      <div className="question-footer">
-        <Toggle
-          value={question?.isRequired}
-          onClick={() => toggleIsRequired(index)}
-          label={"필수"}
-        />
-        <div className="action-question-container">
-          <img
-            className="action-question"
+        ></S.QuestionHeaderDescription>
+      </S.QuestionHeader>
+      <S.QuestionAnswer
+        type={question?.type}
+        answers={question?.answerList}
+        addAnswer={() => addAnswer(index)}
+        addNextAnswer={addNextAnswer}
+        handleAnswer={handleAnswer}
+        deleteAnswer={deleteAnswer}
+        questionIndex={index}
+      />
+      <S.QuestionFooter>
+        <S.ActionQuestionContainer>
+          {/*/assets/copy.svg 가 뭔지 잘 모르겠습니다..*/}
+          <S.ActionQuestion
             alt="copy"
-            src="/images/copy.svg"
+            src="/assets/copy.svg"
             onClick={() => copyQuestion(index)}
           />
-          <img
-            className="action-question"
+          <S.ActionQuestion
             alt="delete"
-            src="/images/delete.svg"
+            src="/assets/delete.svg"
             onClick={() => deleteQuestion(index)}
           />
-        </div>
-      </div>
-    </div>
+        </S.ActionQuestionContainer>
+      </S.QuestionFooter>
+    </S.QuestionContainer>
   );
 };
 

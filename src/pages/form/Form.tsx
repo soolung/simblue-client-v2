@@ -115,13 +115,16 @@ export const Form = ({ mode }: any) => {
   };
 
   const deleteAnswer = (target: number, questionIndex: number) => {
-    // 자꾸 에러나는데 왜나는지 모르겠어요 ㅠㅠ
-    // setQuestionList(
-    //   [...questionList],
-    //   (questionList[questionIndex].answerList = questionList[
-    //     questionIndex
-    //   ].answerList.filter((a, index) => target !== index))
-    // );
+    setQuestionList((prev) => {
+      const questionList = [...prev];
+      questionList[questionIndex] = {
+        ...questionList[questionIndex],
+        answerList: questionList[questionIndex].answerList.filter(
+          (a, index) => target !== index
+        ),
+      };
+      return questionList;
+    });
   };
 
   return (
