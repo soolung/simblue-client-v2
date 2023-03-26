@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Text from "../../Text/Text";
 import Radio from "../../Radio/Radio";
 import Check from "../../Check/Check";
+import * as S from "./Answer.style";
 
 interface Proptypes {
   type: any;
@@ -32,19 +33,18 @@ const Answer = ({
 
   if (type === "RADIO" || type === "CHECKBOX") {
     return (
-      <div className="answer">
-        <div className="answer-box">
+      <div>
+        <S.AnswerBox>
           {answers?.map((a: any, index: any) => (
-            <div className="answer-box-answer" key={index}>
+            <S.AnswerBoxAnswer key={index}>
               {type === "RADIO" ? (
-                <Radio isChecked={false} readOnly />
+                <S.AnswerRadio isChecked={false} readOnly />
               ) : (
-                <Check isChecked={false} readOnly />
+                <S.AnswerCheck isChecked={false} readOnly />
               )}
-              <Text
+              <S.AnswerText
                 ref={(el) => (answerRefs.current[index] = el)}
                 placeholder="옵션"
-                className="answer-text"
                 value={a.answer}
                 onChange={(e) =>
                   handleAnswer(e.target.value, questionIndex, index)
@@ -69,18 +69,15 @@ const Answer = ({
                   }
                 }}
               />
-              <img
+              <S.Cancel
                 src="/images/cancel.svg"
-                className="cancel"
                 alt="cancel"
                 onClick={() => deleteAnswer(index, questionIndex)}
               />
-            </div>
+            </S.AnswerBoxAnswer>
           ))}
-        </div>
-        <button className="add-answer" onClick={addAnswer}>
-          + 옵션 추가
-        </button>
+        </S.AnswerBox>
+        <S.AddAnswer onClick={addAnswer}>+ 옵션 추가</S.AddAnswer>
       </div>
     );
   }
@@ -92,6 +89,6 @@ const Answer = ({
       ? "주관식 답안(장문)"
       : "링크";
 
-  return <Text className="question-text" placeholder={placeholder} readOnly />;
+  return <S.QuestionText placeholder={placeholder} readOnly />;
 };
 export default Answer;
