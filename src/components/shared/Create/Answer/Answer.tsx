@@ -1,17 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import Text from "../../Text/Text";
-import Radio from "../../Radio/Radio";
-import Check from "../../Check/Check";
 import * as S from "./Answer.style";
 
 interface Proptypes {
-  type: any;
-  answers: any;
-  addAnswer: any;
-  addNextAnswer: any;
-  handleAnswer: any;
-  deleteAnswer: any;
-  questionIndex: any;
+  type: string;
+  answers: { answer: string }[];
+  addAnswer: (questionIndex: number) => void;
+  addNextAnswer: (answerIndex: number, questionIndex: number) => void;
+  handleAnswer: (
+    answer: string,
+    questionIndex: number,
+    answerIndex: number
+  ) => void;
+  deleteAnswer: (answerIndex: number, questionIndex: number) => void;
+  questionIndex: number;
 }
 
 const Answer = ({

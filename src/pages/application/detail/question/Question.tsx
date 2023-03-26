@@ -12,7 +12,11 @@ export const Question = ({ quest, handleRequest }: Props) => {
   const [reply, setReply] = useState<string[]>([]);
   const [check, setCheck] = useState<string[]>([]);
 
-  const handleAnswer = (type: string, value: string, checked: boolean): void => {
+  const handleAnswer = (
+    type: string,
+    value: string,
+    checked: boolean
+  ): void => {
     if (type === "checkbox") {
       if (checked) setCheck([...check, value]);
       else if (!checked) setCheck(check.filter((el) => el !== value));
@@ -41,7 +45,13 @@ export const Question = ({ quest, handleRequest }: Props) => {
             return (
               <S.AnswerBox>
                 <input
-                  onChange={(e) => handleAnswer(e.target.type, e.target.value, e.target.checked)}
+                  onChange={(e) =>
+                    handleAnswer(
+                      e.target.type,
+                      e.target.value,
+                      e.target.checked
+                    )
+                  }
                   value={a.answer}
                   name={`${quest.type + questIndex}`}
                   type={quest.type}
@@ -51,8 +61,18 @@ export const Question = ({ quest, handleRequest }: Props) => {
               </S.AnswerBox>
             );
           })}
-        {(quest?.type === "TEXT" || quest?.type === "LINK") && <S.Text onChange={(e) => setReply([e.target.value])} type={quest?.type} />}
-        {quest?.type === "TEXTAREA" && <S.Textarea onChange={(e) => setReply([e.target.value])} type={quest?.type} />}
+        {(quest?.type === "TEXT" || quest?.type === "LINK") && (
+          <S.Text
+            onChange={(e) => setReply([e.target.value])}
+            type={quest?.type}
+          />
+        )}
+        {quest?.type === "TEXTAREA" && (
+          <S.Textarea
+            onChange={(e) => setReply([e.target.value])}
+            type={quest?.type}
+          />
+        )}
       </S.Questions>
     </div>
   );
