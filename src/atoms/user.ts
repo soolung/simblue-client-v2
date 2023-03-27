@@ -6,6 +6,7 @@ export const userEmpty: USER_INFO = {
   email: "",
   name: "",
   roleId: 0,
+  accessToken: "",
 };
 
 export const userState = atom<USER_INFO>({

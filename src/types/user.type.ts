@@ -3,4 +3,5 @@ export type USER_INFO = {
   email: string;
   name: string;
   roleId: number;
+  accessToken: string;
 };
