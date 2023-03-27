@@ -17,6 +17,7 @@ import ReactModal from "react-modal";
 import { ModalProvider } from "./components/shared/Modal/ModalProvider";
 import { STUDENT, TEACHER } from "./constants/user/auth.constant";
 import { Application } from "./pages/application/Application";
+import { ChangePassword } from "./pages/auth/password/ChangePassword";
 
 function App() {
   const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/auth/update/password" element={<ChangePassword />} />
               <Route path="/look" element={<Look />} />
               <Route path="/record" element={<AuthRequired children={<RecordStudent />} authority={STUDENT} />} />
               <Route path="/record/teacher" element={<AuthRequired children={<RecordTeacher />} authority={TEACHER} />} />
