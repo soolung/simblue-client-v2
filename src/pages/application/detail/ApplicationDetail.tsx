@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { REQUEST } from "../../../types/application.type";
 import { Question } from "./question/Question";
 import * as S from "../ApplicationDetail.style";
-import { Button } from "../../../components/shared/Button/Button";
-import { useRecoilValue } from "recoil";
-import { userState } from "../../../atoms/user";
+import { Button } from "../../../components/shared/common/Button/Button";
 import { ApplicationDetailFeature } from "../../../features/application";
 import { useUser } from "../../../hooks/useUser";
 
 export const ApplicationDetail = () => {
-  const {user} = useUser();
+  const { user } = useUser();
   const [request, setRequest] = useState<REQUEST>([]);
   const { reply, data } = ApplicationDetailFeature(request);
 

@@ -3,16 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "react-query";
 import { getGoogleAuthLink, loginUser } from "../../../apis/auth";
 import { LOGIN_AUTH } from "../../../types/auth.type";
-import {
-  ACCESS_KEY,
-  REFRESH_KEY,
-  AUTHORITY,
-  NAME,
-} from "../../../constants/user/auth.constant";
+import { ACCESS_KEY, REFRESH_KEY } from "../../../constants/user/auth.constant";
 import { GOOGLE_AUTH_LINK } from "../../../constants/keys/auth.key";
 import * as S from "./Login.style";
-import { useUser } from "../../../hooks/useUser";
 import { Storage } from "../../../lib/storage";
+import { Input } from "../../../components/shared/common/Input/Input";
+import { AuthBtn } from "../../../components/shared/common/AuthBtn/AuthBtn";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -34,6 +30,7 @@ export const Login = () => {
       }
     },
   });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRequest({
       ...request,
@@ -57,7 +54,6 @@ export const Login = () => {
         <S.Img src="https://ifh.cc/g/H0wG7w.png" />
         <S.Welcome>환영합니다</S.Welcome>
       </S.ImgBox>
-
       <S.Form>
         <S.Title>
           <S.LoginSpan>로그인</S.LoginSpan>
@@ -65,20 +61,11 @@ export const Login = () => {
         </S.Title>
         <S.SubTitle>학교 계정으로 로그인</S.SubTitle>
         <S.InputBox>
-          <S.TextBox
-            onChange={handleChange}
-            name="email"
-            placeholder="이메일을 입력해주세요."
-          ></S.TextBox>
-          <S.TextBox
-            onChange={handleChange}
-            name="password"
-            type="password"
-            placeholder="비밀번호를 입력해주세요."
-          ></S.TextBox>
+          <Input onChange={handleChange} name="email" placeholder="이메일을 입력해주세요." />
+          <Input onChange={handleChange} name="password" type="password" placeholder="비밀번호를 입력해주세요." />
         </S.InputBox>
         <S.InputBox>
-          <S.LoginBtn onClick={login}>로그인</S.LoginBtn>
+          <AuthBtn onClick={login} value={"로그인"} />
           <S.GoogleBtn onClick={() => window.location.replace(data)}>
             <S.GoogleImg src="https://ifh.cc/g/nNDjB0.png" />
             <span>구글 계정으로 로그인</span>
@@ -86,9 +73,7 @@ export const Login = () => {
         </S.InputBox>
         <S.SignUp>
           아직 회원이 아니신가요?
-          <S.Span onClick={() => window.location.replace(data)}>
-            구글 계정으로 회원가입
-          </S.Span>
+          <S.Span onClick={() => window.location.replace(data)}>구글 계정으로 회원가입</S.Span>
         </S.SignUp>
       </S.Form>
     </S.Login>
