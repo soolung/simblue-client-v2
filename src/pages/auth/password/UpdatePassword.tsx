@@ -11,7 +11,7 @@ export const ChangePassword = () => {
   const { updatePW } = UserFeature();
 
   const updatePassword = () => {
-    if (newPW === "" || oldPW === "" || newPWCheck === "") alert("다 입력 해주세요.");
+    if (newPW === "" || oldPW === "" || newPWCheck === "") alert("다 입력 해주세요."); // 심청이 alert 생기면 넣기
     else {
       if (newPW !== newPWCheck) alert("재확인 비밀번호가 다릅니다.");
       else if (oldPW === newPW) alert("원래 비밀번호와 같습니다.");
