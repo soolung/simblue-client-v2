@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { updatePassword } from "../../apis/user";
 import { Error } from "../../types/error.type";
 
-export const UserFeature = (pw?: { newPW: string; oldPW: string }) => {
+export const UserFeature = () => {
   const navigate = useNavigate();
 
   const updatePW = useMutation(updatePassword, {
