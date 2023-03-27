@@ -11,7 +11,11 @@ export const ProfilePopover = ({ close }: { close: Function }) => {
 
   return (
     <Popover>
-      <button onClick={() => navigate("/auth/update/password")}>
+      <button
+        onClick={() => {
+          close();
+          navigate("/auth/update/password");
+        }}>
         비밀번호 변경
       </button>
       <button
@@ -20,8 +24,7 @@ export const ProfilePopover = ({ close }: { close: Function }) => {
           setUser(userEmpty);
           navigate("/");
           close();
-        }}
-      >
+        }}>
         로그아웃
       </button>
       <Ggoranji />
