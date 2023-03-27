@@ -4,7 +4,7 @@ import { Input } from "../../../components/shared/common/Input/Input";
 import { UserFeature } from "../../../features/user";
 import * as S from "./UpdatePassword.style";
 
-export const ChangePassword = () => {
+export const UpdatePassword = () => {
   const [oldPW, setOldPW] = useState<string>("");
   const [newPW, setNewPW] = useState<string>("");
   const [newPWCheck, setNewPWCheck] = useState<string>("");
