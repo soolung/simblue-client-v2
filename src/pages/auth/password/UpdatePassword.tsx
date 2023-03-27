@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { AuthBtn } from "../../../components/shared/common/AuthBtn/AuthBtn";
 import { Input } from "../../../components/shared/common/Input/Input";
 import { UserFeature } from "../../../features/user";
 import * as S from "./UpdatePassword.style";
 
 export const UpdatePassword = () => {
-  const [oldPW, setOldPW] = useState<string>("");
-  const [newPW, setNewPW] = useState<string>("");
-  const [newPWCheck, setNewPWCheck] = useState<string>("");
+  const [passwordData, setPasswordData] = useState({ oldPW: "", newPW: "", newPWCheck: "" });
   const { updatePW } = UserFeature();
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPasswordData({ ...passwordData, [e.target.name]: e.target.value });
+  };
+
   const updatePassword = () => {
-    if (newPW === "" || oldPW === "" || newPWCheck === "") alert("다 입력 해주세요."); // 심청이 alert 생기면 넣기
+    if (Object.values(passwordData).includes("")) alert("다 입력 해주세요."); // 심청이 alert 생기면 넣기
     else {
-      if (newPW !== newPWCheck) alert("재확인 비밀번호가 다릅니다.");
-      else if (oldPW === newPW) alert("원래 비밀번호와 같습니다.");
-      else updatePW.mutate({ newPW, oldPW });
+      if (passwordData.newPW !== passwordData.newPWCheck) alert("재확인 비밀번호가 다릅니다.");
+      else if (passwordData.oldPW === passwordData.newPW) alert("원래 비밀번호와 같습니다.");
+      else updatePW.mutate({ newPW: passwordData.newPW, oldPW: passwordData.oldPW });
     }
   };
 
@@ -31,9 +33,9 @@ export const UpdatePassword = () => {
         </S.Title>
         <S.SubTitle>저런... 까먹으셨군요... ㅜ</S.SubTitle>
         <S.InputBox>
-          <Input type="password" event={(e) => setOldPW(e.target.value)} placeholder="현재 비밀번호를 입력하세요." />
-          <Input type="password" event={(e) => setNewPW(e.target.value)} placeholder="새로운 비밀번호를 입력하세요." />
-          <Input type="password" event={(e) => setNewPWCheck(e.target.value)} placeholder="새로운 비밀번호를 한 번 더 입력하세요." />
+          <Input type="password" name="oldPW" event={handleChange} placeholder="현재 비밀번호를 입력하세요." />
+          <Input type="password" name="newPW" event={handleChange} placeholder="새로운 비밀번호를 입력하세요." />
+          <Input type="password" name="newPWCheck" event={handleChange} placeholder="새로운 비밀번호를 한 번 더 입력하세요." />
         </S.InputBox>
         <S.InputBox>
           <AuthBtn event={updatePassword} value={"변경"} />
