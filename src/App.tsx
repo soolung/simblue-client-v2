@@ -17,7 +17,7 @@ import ReactModal from "react-modal";
 import { ModalProvider } from "./components/shared/Modal/ModalProvider";
 import { STUDENT, TEACHER } from "./constants/user/auth.constant";
 import { Application } from "./pages/application/Application";
-import { ChangePassword } from "./pages/auth/password/ChangePassword";
+import { ChangePassword } from "./pages/auth/password/UpdatePassword";
 
 function App() {
   const queryClient = new QueryClient();

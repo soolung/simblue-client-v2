@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AuthBtn } from "../../../components/shared/common/AuthBtn/AuthBtn";
 import { Input } from "../../../components/shared/common/Input/Input";
 import { UserFeature } from "../../../features/user";
-import * as S from "./ChangePassword.style";
+import * as S from "./UpdatePassword.style";
 
 export const ChangePassword = () => {
   const [oldPW, setOldPW] = useState<string>("");
