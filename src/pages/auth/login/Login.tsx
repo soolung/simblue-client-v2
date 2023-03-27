@@ -61,11 +61,11 @@ export const Login = () => {
         </S.Title>
         <S.SubTitle>학교 계정으로 로그인</S.SubTitle>
         <S.InputBox>
-          <Input event={handleChange} name="email" placeholder="이메일을 입력해주세요." />
-          <Input event={handleChange} name="password" type="password" placeholder="비밀번호를 입력해주세요." />
+          <Input onChange={handleChange} name="email" placeholder="이메일을 입력해주세요." />
+          <Input onChange={handleChange} name="password" type="password" placeholder="비밀번호를 입력해주세요." />
         </S.InputBox>
         <S.InputBox>
-          <AuthBtn event={login} value={"로그인"} />
+          <AuthBtn onClick={login} value={"로그인"} />
           <S.GoogleBtn onClick={() => window.location.replace(data)}>
             <S.GoogleImg src="https://ifh.cc/g/nNDjB0.png" />
             <span>구글 계정으로 로그인</span>

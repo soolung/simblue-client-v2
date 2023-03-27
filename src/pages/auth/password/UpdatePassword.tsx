@@ -33,12 +33,12 @@ export const UpdatePassword = () => {
         </S.Title>
         <S.SubTitle>저런... 까먹으셨군요... ㅜ</S.SubTitle>
         <S.InputBox>
-          <Input type="password" name="oldPW" event={handleChange} placeholder="현재 비밀번호를 입력하세요." />
-          <Input type="password" name="newPW" event={handleChange} placeholder="새로운 비밀번호를 입력하세요." />
-          <Input type="password" name="newPWCheck" event={handleChange} placeholder="새로운 비밀번호를 한 번 더 입력하세요." />
+          <Input type="password" name="oldPW" onChange={handleChange} placeholder="현재 비밀번호를 입력하세요." />
+          <Input type="password" name="newPW" onChange={handleChange} placeholder="새로운 비밀번호를 입력하세요." />
+          <Input type="password" name="newPWCheck" onChange={handleChange} placeholder="새로운 비밀번호를 한 번 더 입력하세요." />
         </S.InputBox>
         <S.InputBox>
-          <AuthBtn event={updatePassword} value={"변경"} />
+          <AuthBtn onClick={updatePassword} value={"변경"} />
         </S.InputBox>
       </S.Form>
     </S.UpdateBox>

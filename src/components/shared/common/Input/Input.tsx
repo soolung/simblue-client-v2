@@ -2,12 +2,8 @@ import React, { InputHTMLAttributes } from "react";
 import styled from "styled-components";
 import { Colors } from "../../../../constants/colors.constant";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  event: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-export const Input = (props: InputProps) => {
-  return <InputStyle {...props} onChange={props.event} />;
+export const Input = (props: InputHTMLAttributes<HTMLInputElement>) => {
+  return <InputStyle {...props} />;
 };
 
 const InputStyle = styled.input`
