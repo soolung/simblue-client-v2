@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Colors } from "../../../constants/colors.constant";
 
 export const Text = styled.input`
+  outline: none;
+  display: inline-block;
   width: 100%;
   height: 24px;
   border: none;
@@ -10,7 +12,6 @@ export const Text = styled.input`
   padding: 0 11px 2px;
   font-size: 18px;
   color: ${Colors.inputText};
-
   &::placeholder {
     color: ${Colors.mediumGray};
   }

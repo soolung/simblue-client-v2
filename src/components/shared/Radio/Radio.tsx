@@ -2,7 +2,6 @@ import * as S from "./Radio.style";
 import { InputHTMLAttributes } from "react";
 
 interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
-  labelClassName?: string;
   label?: string;
   className?: string;
   isChecked: boolean;
@@ -11,23 +10,33 @@ interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
   name?: string;
   id?: string;
   readOnly?: boolean;
+  display?: string;
 }
 
-const Radio = (props: PropsType) => {
+const Radio = ({
+  type,
+  isChecked,
+  onChange,
+  value,
+  name,
+  id,
+  readOnly,
+  display,
+  label,
+}: PropsType) => {
   return (
-    <S.RadioLabel>
+    <S.RadioLabel style={{ display }}>
       <S.Radio
-        className={`radio ${props.className ? props.className : ""}`}
         type="radio"
-        checked={props.isChecked}
-        onChange={props.onChange}
-        value={props.value}
-        name={props.name}
-        id={props.id}
-        readOnly={props.readOnly}
-        tabIndex={props.readOnly ? -1 : 0}
+        checked={isChecked}
+        onChange={onChange}
+        value={value}
+        name={name}
+        id={id}
+        readOnly={readOnly}
+        tabIndex={readOnly ? -1 : 0}
       />
-      <span>{props.label}</span>
+      <span>{label}</span>
     </S.RadioLabel>
   );
 };

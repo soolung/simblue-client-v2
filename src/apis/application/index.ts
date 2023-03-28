@@ -14,7 +14,10 @@ export const getApplicationDetail = async (id: number) => {
   return (await server.get(`/application/${id}`)).data;
 };
 
-export const replyApplication = async (request: { applicationId: number; replyList?: REQUEST }) => {
+export const replyApplication = async (request: {
+  applicationId: number;
+  replyList?: REQUEST;
+}) => {
   return (await server.post(`/reply`, request, authorization())).data;
 };
 
@@ -24,4 +27,29 @@ export const getMyApplications = async () => {
 
 export const getApplicationResult = async (id: number) => {
   return (await server.get(`/application/${id}/result`, authorization())).data;
+};
+
+export const getApplicationForm = async (id: number) => {
+  return (await server.get(`/application/${id}/form`, authorization())).data;
+};
+
+export const createApplicationForm = async (request: {
+  applicationId: number;
+  replyList?: any;
+}) => {
+  return (await server.post("/application", request, authorization())).data;
+};
+
+export const updateApplicationForm = async ({
+  request,
+  id,
+}: {
+  request: {
+    applicationId: number;
+    replyList?: any;
+  };
+  id: number;
+}) => {
+  return (await server.put(`/application/${id}`, request, authorization()))
+    .data;
 };

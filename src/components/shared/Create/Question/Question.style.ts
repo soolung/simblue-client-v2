@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../../../../constants/colors.constant";
-import Answer from "../Answer/Answer";
-import Text from "../../Text/Text";
-export const QuestionContainer = styled.div`
+export const Question = styled.div`
   box-shadow: 0 16px 40px rgba(173, 173, 173, 0.2);
   width: 50vw;
   background-color: white;
@@ -12,24 +10,7 @@ export const QuestionContainer = styled.div`
 `;
 
 export const QuestionHeader = styled.div`
-  display: flex;
   width: 100%;
-  margin-bottom: 15px;
-`;
-
-export const QuestionHeaderQuestionType = styled.select`
-  border: 1px solid ${Colors.mediumGray};
-  padding: 10px 20px;
-  font-size: 15px;
-  color: ${Colors.mediumGray};
-  border-radius: 4px;
-  float: right;
-  width: 25%;
-  height: 100%;
-
-  &:focus {
-    outline: none;
-  }
 `;
 
 export const QuestionHeaderQuestion = styled.input`
@@ -47,13 +28,22 @@ export const QuestionHeaderQuestion = styled.input`
   }
 `;
 
-export const QuestionHeaderDescription = styled(Text)`
-  padding: 10px 10px;
-  font-size: 14px;
-  margin-top: 7px;
+export const QuestionHeaderQuestionType = styled.select`
+  border: 1px solid ${Colors.mediumGray};
+  padding: 10px 20px;
+  font-size: 15px;
+  color: ${Colors.mediumGray};
+  border-radius: 4px;
+  float: right;
+  width: 25%;
+  height: 100%;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
-export const QuestionAnswer = styled(Answer)`
+export const QuestionDivAnswer = styled.div`
   width: 100%;
   margin-top: 30px;
 `;

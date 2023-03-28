@@ -1,9 +1,7 @@
-import styled from "styled-components";
 import * as S from "./Toggle.style";
-import { LabelHTMLAttributes } from "react";
 
 type ToggleProps = {
-  value?: any;
+  value: boolean;
   name?: string;
   id?: string;
   onClick?: () => void;
@@ -17,7 +15,7 @@ const Toggle = ({ label, onClick, value, name, id, readOnly }: ToggleProps) => {
       <S.Toggle onClick={onClick}>
         <input
           type="hidden"
-          value={value}
+          value={value.toString()}
           name={name}
           id={id}
           readOnly={readOnly}

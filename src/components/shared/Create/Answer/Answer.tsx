@@ -1,18 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
 import * as S from "./Answer.style";
+import Text from "../../Text/Text";
+import Radio from "../../Radio/Radio";
+import Check from "../../Check/Check";
 
 interface Proptypes {
   type: string;
   answers: { answer: string }[];
-  addAnswer: (questionIndex: number) => void;
-  addNextAnswer: (answerIndex: number, questionIndex: number) => void;
-  handleAnswer: (
-    answer: string,
-    questionIndex: number,
-    answerIndex: number
-  ) => void;
-  deleteAnswer: (answerIndex: number, questionIndex: number) => void;
+  addAnswer: MouseEventHandler<HTMLButtonElement>;
+  addNextAnswer: any;
+  handleAnswer: any;
+  deleteAnswer: any;
   questionIndex: number;
+  width?: string;
+  marginTop?: string;
 }
 
 const Answer = ({
@@ -23,6 +24,8 @@ const Answer = ({
   handleAnswer,
   deleteAnswer,
   questionIndex,
+  width,
+  marginTop,
 }: Proptypes) => {
   const answerRefs = useRef<any[]>([]);
   const [focusIndex, setFocusIndex] = useState(0);
@@ -34,16 +37,20 @@ const Answer = ({
 
   if (type === "RADIO" || type === "CHECKBOX") {
     return (
-      <div>
+      <div style={{ width, marginTop }}>
         <S.AnswerBox>
           {answers?.map((a: any, index: any) => (
             <S.AnswerBoxAnswer key={index}>
               {type === "RADIO" ? (
-                <S.AnswerRadio isChecked={false} readOnly />
+                <Radio isChecked={false} display="inline-flex" readOnly />
               ) : (
-                <S.AnswerCheck isChecked={false} readOnly />
+                <Check isChecked={false} display="inline-flex" readOnly />
               )}
-              <S.AnswerText
+              <Text
+                display="inline-block"
+                fontSize="14px"
+                width="60%"
+                padding="0"
                 ref={(el) => (answerRefs.current[index] = el)}
                 placeholder="옵션"
                 value={a.answer}
@@ -90,6 +97,13 @@ const Answer = ({
       ? "주관식 답안(장문)"
       : "링크";
 
-  return <S.QuestionText placeholder={placeholder} readOnly />;
+  return (
+    <Text
+      padding="10px 10px"
+      fontSize="18px"
+      placeholder={placeholder}
+      readOnly
+    />
+  );
 };
 export default Answer;

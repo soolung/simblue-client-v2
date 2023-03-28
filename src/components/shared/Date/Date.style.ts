@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Colors } from "../../../constants/colors.constant";
-import TextBox from "../TextBox/TextBox";
 
 export const Dates = styled.div`
   display: inline-flex;
@@ -13,12 +12,4 @@ export const Dates = styled.div`
     padding: 3px 5px;
     margin-right: 4px;
   }
-`;
-
-export const YearBox = styled(TextBox)`
-  width: 50px;
-`;
-
-export const MonthDayBox = styled(TextBox)`
-  width: 50px;
 `;

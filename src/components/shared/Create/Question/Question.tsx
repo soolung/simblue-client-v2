@@ -1,3 +1,6 @@
+import Text from "../../Text/Text";
+import Answer from "../Answer/Answer";
+import Toggle from "../../Toggle/Toggle";
 import * as S from "./Question.style";
 
 interface Proptypes {
@@ -27,6 +30,7 @@ interface Proptypes {
   deleteAnswer: (answerIndex: number, questionIndex: number) => void;
   toggleIsRequired: (index: number) => void;
   copyQuestion: (questionIndex: number) => void;
+  display?: string;
 }
 
 const Question = ({
@@ -40,12 +44,12 @@ const Question = ({
   deleteAnswer,
   toggleIsRequired,
   copyQuestion,
+  display,
 }: Proptypes) => {
   return (
-    <S.QuestionContainer>
+    <S.Question>
       <S.QuestionHeader>
         <S.QuestionHeaderQuestion
-          className="question-header-question"
           type="text"
           placeholder="질문"
           value={question?.question}
@@ -63,24 +67,37 @@ const Question = ({
           <option value="RADIO">객관식 질문</option>
           <option value="CHECKBOX">체크 박스</option>
         </S.QuestionHeaderQuestionType>
-        <S.QuestionHeaderDescription
+        <Text
+          padding="10px 10px"
+          fontSize="14px"
+          marginTop="7px"
           placeholder="설명"
           name="description"
           onChange={(e) => handleQuestionChange(e, index)}
-        ></S.QuestionHeaderDescription>
+        />
       </S.QuestionHeader>
-      <S.QuestionAnswer
-        type={question?.type}
-        answers={question?.answerList}
-        addAnswer={() => addAnswer(index)}
-        addNextAnswer={addNextAnswer}
-        handleAnswer={handleAnswer}
-        deleteAnswer={deleteAnswer}
-        questionIndex={index}
-      />
+
+      {/* 답안 */}
+      <S.QuestionDivAnswer>
+        <Answer
+          type={question?.type}
+          answers={question?.answerList}
+          addAnswer={() => addAnswer(index)}
+          addNextAnswer={addNextAnswer}
+          handleAnswer={handleAnswer}
+          deleteAnswer={deleteAnswer}
+          questionIndex={index}
+        />
+      </S.QuestionDivAnswer>
+      {/* 설정 */}
+
       <S.QuestionFooter>
+        <Toggle
+          value={question?.isRequired}
+          onClick={() => toggleIsRequired(index)}
+          label={"필수"}
+        />
         <S.ActionQuestionContainer>
-          {/*/assets/copy.svg 가 뭔지 잘 모르겠습니다..*/}
           <S.ActionQuestion
             alt="copy"
             src="/assets/copy.svg"
@@ -93,7 +110,7 @@ const Question = ({
           />
         </S.ActionQuestionContainer>
       </S.QuestionFooter>
-    </S.QuestionContainer>
+    </S.Question>
   );
 };
 

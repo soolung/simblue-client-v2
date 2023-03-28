@@ -5,22 +5,52 @@ interface Proptypes extends InputHTMLAttributes<HTMLInputElement> {
   isChecked?: boolean;
   label?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  display?: string;
+  marginLeft?: string;
+  buttonWidth?: string;
+  buttonHeight?: string;
+  buttonMargin?: string;
+  buttonmarginTop?: string;
+  fontSize?: string;
+  marginTop?: string;
+  backgourndColor?: string;
 }
 
-const Check = (props: Proptypes) => {
+const Check = ({
+  isChecked,
+  onChange,
+  value,
+  name,
+  id,
+  readOnly,
+  label,
+  display,
+  marginLeft,
+  fontSize,
+  buttonWidth,
+  buttonHeight,
+  buttonMargin,
+  marginTop,
+  backgourndColor,
+}: Proptypes) => {
   return (
-    <S.CheckLabel>
+    <S.CheckLabel style={{ display, marginLeft }}>
       <S.CheckInput
+        style={{
+          width: buttonWidth,
+          height: buttonHeight,
+          marginRight: buttonMargin,
+        }}
         type="checkbox"
-        checked={props.isChecked}
-        onChange={props.onChange}
-        value={props.value}
-        name={props.name}
-        id={props.id}
-        readOnly={props.readOnly}
-        tabIndex={props.readOnly ? -1 : 0}
+        checked={isChecked}
+        onChange={onChange}
+        value={value}
+        name={name}
+        id={id}
+        readOnly={readOnly}
+        tabIndex={readOnly ? -1 : 0}
       />
-      <span>{props.label}</span>
+      <span style={{ fontSize, marginTop }}>{label}</span>
     </S.CheckLabel>
   );
 };

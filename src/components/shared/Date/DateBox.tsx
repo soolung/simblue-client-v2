@@ -1,9 +1,10 @@
 import * as S from "./Date.style";
 import { useEffect, useState } from "react";
+import TextBox from "../TextBox/TextBox";
 
 interface Proptypes {
   isAlways?: boolean;
-  handleDate: (date: string) => void;
+  handleDate: any;
   initialDate: any;
 }
 
@@ -66,9 +67,8 @@ const DateBox = ({ isAlways = false, handleDate, initialDate }: Proptypes) => {
 
   return (
     <S.Dates>
-      <S.YearBox
-        type="text"
-        name="year"
+      <TextBox
+        width="50px"
         placeholder="2022"
         readOnly={isAlways}
         value={date?.year}
@@ -77,7 +77,8 @@ const DateBox = ({ isAlways = false, handleDate, initialDate }: Proptypes) => {
         onBlur={onBlur}
       />
       년
-      <S.YearBox
+      <TextBox
+        width="30px"
         type="text"
         name="month"
         placeholder="2"
@@ -88,7 +89,8 @@ const DateBox = ({ isAlways = false, handleDate, initialDate }: Proptypes) => {
         onBlur={onBlur}
       />
       월
-      <S.MonthDayBox
+      <TextBox
+        width="30px"
         type="text"
         name="day"
         placeholder="22"

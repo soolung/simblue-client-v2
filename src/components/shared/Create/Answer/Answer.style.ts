@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import Text from "../../Text/Text";
-import Radio from "../../Radio/Radio";
-import Check from "../../Check/Check";
 import { Colors } from "../../../../constants/colors.constant";
+
 export const AnswerBox = styled.div`
   width: 100%;
 `;
@@ -12,18 +10,6 @@ export const AnswerBoxAnswer = styled.div`
   align-items: center;
   width: 100%;
   margin-bottom: 10px;
-`;
-export const AnswerRadio = styled(Radio)`
-  display: inline-flex;
-`;
-export const AnswerCheck = styled(Check)`
-  display: inline-flex;
-`;
-export const AnswerText = styled(Text)`
-  display: inline-block;
-  font-size: 14px;
-  width: 60%;
-  padding: 0;
 `;
 
 export const Cancel = styled.img`
@@ -43,9 +29,4 @@ export const AddAnswer = styled.button`
   &:hover {
     background-color: ${Colors.lightGray};
   }
-`;
-
-export const QuestionText = styled(Text)`
-  padding: 10px 10px;
-  font-size: 14px;
 `;
