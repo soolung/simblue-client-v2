@@ -56,7 +56,6 @@ const Question = ({
           name="question"
           onChange={(e) => {
             handleQuestionChange(e, index);
-            console.log(e.target);
           }}
         />
         <S.QuestionHeaderQuestionType

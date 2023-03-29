@@ -173,7 +173,7 @@ export const Form = ({ mode }: any) => {
     },
   ]);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRequest({
       ...request,
       [e.target.name]: e.target.value,
@@ -185,7 +185,7 @@ export const Form = ({ mode }: any) => {
       ...request,
       emoji: e.emoji,
     });
-
+    console.log(typeof e);
     setEmojiPickerIsOpen(false);
   };
 
@@ -193,11 +193,11 @@ export const Form = ({ mode }: any) => {
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>,
-    index: number
+    index: any
   ) => {
     setQuestionList((prevQuestionList) => {
       const newQuestionList = [...prevQuestionList];
-      newQuestionList[index].answerList[index].answer = e.target.value;
+      newQuestionList[index].question = e.target.value;
       return newQuestionList;
     });
   };
