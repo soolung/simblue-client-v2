@@ -6,18 +6,19 @@ import * as S from "./Question.style";
 interface Proptypes {
   question: {
     type: string;
-    answerList: { answer: string }[];
-    isRequired: boolean;
     question: string;
+    answerList: {
+      answer: string;
+    }[];
+    isRequired: boolean;
+    description: string;
   };
-
   handleQuestionChange: (
-    event:
+    e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>,
     index: number
   ) => void;
-
   index: number;
   deleteQuestion: (target: number) => void;
   addAnswer: (questionIndex: number) => void;
@@ -44,7 +45,6 @@ const Question = ({
   deleteAnswer,
   toggleIsRequired,
   copyQuestion,
-  display,
 }: Proptypes) => {
   return (
     <S.Question>
@@ -54,7 +54,10 @@ const Question = ({
           placeholder="질문"
           value={question?.question}
           name="question"
-          onChange={(e) => handleQuestionChange(e, index)}
+          onChange={(e) => {
+            handleQuestionChange(e, index);
+            console.log(e.target);
+          }}
         />
         <S.QuestionHeaderQuestionType
           name="type"

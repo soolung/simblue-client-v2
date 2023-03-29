@@ -19,7 +19,6 @@ interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
 
 const TextRef = (
   {
-    className,
     onChange,
     onKeyDown,
     onFocus,
@@ -28,7 +27,6 @@ const TextRef = (
     id,
     placeholder,
     readOnly,
-
     width,
     display,
     fontSize,

@@ -4,8 +4,8 @@ import TextBox from "../TextBox/TextBox";
 
 interface Proptypes {
   isAlways?: boolean;
-  handleDate: any;
-  initialDate: any;
+  handleDate: (date: string) => void;
+  initialDate: String;
 }
 
 const DateBox = ({ isAlways = false, handleDate, initialDate }: Proptypes) => {

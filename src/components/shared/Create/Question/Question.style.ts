@@ -22,7 +22,7 @@ export const QuestionHeaderQuestion = styled.input`
   background-color: ${Colors.mainBeige};
   border: none;
   border-bottom: 1px solid ${Colors.gray};
-
+  outline: none;
   &::placeholder {
     color: ${Colors.mediumGray};
   }

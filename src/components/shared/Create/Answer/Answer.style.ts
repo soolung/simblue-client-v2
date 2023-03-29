@@ -25,6 +25,7 @@ export const AddAnswer = styled.button`
   background-color: white;
   color: ${Colors.mediumGray};
   border-radius: 8px;
+  border: none;
 
   &:hover {
     background-color: ${Colors.lightGray};

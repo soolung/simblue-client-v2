@@ -8,9 +8,9 @@ interface Proptypes {
   type: string;
   answers: { answer: string }[];
   addAnswer: MouseEventHandler<HTMLButtonElement>;
-  addNextAnswer: any;
-  handleAnswer: any;
-  deleteAnswer: any;
+  addNextAnswer: (answerIndex: number, questionIndex: number) => void;
+  handleAnswer: (a: any, questionIndex: number, answerIndex: number) => void;
+  deleteAnswer: (answerIndex: number, questionIndex: number) => void;
   questionIndex: number;
   width?: string;
   marginTop?: string;
@@ -78,7 +78,7 @@ const Answer = ({
                 }}
               />
               <S.Cancel
-                src="/images/cancel.svg"
+                src="/assets/cancel.svg"
                 alt="cancel"
                 onClick={() => deleteAnswer(index, questionIndex)}
               />

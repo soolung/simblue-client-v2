@@ -18,10 +18,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AxiosError } from "axios";
 import { Colors } from "../../constants/colors.constant";
 
-interface Question {
+interface QuestionInter {
   type: string;
   question: string;
-  answerList: { answer: string }[];
+  answerList: {
+    answer: string;
+  }[];
   isRequired: boolean;
   description: string;
 }
@@ -35,7 +37,7 @@ interface Request {
   allowsUpdatingReply: boolean;
   startDate: String;
   endDate: String;
-  questionList?: Question[];
+  questionList?: QuestionInter[];
   ownerList?: number[];
 }
 
@@ -55,11 +57,11 @@ export const Form = ({ mode }: any) => {
   });
 
   const update = useMutation(updateApplicationForm, {
-    onSuccess: (): void => {
+    onSuccess: () => {
       alert("성공!");
       navigate("/");
     },
-    onError: (err: AxiosError): void => {
+    onError: (err: AxiosError) => {
       console.log(err);
     },
   });
@@ -157,17 +159,28 @@ export const Form = ({ mode }: any) => {
     endDate: now(),
   });
 
-  const [questionList, setQuestionList] = useState<Question[]>([
+  const [questionList, setQuestionList] = useState<QuestionInter[]>([
     {
       type: "TEXT",
       question: "",
-      answerList: [{ answer: "" }],
+      answerList: [
+        {
+          answer: "",
+        },
+      ],
       isRequired: true,
       description: "",
     },
   ]);
 
-  const emojiChange = (e: { emoji: string }) => {
+  const handleChange = (e: any) => {
+    setRequest({
+      ...request,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const emojiChange = (e: any) => {
     setRequest({
       ...request,
       emoji: e.emoji,
@@ -189,7 +202,7 @@ export const Form = ({ mode }: any) => {
     });
   };
 
-  const toggleIsRequired = (index: number): void => {
+  const toggleIsRequired = (index: number) => {
     setQuestionList((prevQuestionList) => {
       const newQuestionList = [...prevQuestionList];
       newQuestionList[index].isRequired = !newQuestionList[index].isRequired;
@@ -197,58 +210,17 @@ export const Form = ({ mode }: any) => {
     });
   };
 
-  const deleteQuestion = (target: number): void => {
-    setQuestionList((prevQuestionList) =>
-      prevQuestionList.filter((q, index) => target !== index)
-    );
-  };
-
-  const copyQuestion = (index: number): void => {
-    const newQuestionList: Question[] = [...questionList];
-    newQuestionList.splice(
-      index + 1,
-      0,
-      JSON.parse(JSON.stringify(questionList[index]))
-    );
-    setQuestionList(newQuestionList);
-  };
-
-  const [ownerList, setOwnerList] = useState([]);
-  const [ownerIdSet, setOwnerIdSet] = useState<Set<number>>(
-    new Set([user.user.roleId])
-  );
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRequest({
-      ...request,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const addQuestion = () => {
-    setQuestionList([
-      ...questionList,
-      {
-        type: "CHOICE",
-        question: "",
-        answerList: [{ answer: "" }],
-        isRequired: true,
-        description: "",
-      },
-    ]);
-  };
-
   const addAnswer = (index: number) => {
-    setQuestionList((prev) => {
-      const newQuestionList = [...prev];
+    setQuestionList((prevQuestionList) => {
+      const newQuestionList = [...prevQuestionList];
       newQuestionList[index].answerList.push({ answer: "" });
       return newQuestionList;
     });
   };
 
   const addNextAnswer = (answerIndex: number, index: number) => {
-    setQuestionList((prev) => {
-      const newQuestionList = [...prev];
+    setQuestionList((prevQuestionList) => {
+      const newQuestionList = [...prevQuestionList];
       const newAnswerList = newQuestionList[index].answerList;
       if (newAnswerList.length - 1 === answerIndex) {
         newAnswerList.push({ answer: "" });
@@ -265,24 +237,81 @@ export const Form = ({ mode }: any) => {
     questionIndex: number,
     answerIndex: number
   ) => {
-    setQuestionList((prev) => {
-      const newQuestionList = [...prev];
+    setQuestionList((prevQuestionList) => {
+      const newQuestionList = [...prevQuestionList];
       newQuestionList[questionIndex].answerList[answerIndex].answer = a;
       return newQuestionList;
     });
   };
 
+  const deleteQuestion = (target: number) => {
+    setQuestionList((prevQuestionList) =>
+      prevQuestionList.filter(
+        (q: QuestionInter, index: number) => target !== index
+      )
+    );
+  };
+
+  const addQuestion = () => {
+    setQuestionList([
+      ...questionList,
+      {
+        type: "TEXT",
+        question: "",
+        answerList: [{ answer: "" }],
+        isRequired: true,
+        description: "",
+      },
+    ]);
+  };
+
   const deleteAnswer = (target: number, questionIndex: number) => {
-    setQuestionList((prev) => {
-      const questionList = [...prev];
+    setQuestionList((prevQuestionList) => {
+      const questionList = [...prevQuestionList];
       questionList[questionIndex] = {
         ...questionList[questionIndex],
         answerList: questionList[questionIndex].answerList.filter(
-          (a, index) => target !== index
+          (a, index: number) => target !== index
         ),
       };
       return questionList;
     });
+  };
+
+  const copyQuestion = (index: number) => {
+    const newQuestionList: QuestionInter[] = [...questionList];
+    newQuestionList.splice(
+      index + 1,
+      0,
+      JSON.parse(JSON.stringify(questionList[index]))
+    );
+    setQuestionList(newQuestionList);
+  };
+
+  const [ownerList, setOwnerList] = useState([{}]);
+  const [ownerIdSet, setOwnerIdSet] = useState<Set<number>>(
+    new Set([user.user.roleId])
+  );
+
+  const addOwner = ({ teacherId, name }: any) => {
+    if (!ownerIdSet.has(teacherId)) {
+      setOwnerList([
+        ...ownerList,
+        {
+          teacherId: teacherId,
+          name: name,
+        },
+      ]);
+
+      ownerIdSet.add(teacherId);
+    }
+  };
+
+  const deleteOwner = (teacherId: number) => {
+    if (ownerIdSet.has(teacherId)) {
+      setOwnerList(ownerList.filter((o: any) => teacherId !== o.teacherId));
+      ownerIdSet.delete(teacherId);
+    }
   };
 
   return (
@@ -333,7 +362,7 @@ export const Form = ({ mode }: any) => {
                     }
                   />
                   <Check
-                    style={{ border: "2px solid" + Colors.mediumGray }}
+                    style={{ border: "2px solid" + Colors.mainRed }}
                     marginLeft="10px"
                     display="inline-flex"
                     fontSize="16px"
@@ -371,7 +400,7 @@ export const Form = ({ mode }: any) => {
         </S.FormHeader>
 
         <S.FormQuestionSection>
-          {questionList?.map((q, index) => (
+          {questionList?.map((q: QuestionInter, index: any) => (
             <Question
               question={q}
               handleQuestionChange={handleQuestionChange}
@@ -400,7 +429,7 @@ export const Form = ({ mode }: any) => {
             border="1px solid gray"
             text="고급 설정"
             color="gray"
-            // action={() => setAdvancedSettingModalOpen(true)}
+            action={() => setAdvancedSettingModalOpen(true)}
           />
           <Button
             width="79%"

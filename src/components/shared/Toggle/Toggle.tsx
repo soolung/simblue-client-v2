@@ -4,7 +4,7 @@ type ToggleProps = {
   value: boolean;
   name?: string;
   id?: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLLabelElement>;
   readOnly?: boolean;
   label?: string;
 };
