@@ -17,30 +17,36 @@ interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
   marginLeft?: string;
 }
 
-const TextRef = ({
-  onChange,
-  onKeyDown,
-  onFocus,
-  value,
-  name,
-  id,
-  placeholder,
-  readOnly,
-  width,
-  display,
-  fontSize,
-  padding,
-  marginTop,
-  backgroundColor,
-  borderBottomColor,
-  fontWeight,
-  marginLeft,
-  borderRadius,
-  height,
-  border,
-}: PropsType) => {
+const TextRef = (
+  {
+    className,
+    onChange,
+    onKeyDown,
+    onFocus,
+    value,
+    name,
+    id,
+    placeholder,
+    readOnly,
+
+    width,
+    display,
+    fontSize,
+    padding,
+    marginTop,
+    backgroundColor,
+    borderBottomColor,
+    fontWeight,
+    marginLeft,
+    borderRadius,
+    height,
+    border,
+  }: PropsType,
+  ref: any
+) => {
   return (
     <S.Text
+      ref={ref}
       type="text"
       onChange={onChange}
       onFocus={onFocus}
