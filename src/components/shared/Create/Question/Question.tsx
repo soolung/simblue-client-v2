@@ -13,6 +13,7 @@ interface Proptypes {
     isRequired: boolean;
     description: string;
   };
+
   handleQuestionChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>

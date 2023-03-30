@@ -41,7 +41,7 @@ interface Request {
   ownerList?: number[];
 }
 
-export const Form = ({ mode }: any) => {
+export const Form = ({ mode }: { mode: string }) => {
   const { id } = useParams();
   const parsedId = parseInt(id as string);
 
@@ -185,21 +185,40 @@ export const Form = ({ mode }: any) => {
       ...request,
       emoji: e.emoji,
     });
-    console.log(typeof e);
     setEmojiPickerIsOpen(false);
   };
 
+  // const handleQuestionChange = (
+  //   e:
+  //     | React.ChangeEvent<HTMLInputElement>
+  //     | React.ChangeEvent<HTMLSelectElement>,
+  //   index: number
+  // ) => {
+  //   setQuestionList((prevQuestionList) => {
+  //     const newQuestionList = [...prevQuestionList];
+  //     newQuestionList[index].question = e.target.value;
+  //     return newQuestionList;
+  //   });
+  // };
   const handleQuestionChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>,
-    index: any
+    index: number
   ) => {
-    setQuestionList((prevQuestionList) => {
-      const newQuestionList = [...prevQuestionList];
-      newQuestionList[index].question = e.target.value;
-      return newQuestionList;
-    });
+    if (e.target instanceof HTMLInputElement) {
+      setQuestionList((prevQuestionList) => {
+        const newQuestionList = [...prevQuestionList];
+        newQuestionList[index].question = e.target.value;
+        return newQuestionList;
+      });
+    } else if (e.target instanceof HTMLSelectElement) {
+      setQuestionList((prevQuestionList) => {
+        const newQuestionList = [...prevQuestionList];
+        newQuestionList[index].type = e.target.value;
+        return newQuestionList;
+      });
+    }
   };
 
   const toggleIsRequired = (index: number) => {
