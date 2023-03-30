@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Colors } from "../../../constants/colors.constant";
 
-export const Login = styled.div`
+export const UpdateBox = styled.div`
   display: flex;
   width: 100%;
   height: 70vh;
@@ -34,7 +34,7 @@ export const Form = styled.div`
   flex-direction: column;
   row-gap: 15px;
   padding: 4%;
-  width: 35%;
+  width: 45%;
   @media screen and (max-width: 965px) {
     width: 50%;
   }
@@ -70,33 +70,6 @@ export const SubTitle = styled.div`
 export const InputBox = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   row-gap: 4px;
-`;
-
-export const GoogleBtn = styled.button`
-  display: flex;
-  height: 45px;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border: 1px solid ${Colors.mediumGray};
-  border-radius: 2px;
-  column-gap: 5px;
-`;
-
-export const GoogleImg = styled.img`
-  width: 6%;
-`;
-
-export const SignUp = styled.div`
-  text-align: center;
-  color: ${Colors.mediumGray};
-  font-size: 11px;
-`;
-
-export const Span = styled.span`
-  word-break: keep-all;
-  color: ${Colors.mainRed};
-  font-weight: 600;
-  cursor: pointer;
 `;

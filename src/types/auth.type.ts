@@ -4,9 +4,8 @@ export type LOGIN_AUTH = {
 };
 
 export type RESET_REQUEST = {
-  code: string;
-  newPassword: string;
-  oldPassword: string;
+  newPW: string;
+  oldPW: string;
 };
 
 export type USER = {
