@@ -6,7 +6,7 @@ import { now } from "../../utils/common/getTimeDiff";
 import DateBox from "../../components/shared/Date/DateBox";
 import Check from "../../components/shared/Check/Check";
 import Question from "../../components/shared/Create/Question/Question";
-import { Button } from "../../components/shared/Button/Button";
+import { Button } from "../../components/shared/common/Button/Button";
 import { useUser } from "../../hooks/useUser";
 import {
   getApplicationForm,
@@ -180,6 +180,7 @@ export const Form = ({ mode }: { mode: string }) => {
     });
   };
 
+  // 진짜 모르겠습니다..
   const emojiChange = (e: any) => {
     setRequest({
       ...request,
@@ -188,18 +189,6 @@ export const Form = ({ mode }: { mode: string }) => {
     setEmojiPickerIsOpen(false);
   };
 
-  // const handleQuestionChange = (
-  //   e:
-  //     | React.ChangeEvent<HTMLInputElement>
-  //     | React.ChangeEvent<HTMLSelectElement>,
-  //   index: number
-  // ) => {
-  //   setQuestionList((prevQuestionList) => {
-  //     const newQuestionList = [...prevQuestionList];
-  //     newQuestionList[index].question = e.target.value;
-  //     return newQuestionList;
-  //   });
-  // };
   const handleQuestionChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -312,7 +301,13 @@ export const Form = ({ mode }: { mode: string }) => {
     new Set([user.user.roleId])
   );
 
-  const addOwner = ({ teacherId, name }: any) => {
+  const addOwner = ({
+    teacherId,
+    name,
+  }: {
+    teacherId: number;
+    name: string;
+  }) => {
     if (!ownerIdSet.has(teacherId)) {
       setOwnerList([
         ...ownerList,
@@ -419,7 +414,7 @@ export const Form = ({ mode }: { mode: string }) => {
         </S.FormHeader>
 
         <S.FormQuestionSection>
-          {questionList?.map((q: QuestionInter, index: any) => (
+          {questionList?.map((q: QuestionInter, index: number) => (
             <Question
               question={q}
               handleQuestionChange={handleQuestionChange}

@@ -42,15 +42,20 @@ export const ToggleContainer = styled.div`
   }
 `;
 
-export const DisabledToggleStyle = css`
+export const DisabledToggleContainer = styled.div`
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  border-radius: 27.5px;
+  background-color: ${Colors.mainRed};
+  margin-right: 4px;
+  padding: 0 7px;
+  transition: 0.5s;
   background-color: ${Colors.gray};
 
   ${ToggleCircle} {
     left: 4px;
     transition: 0.5s;
   }
-`;
-
-export const DisabledToggleContainer = styled(ToggleContainer)`
-  ${DisabledToggleStyle}
 `;

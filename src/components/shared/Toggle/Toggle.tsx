@@ -21,11 +21,14 @@ const Toggle = ({ label, onClick, value, name, id, readOnly }: ToggleProps) => {
           readOnly={readOnly}
         />
         {value ? (
-          <S.ToggleContainer></S.ToggleContainer>
+          <S.ToggleContainer>
+            <S.ToggleCircle />
+          </S.ToggleContainer>
         ) : (
-          <S.DisabledToggleContainer></S.DisabledToggleContainer>
+          <S.DisabledToggleContainer>
+            <S.ToggleCircle />
+          </S.DisabledToggleContainer>
         )}
-        <S.ToggleCircle></S.ToggleCircle>
         <span>{label}</span>
       </S.Toggle>
     </>
