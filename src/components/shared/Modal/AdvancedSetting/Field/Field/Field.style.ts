@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { Colors } from "../../../../../constants/colors.constant";
+import { Colors } from "../../../../../../constants/colors.constant";
 
-export const field = styled.div`
+export const Field = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 20px;
   width: 100%;
 `;
 
-export const name = styled.dt`
+export const Name = styled.dt`
   display: inline-block;
   width: 50%;
   color: ${Colors.black};
@@ -17,7 +17,7 @@ export const name = styled.dt`
   word-break: keep-all;
 `;
 
-export const setting = styled.dd`
+export const Setting = styled.dd`
   display: inline-flex;
   justify-content: flex-end;
   flex-wrap: wrap;
