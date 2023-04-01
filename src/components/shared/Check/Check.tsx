@@ -31,7 +31,6 @@ const Check = ({
   buttonHeight,
   buttonMargin,
   marginTop,
-  backgourndColor,
 }: Proptypes) => {
   return (
     <S.CheckLabel style={{ display, marginLeft }}>

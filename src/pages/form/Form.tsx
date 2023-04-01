@@ -212,31 +212,48 @@ export const Form = ({ mode }: { mode: string }) => {
 
   const toggleIsRequired = (index: number) => {
     setQuestionList((prevQuestionList) => {
-      const newQuestionList = [...prevQuestionList];
-      newQuestionList[index].isRequired = !newQuestionList[index].isRequired;
-      return newQuestionList;
+      return prevQuestionList.map((question, idx) => {
+        if (idx === index) {
+          return {
+            ...question,
+            isRequired: !question.isRequired,
+          };
+        }
+        return question;
+      });
     });
   };
 
   const addAnswer = (index: number) => {
     setQuestionList((prevQuestionList) => {
       const newQuestionList = [...prevQuestionList];
-      newQuestionList[index].answerList.push({ answer: "" });
+      const newAnswerList = [...newQuestionList[index].answerList];
+      newAnswerList.push({ answer: "" });
+      newQuestionList[index] = {
+        ...newQuestionList[index],
+        answerList: newAnswerList,
+      };
       return newQuestionList;
     });
   };
 
   const addNextAnswer = (answerIndex: number, index: number) => {
     setQuestionList((prevQuestionList) => {
-      const newQuestionList = [...prevQuestionList];
-      const newAnswerList = newQuestionList[index].answerList;
-      if (newAnswerList.length - 1 === answerIndex) {
-        newAnswerList.push({ answer: "" });
-      } else {
-        newAnswerList.splice(answerIndex + 1, 0, { answer: "" });
-      }
-      newQuestionList[index].answerList = newAnswerList;
-      return newQuestionList;
+      return prevQuestionList.map((question, idx) => {
+        if (idx === index) {
+          const newAnswerList = [...question.answerList];
+          if (newAnswerList.length - 1 === answerIndex) {
+            newAnswerList.push({ answer: "" });
+          } else {
+            newAnswerList.splice(answerIndex + 1, 0, { answer: "" });
+          }
+          return {
+            ...question,
+            answerList: newAnswerList,
+          };
+        }
+        return question;
+      });
     });
   };
 
@@ -247,7 +264,9 @@ export const Form = ({ mode }: { mode: string }) => {
   ) => {
     setQuestionList((prevQuestionList) => {
       const newQuestionList = [...prevQuestionList];
-      newQuestionList[questionIndex].answerList[answerIndex].answer = a;
+      const newAnswerList = [...newQuestionList[questionIndex].answerList];
+      newAnswerList[answerIndex].answer = a;
+      newQuestionList[questionIndex].answerList = newAnswerList;
       return newQuestionList;
     });
   };
