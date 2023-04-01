@@ -66,42 +66,44 @@ const DateBox = ({ isAlways = false, handleDate, initialDate }: Proptypes) => {
   };
 
   return (
-    <S.Dates>
-      <TextBox
-        width="50px"
-        placeholder="2022"
-        readOnly={isAlways}
-        value={date?.year}
-        onChange={handleDateInput}
-        onKeyDown={(e) => dateKeyEvent(e, 2500)}
-        onBlur={onBlur}
-      />
-      년
-      <TextBox
-        width="30px"
-        type="text"
-        name="month"
-        placeholder="2"
-        readOnly={isAlways}
-        value={date?.month}
-        onChange={handleDateInput}
-        onKeyDown={(e) => dateKeyEvent(e, 12)}
-        onBlur={onBlur}
-      />
-      월
-      <TextBox
-        width="30px"
-        type="text"
-        name="day"
-        placeholder="22"
-        readOnly={isAlways}
-        value={date?.day}
-        onChange={handleDateInput}
-        onKeyDown={(e) => dateKeyEvent(e, 31)}
-        onBlur={onBlur}
-      />
-      일
-    </S.Dates>
+    <>
+      <S.Dates>
+        <TextBox
+          width="50px"
+          placeholder="2022"
+          readOnly={isAlways}
+          value={date?.year}
+          onChange={handleDateInput}
+          onKeyDown={(e) => dateKeyEvent(e, 2500)}
+          onBlur={onBlur}
+        />
+        년
+        <TextBox
+          width="30px"
+          type="text"
+          name="month"
+          placeholder="2"
+          readOnly={isAlways}
+          value={date?.month}
+          onChange={handleDateInput}
+          onKeyDown={(e) => dateKeyEvent(e, 12)}
+          onBlur={onBlur}
+        />
+        월
+        <TextBox
+          width="30px"
+          type="text"
+          name="day"
+          placeholder="22"
+          readOnly={isAlways}
+          value={date?.day}
+          onChange={handleDateInput}
+          onKeyDown={(e) => dateKeyEvent(e, 31)}
+          onBlur={onBlur}
+        />
+        일
+      </S.Dates>
+    </>
   );
 };
 

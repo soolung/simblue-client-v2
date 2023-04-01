@@ -13,3 +13,16 @@ export const Dates = styled.div`
     margin-right: 4px;
   }
 `;
+
+export const DisabledDates = styled.div`
+  display: inline-flex;
+  align-items: center;
+  color: ${Colors.mediumGray};
+
+  input {
+    display: inline-block;
+    height: auto;
+    padding: 3px 5px;
+    margin-right: 4px;
+  }
+`;

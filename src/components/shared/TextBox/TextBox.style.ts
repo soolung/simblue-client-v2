@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import { Colors } from "../../../constants/colors.constant";
 
-export const TextBox = styled.input`
+interface TextBoxProps {
+  readOnly?: boolean;
+}
+
+export const TextBox = styled.input<TextBoxProps>`
+  background-color: ${(props) => (props.readOnly ? Colors.lightGray : "")};
+  color: ${(props) => (props.readOnly ? Colors.mediumGray : "")};
   border: 0.5px solid ${Colors.mediumGray};
   width: 100%;
   height: 6vh;
