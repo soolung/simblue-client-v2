@@ -1,7 +1,7 @@
 import * as S from "./Form.style";
 import Text from "../../components/shared/Text/Text";
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { now } from "../../utils/common/getTimeDiff";
 import DateBox from "../../components/shared/Date/DateBox";
 import Check from "../../components/shared/Check/Check";
@@ -195,19 +195,13 @@ export const Form = ({ mode }: { mode: string }) => {
       | React.ChangeEvent<HTMLSelectElement>,
     index: number
   ) => {
-    if (e.target instanceof HTMLInputElement) {
-      setQuestionList((prevQuestionList) => {
-        const newQuestionList = [...prevQuestionList];
-        newQuestionList[index].question = e.target.value;
-        return newQuestionList;
-      });
-    } else if (e.target instanceof HTMLSelectElement) {
-      setQuestionList((prevQuestionList) => {
-        const newQuestionList = [...prevQuestionList];
-        newQuestionList[index].type = e.target.value;
-        return newQuestionList;
-      });
-    }
+    const newQuestionList = [...questionList];
+    const newQuestion = {
+      ...questionList[index],
+      [e.target.name]: e.target.value,
+    };
+    newQuestionList[index] = newQuestion;
+    setQuestionList(newQuestionList);
   };
 
   const toggleIsRequired = (index: number) => {
