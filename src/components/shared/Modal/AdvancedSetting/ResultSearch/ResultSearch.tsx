@@ -4,11 +4,12 @@ import { searchTeacher } from "../../../../../apis/user";
 import * as S from "./ResultSearch.style";
 
 interface Proptypes {
-  onSearch: () => void;
-  onResultClick: ({ teacherId, name }: { teacherId: any; name: any }) => void;
+  onSearch?: () => void | undefined;
+  onResultClick: (result: { teacherId: number; name: string }) => void;
+  width?: string;
 }
 
-const ResultSearch = ({ onSearch, onResultClick }: Proptypes) => {
+const ResultSearch = ({ onSearch, onResultClick, width }: Proptypes) => {
   const [searchText, setSearchText] = useState("");
   const [searchTextOnFocus, setSearchTextOnFocus] = useState(false);
 
@@ -38,7 +39,7 @@ const ResultSearch = ({ onSearch, onResultClick }: Proptypes) => {
   };
 
   const onSearchAndReset = () => {
-    onSearch();
+    onSearch && onSearch();
     resetSearchText();
   };
 
@@ -65,6 +66,7 @@ const ResultSearch = ({ onSearch, onResultClick }: Proptypes) => {
 
   return (
     <S.ResultSearch
+      style={{ width }}
       className={`result-search ${searchTextOnFocus ? "focused" : ""}`}
     >
       <S.Search>

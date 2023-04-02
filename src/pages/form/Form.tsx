@@ -1,12 +1,12 @@
 import * as S from "./Form.style";
 import Text from "../../components/shared/Text/Text";
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import { now } from "../../utils/common/getTimeDiff";
 import DateBox from "../../components/shared/Date/DateBox";
 import Check from "../../components/shared/Check/Check";
 import Question from "../../components/shared/Create/Question/Question";
-import { Button } from "../../components/shared/common/Button/Button";
+import Button from "../../components/shared/common/Button/Button";
 import { useUser } from "../../hooks/useUser";
 import {
   getApplicationForm,
@@ -17,6 +17,8 @@ import { useMutation, useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { AxiosError } from "axios";
 import { Colors } from "../../constants/colors.constant";
+import AdvancedSettingModal from "../../components/shared/Modal/AdvancedSetting/AdvancedSettingModal";
+import Toggle from "../../components/shared/Toggle/Toggle";
 
 interface QuestionInter {
   type: string;
@@ -158,6 +160,37 @@ export const Form = ({ mode }: { mode: string }) => {
     startDate: now(),
     endDate: now(),
   });
+
+  const advancedSettingModalData = [
+    {
+      name: "중복 허용",
+      setting: (
+        <Toggle
+          value={request.allowsDuplication}
+          onClick={() => {
+            setRequest({
+              ...request,
+              allowsDuplication: !request.allowsDuplication,
+            });
+          }}
+        />
+      ),
+    },
+    {
+      name: "답변 수정 허용",
+      setting: (
+        <Toggle
+          value={request.allowsUpdatingReply}
+          onClick={() => {
+            setRequest({
+              ...request,
+              allowsUpdatingReply: !request.allowsUpdatingReply,
+            });
+          }}
+        />
+      ),
+    },
+  ];
 
   const [questionList, setQuestionList] = useState<QuestionInter[]>([
     {
@@ -468,6 +501,16 @@ export const Form = ({ mode }: { mode: string }) => {
           />
         </S.ButtonArea>
       </S.FormSection>
+      <AdvancedSettingModal
+        id={parsedId}
+        mode={mode}
+        isOpen={advancedSettingModalIsOpen}
+        data={advancedSettingModalData}
+        closeModal={() => setAdvancedSettingModalOpen(false)}
+        ownerList={ownerList}
+        addOwner={addOwner}
+        deleteOwner={deleteOwner}
+      />
     </>
   );
 };

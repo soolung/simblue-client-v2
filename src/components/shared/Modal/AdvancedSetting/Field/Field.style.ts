@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../../../../../constants/colors.constant";
+import { Colors } from "../../../../../constants/colors.constant";
 
 export const Field = styled.div`
   display: flex;

@@ -4,7 +4,7 @@ import { ButtonStyle } from "./Button.style";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   event?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
-  text?: string;
+  text: string;
   action?: any;
   width?: string;
   fontSize?: string;
@@ -13,9 +13,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   backgroundColor?: string;
   border?: string;
   color?: string;
+  spanColor?: string;
+  spanFontSize?: string;
 }
 
-export const Button = ({
+const Button = ({
   event,
   disabled,
   text,
@@ -27,6 +29,8 @@ export const Button = ({
   backgroundColor,
   border,
   color,
+  spanColor,
+  spanFontSize,
 }: ButtonProps) => {
   return (
     <ButtonStyle
@@ -42,7 +46,9 @@ export const Button = ({
       onClick={event}
       className={disabled ? "disabled" : ""}
     >
-      <span>{text}</span>
+      <span style={{ color: spanColor, fontSize: spanFontSize }}>{text}</span>
     </ButtonStyle>
   );
 };
+
+export default Button;
