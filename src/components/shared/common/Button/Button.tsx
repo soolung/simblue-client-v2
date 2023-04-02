@@ -4,7 +4,7 @@ import { ButtonStyle } from "./Button.style";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   event?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
-  text: string;
+  text?: string;
   action?: any;
   width?: string;
   fontSize?: string;

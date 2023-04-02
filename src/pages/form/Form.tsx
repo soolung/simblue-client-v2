@@ -486,9 +486,9 @@ export const Form = ({ mode }: { mode: string }) => {
             width="19%"
             marginRight="2%"
             backgroundColor="white"
-            border="1px solid gray"
+            border={`1px solid ${Colors.mediumGray}`}
             text="고급 설정"
-            color="gray"
+            color={Colors.mediumGray}
             action={() => setAdvancedSettingModalOpen(true)}
           />
           <Button

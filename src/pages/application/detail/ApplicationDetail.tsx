@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { REQUEST } from "../../../types/application.type";
 import { Question } from "./question/Question";
 import * as S from "../ApplicationDetail.style";
-import { Button } from "../../../components/shared/common/Button/Button";
+import Button from "../../../components/shared/common/Button/Button";
 import { ApplicationDetailFeature } from "../../../features/application";
 import { useUser } from "../../../hooks/useUser";
 
@@ -17,7 +17,8 @@ export const ApplicationDetail = () => {
     if (i !== -1) {
       coArr[i] = { ...coArr[i], replyDetailList: a };
       setRequest(coArr);
-    } else if (!(a.length === 0)) setRequest([...request, { id: index, replyDetailList: a }]);
+    } else if (!(a.length === 0))
+      setRequest([...request, { id: index, replyDetailList: a }]);
   };
   return (
     <>
