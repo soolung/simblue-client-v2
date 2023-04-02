@@ -16,3 +16,8 @@ export const updatePassword = async ({ newPW, oldPW }: RESET_REQUEST) => {
     authorization()
   );
 };
+
+export const searchTeacher = async (q: string) => {
+  return (await server.get(`/user/teacher/search?q=${q}`, authorization()))
+    .data;
+};
