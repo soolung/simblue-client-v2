@@ -43,6 +43,11 @@ interface Request {
   ownerList?: number[];
 }
 
+interface Owner {
+  teacherId: number;
+  name: string;
+}
+
 export const Form = ({ mode }: { mode: string }) => {
   const { id } = useParams();
   const parsedId = parseInt(id as string);
@@ -52,6 +57,7 @@ export const Form = ({ mode }: { mode: string }) => {
   const [emojiPickerIsOpen, setEmojiPickerIsOpen] = useState(false);
   const [advancedSettingModalIsOpen, setAdvancedSettingModalOpen] =
     useState(false);
+
   const create = useMutation(createApplicationForm, {
     onSuccess: () => {
       navigate("/");
@@ -63,7 +69,7 @@ export const Form = ({ mode }: { mode: string }) => {
       alert("성공!");
       navigate("/");
     },
-    onError: (err: AxiosError) => {
+    onError: (err) => {
       console.log(err);
     },
   });
@@ -119,33 +125,23 @@ export const Form = ({ mode }: { mode: string }) => {
     if (mode === "create") {
       create.mutate({
         applicationId: parsedId,
-        replyList: [
-          {
-            id: parsedId,
-            replyDetailList: {
-              ...request,
-              questionList: [...questionList],
-              ownerList: Array.from(ownerList),
-            },
-          },
-        ],
+        replyList: {
+          ...request,
+          questionList: [...questionList],
+          ownerList: Array.from(ownerList),
+        },
       });
     } else if (mode === "update" && form.data?.canUpdate) {
       update.mutate({
-        id: parsedId,
         request: {
           applicationId: parsedId,
-          replyList: [
-            {
-              id: parsedId,
-              replyDetailList: {
-                ...request,
-                questionList: [...questionList],
-                ownerList: Array.from(ownerList),
-              },
-            },
-          ],
+          replyList: {
+            ...request,
+            questionList: [...questionList],
+            ownerList: Array.from(ownerList),
+          },
         },
+        id: parsedId,
       });
     }
   };
@@ -213,7 +209,6 @@ export const Form = ({ mode }: { mode: string }) => {
     });
   };
 
-  // 진짜 모르겠습니다..
   const emojiChange = (e: any) => {
     setRequest({
       ...request,
@@ -342,7 +337,7 @@ export const Form = ({ mode }: { mode: string }) => {
     setQuestionList(newQuestionList);
   };
 
-  const [ownerList, setOwnerList] = useState([{}]);
+  const [ownerList, setOwnerList] = useState<Owner[]>([]);
   const [ownerIdSet, setOwnerIdSet] = useState<Set<number>>(
     new Set([user.user.roleId])
   );
@@ -369,7 +364,7 @@ export const Form = ({ mode }: { mode: string }) => {
 
   const deleteOwner = (teacherId: number) => {
     if (ownerIdSet.has(teacherId)) {
-      setOwnerList(ownerList.filter((o: any) => teacherId !== o.teacherId));
+      setOwnerList(ownerList.filter((o: Owner) => teacherId !== o.teacherId));
       ownerIdSet.delete(teacherId);
     }
   };

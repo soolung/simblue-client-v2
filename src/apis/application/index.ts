@@ -33,9 +33,43 @@ export const getApplicationForm = async (id: number) => {
   return (await server.get(`/application/${id}/form`, authorization())).data;
 };
 
+type QuestionInter = {
+  type: string;
+  question: string;
+  answerList: {
+    answer: string;
+  }[];
+  isRequired: boolean;
+  description: string;
+};
+
+type Request = {
+  emoji: string;
+  isAlways: boolean;
+  title: string;
+  description: string;
+  allowsDuplication: boolean;
+  allowsUpdatingReply: boolean;
+  startDate: String;
+  endDate: String;
+  questionList?: QuestionInter[];
+  ownerList?: number;
+};
+
+type Owner = {
+  teacherId: number;
+  name: string;
+};
+
+type ReplyList = {
+  request?: { [key: string]: Request };
+  questionList: QuestionInter[];
+  ownerList: Owner[];
+};
+
 export const createApplicationForm = async (request: {
   applicationId: number;
-  replyList?: any;
+  replyList: ReplyList;
 }) => {
   return (await server.post("/application", request, authorization())).data;
 };
@@ -46,7 +80,7 @@ export const updateApplicationForm = async ({
 }: {
   request: {
     applicationId: number;
-    replyList?: any;
+    replyList: ReplyList;
   };
   id: number;
 }) => {
