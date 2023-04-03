@@ -11,7 +11,7 @@ export const ResultBody = styled.tbody`
   }
 
   td {
-    padding: 3%;
+    padding: 20px;
     background-color: #fff;
   }
 
