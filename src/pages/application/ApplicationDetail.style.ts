@@ -40,9 +40,12 @@ export const ResultHead = styled.tr`
   background-color: #fff;
   font-weight: 500;
   margin-bottom: 20px;
+  font-size: 70%;
+  word-break: keep-all;
 
   td {
-    padding: 3%;
+    width: 3%;
+    padding: 2%;
     border-top: 1px solid ${Colors.gray};
     border-bottom: 1px solid ${Colors.gray};
     &:first-child {

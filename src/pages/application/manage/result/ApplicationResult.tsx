@@ -10,7 +10,7 @@ export const ApplicationResult = ({ result }: { result?: RESULT[] }) => {
           <td>{r.studentNumber}</td>
           <td>{r.name}</td>
           {r.replyList.map((rp) => (
-            <td>{rp}</td>
+            <td>{rp.reply}</td>
           ))}
         </tr>
       ))}
