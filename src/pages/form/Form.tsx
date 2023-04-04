@@ -86,14 +86,14 @@ export const Form = ({ mode }: { mode: string }) => {
         setOwnerIdSet(
           new Set<number>([
             ...data.ownerList
-              .filter((d: any) => d != null)
-              .map((d: any) => d.teacherId),
+              .filter((d: Owner) => d != null)
+              .map((d: Owner) => d.teacherId),
             user.user.roleId,
           ])
         );
         setOwnerIdSet(
           new Set([
-            ...data.ownerList.map((d: any) => d.teacherId),
+            ...data.ownerList.map((d: Owner) => d.teacherId),
             user.user.roleId,
           ])
         );

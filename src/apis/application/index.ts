@@ -1,5 +1,5 @@
 import { authorization } from "../../utils/auth";
-import { REQUEST } from "../../types/application.type";
+import { REQUEST, QUESTION } from "../../types/application.type";
 import server from "../client";
 
 export const getApplication = async (type: string) => {
@@ -52,7 +52,7 @@ type Request = {
   allowsUpdatingReply: boolean;
   startDate: String;
   endDate: String;
-  questionList?: QuestionInter[];
+  questionList?: QUESTION[];
   ownerList?: number;
 };
 
