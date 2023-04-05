@@ -177,7 +177,6 @@ export const Form = ({ mode }: { mode: string }) => {
 
   const [questionList, setQuestionList] = useState<QUESTION[]>([
     {
-      id: parsedId,
       type: "TEXT",
       question: "",
       answerList: [
@@ -187,7 +186,6 @@ export const Form = ({ mode }: { mode: string }) => {
       ],
       isRequired: true,
       description: "",
-      replyDetailList: "",
     },
   ]);
 
@@ -292,7 +290,6 @@ export const Form = ({ mode }: { mode: string }) => {
     setQuestionList([
       ...questionList,
       {
-        id: 1,
         type: "TEXT",
         question: "",
         answerList: [
@@ -302,7 +299,6 @@ export const Form = ({ mode }: { mode: string }) => {
         ],
         isRequired: true,
         description: "",
-        replyDetailList: "",
       },
     ]);
   };

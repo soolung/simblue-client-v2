@@ -6,7 +6,6 @@ export type APPLICATION = {
   emoji: string;
   endDate: string;
   id: number;
-  replyId: number | null;
   startDate: string;
   status: string;
   title: string;
@@ -17,13 +16,11 @@ export type ANSWER = {
 };
 
 export type QUESTION = {
-  id: number;
   question: string;
   description: string;
   isRequired: boolean;
   type: string;
   answerList: ANSWER[];
-  replyDetailList: string | null;
 };
 
 export type NOTICE = {
@@ -54,8 +51,8 @@ export type RECORD_APPLICATION = {
   canUpdate: boolean;
   emoji: string;
   endDate: string;
-  numberOfReplies: number | null;
-  repliedAt: string | null;
+  numberOfReplies: number;
+  repliedAt: string;
   replyId: number;
   startDate: string;
   status: "ALWAYS" | "NOT_STARTED" | "IN_PROGRESS" | "DONE";
