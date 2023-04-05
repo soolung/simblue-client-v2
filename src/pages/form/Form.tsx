@@ -21,8 +21,6 @@ import AdvancedSettingModal from "../../components/shared/Modal/AdvancedSetting/
 import Toggle from "../../components/shared/Toggle/Toggle";
 import { QUESTION } from "../../types/application.type";
 
-type PropsType = {};
-
 interface Request {
   emoji: string;
   isAlways: boolean;

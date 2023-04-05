@@ -1,5 +1,5 @@
 import { authorization } from "../../utils/auth";
-import { ANSWER, QUESTION, REQUEST } from "../../types/application.type";
+import { OWNER, QUESTION, REQUEST } from "../../types/application.type";
 import server from "../client";
 
 export const getApplication = async (type: string) => {
@@ -33,23 +33,18 @@ export const getApplicationForm = async (id: number) => {
   return (await server.get(`/application/${id}/form`, authorization())).data;
 };
 
-export type Owner = {
-  teacherId: number;
-  name: string;
-};
-
 export type RequestType = {
   request: {
-    questionList: QUESTION[];
-    ownerList: Owner[];
-    emoji: string;
-    isAlways: boolean;
-    title: string;
-    description: string;
     allowsDuplication: boolean;
     allowsUpdatingReply: boolean;
-    startDate: String;
+    description: string;
     endDate: String;
+    isAlways: boolean;
+    questionList: QUESTION[];
+    ownerList: OWNER[];
+    emoji: string;
+    startDate: String;
+    title: string;
   };
 };
 

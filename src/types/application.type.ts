@@ -16,11 +16,15 @@ export type ANSWER = {
 };
 
 export type QUESTION = {
-  question: string;
+  answerList: ANSWER[];
   description: string;
   isRequired: boolean;
+  question: string;
   type: string;
-  answerList: ANSWER[];
+};
+
+export type OWNER = {
+  teacherId: number;
 };
 
 export type NOTICE = {
