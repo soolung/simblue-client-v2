@@ -19,16 +19,9 @@ import { AxiosError } from "axios";
 import { Colors } from "../../constants/colors.constant";
 import AdvancedSettingModal from "../../components/shared/Modal/AdvancedSetting/AdvancedSettingModal";
 import Toggle from "../../components/shared/Toggle/Toggle";
+import { QUESTION } from "../../types/application.type";
 
-interface QuestionInter {
-  type: string;
-  question: string;
-  answerList: {
-    answer: string;
-  }[];
-  isRequired: boolean;
-  description: string;
-}
+type PropsType = {};
 
 interface Request {
   emoji: string;
@@ -39,14 +32,12 @@ interface Request {
   allowsUpdatingReply: boolean;
   startDate: String;
   endDate: String;
-  questionList?: QuestionInter[];
-  ownerList?: number[];
 }
 
-interface Owner {
+export type Owner = {
   teacherId: number;
   name: string;
-}
+};
 
 export const Form = ({ mode }: { mode: string }) => {
   const { id } = useParams();
@@ -124,8 +115,7 @@ export const Form = ({ mode }: { mode: string }) => {
   const onClick = () => {
     if (mode === "create") {
       create.mutate({
-        applicationId: parsedId,
-        replyList: {
+        request: {
           ...request,
           questionList: [...questionList],
           ownerList: Array.from(ownerList),
@@ -133,15 +123,12 @@ export const Form = ({ mode }: { mode: string }) => {
       });
     } else if (mode === "update" && form.data?.canUpdate) {
       update.mutate({
-        request: {
-          applicationId: parsedId,
-          replyList: {
-            ...request,
-            questionList: [...questionList],
-            ownerList: Array.from(ownerList),
-          },
-        },
         id: parsedId,
+        request: {
+          ...request,
+          questionList: [...questionList],
+          ownerList: Array.from(ownerList),
+        },
       });
     }
   };
@@ -188,8 +175,9 @@ export const Form = ({ mode }: { mode: string }) => {
     },
   ];
 
-  const [questionList, setQuestionList] = useState<QuestionInter[]>([
+  const [questionList, setQuestionList] = useState<QUESTION[]>([
     {
+      id: parsedId,
       type: "TEXT",
       question: "",
       answerList: [
@@ -199,6 +187,7 @@ export const Form = ({ mode }: { mode: string }) => {
       ],
       isRequired: true,
       description: "",
+      replyDetailList: "",
     },
   ]);
 
@@ -295,9 +284,7 @@ export const Form = ({ mode }: { mode: string }) => {
 
   const deleteQuestion = (target: number) => {
     setQuestionList((prevQuestionList) =>
-      prevQuestionList.filter(
-        (q: QuestionInter, index: number) => target !== index
-      )
+      prevQuestionList.filter((q: QUESTION, index: number) => target !== index)
     );
   };
 
@@ -305,11 +292,17 @@ export const Form = ({ mode }: { mode: string }) => {
     setQuestionList([
       ...questionList,
       {
+        id: 1,
         type: "TEXT",
         question: "",
-        answerList: [{ answer: "" }],
+        answerList: [
+          {
+            answer: "",
+          },
+        ],
         isRequired: true,
         description: "",
+        replyDetailList: "",
       },
     ]);
   };
@@ -328,7 +321,7 @@ export const Form = ({ mode }: { mode: string }) => {
   };
 
   const copyQuestion = (index: number) => {
-    const newQuestionList: QuestionInter[] = [...questionList];
+    const newQuestionList: QUESTION[] = [...questionList];
     newQuestionList.splice(
       index + 1,
       0,
@@ -455,7 +448,7 @@ export const Form = ({ mode }: { mode: string }) => {
         </S.FormHeader>
 
         <S.FormQuestionSection>
-          {questionList?.map((q: QuestionInter, index: number) => (
+          {questionList?.map((q: QUESTION, index: number) => (
             <Question
               question={q}
               handleQuestionChange={handleQuestionChange}

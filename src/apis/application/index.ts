@@ -1,5 +1,5 @@
 import { authorization } from "../../utils/auth";
-import { REQUEST, QUESTION } from "../../types/application.type";
+import { ANSWER, QUESTION, REQUEST } from "../../types/application.type";
 import server from "../client";
 
 export const getApplication = async (type: string) => {
@@ -33,56 +33,36 @@ export const getApplicationForm = async (id: number) => {
   return (await server.get(`/application/${id}/form`, authorization())).data;
 };
 
-type QuestionInter = {
-  type: string;
-  question: string;
-  answerList: {
-    answer: string;
-  }[];
-  isRequired: boolean;
-  description: string;
-};
-
-type Request = {
-  emoji: string;
-  isAlways: boolean;
-  title: string;
-  description: string;
-  allowsDuplication: boolean;
-  allowsUpdatingReply: boolean;
-  startDate: String;
-  endDate: String;
-  questionList?: QUESTION[];
-  ownerList?: number;
-};
-
-type Owner = {
+export type Owner = {
   teacherId: number;
   name: string;
 };
 
-type ReplyList = {
-  request?: { [key: string]: Request };
-  questionList: QuestionInter[];
-  ownerList: Owner[];
+export type RequestType = {
+  request: {
+    questionList: QUESTION[];
+    ownerList: Owner[];
+    emoji: string;
+    isAlways: boolean;
+    title: string;
+    description: string;
+    allowsDuplication: boolean;
+    allowsUpdatingReply: boolean;
+    startDate: String;
+    endDate: String;
+  };
 };
 
-export const createApplicationForm = async (request: {
-  applicationId: number;
-  replyList: ReplyList;
-}) => {
+export const createApplicationForm = async ({ request }: RequestType) => {
   return (await server.post("/application", request, authorization())).data;
 };
 
 export const updateApplicationForm = async ({
-  request,
   id,
+  request,
 }: {
-  request: {
-    applicationId: number;
-    replyList: ReplyList;
-  };
   id: number;
+  request: RequestType["request"];
 }) => {
   return (await server.put(`/application/${id}`, request, authorization()))
     .data;
