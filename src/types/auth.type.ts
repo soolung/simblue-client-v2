@@ -12,9 +12,8 @@ export type SignAuth = {
 };
 
 export type RESET_REQUEST = {
-  code: string;
-  newPassword: string;
-  oldPassword: string;
+  newPW: string;
+  oldPW: string;
 };
 
 export type USER = {

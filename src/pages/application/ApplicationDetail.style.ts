@@ -33,6 +33,7 @@ export const Result = styled.table`
   text-align: center;
   border-collapse: initial;
   border-spacing: 0;
+  overflow-x: scroll;
 `;
 
 export const ResultHead = styled.tr`
@@ -42,7 +43,8 @@ export const ResultHead = styled.tr`
   margin-bottom: 20px;
 
   td {
-    padding: 3%;
+    word-break: keep-all;
+    padding: 20px;
     border-top: 1px solid ${Colors.gray};
     border-bottom: 1px solid ${Colors.gray};
     &:first-child {

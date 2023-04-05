@@ -36,7 +36,7 @@ export type NOTICE = {
 
 export type RESULT = {
   name: string;
-  replyList: string[];
+  replyList: { questionId: number; reply: string }[];
   studentNumber: number;
 };
 
