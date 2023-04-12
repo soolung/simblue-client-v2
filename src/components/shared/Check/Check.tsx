@@ -4,7 +4,6 @@ import * as S from "./Check.style";
 interface Proptypes extends InputHTMLAttributes<HTMLInputElement> {
   isChecked?: boolean;
   label?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   display?: string;
   marginLeft?: string;
   buttonWidth?: string;
