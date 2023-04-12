@@ -67,7 +67,7 @@ const ResultSearch = ({ onSearch, onResultClick, width }: Proptypes) => {
   return (
     <S.ResultSearch
       style={{ width }}
-      className={`result-search ${searchTextOnFocus ? "focused" : ""}`}
+      className={`result-search ${searchTextOnFocus ? "focused" : null}`}
     >
       <S.Search>
         <input
