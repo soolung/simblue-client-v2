@@ -17,7 +17,7 @@ interface Proptypes {
   data: any;
   id: number;
   mode: string;
-  ownerList: {}[];
+  ownerList: OwnerListType[];
   addOwner: (result: { teacherId: number; name: string }) => void;
   deleteOwner: (teacherId: number) => void;
 }
