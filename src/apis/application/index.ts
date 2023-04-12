@@ -34,7 +34,6 @@ export const getApplicationForm = async (id: number) => {
 };
 
 export type RequestType = {
-  request: {
     allowsDuplication: boolean;
     allowsUpdatingReply: boolean;
     description: string;
@@ -46,7 +45,6 @@ export type RequestType = {
     startDate: String;
     title: string;
   };
-};
 
 export const createApplicationForm = async ({ request }: RequestType) => {
   return (await server.post("/application", request, authorization())).data;
