@@ -2,7 +2,6 @@ import * as S from "./Text.style";
 import { forwardRef, InputHTMLAttributes } from "react";
 
 interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
-  value?: string;
   display?: string;
   padding?: string;
   fontSize?: string;
