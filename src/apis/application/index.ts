@@ -57,7 +57,7 @@ export const updateApplicationForm = async ({
   request,
 }: {
   id: number;
-  request: RequestType["request"];
+  request: RequestType;
 }) => {
   return (await server.put(`/application/${id}`, request, authorization()))
     .data;
