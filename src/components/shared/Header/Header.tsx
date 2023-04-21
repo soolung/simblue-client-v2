@@ -26,9 +26,6 @@ export const Header = () => {
             기록보기
           </S.NavLink>
         )}
-        {user.authority === "ROLE_TEACHER" && (
-          <S.NavLink to="record">기록보기</S.NavLink>
-        )}
         <S.SearchBar>
           <S.SearchInput
             value={searchText}
