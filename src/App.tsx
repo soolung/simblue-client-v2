@@ -11,7 +11,6 @@ import { SignUp } from "./pages/auth/signUp/SignUp";
 import { Home } from "./pages/home/Home";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecordStudent } from "./pages/record/student/RecordStudent";
-import { RecordTeacher } from "./pages/record/teacher/RecordTeacher";
 import ReactModal from "react-modal";
 import { ModalProvider } from "./components/shared/Modal/ModalProvider";
 import { STUDENT, TEACHER } from "./constants/user/auth.constant";

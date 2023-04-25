@@ -19,13 +19,7 @@ export const Header = () => {
           alt="logo"
         />
         <S.NavLink to="look">둘러보기</S.NavLink>
-        {user.authority && (
-          <S.NavLink
-            to={`/record${user.authority === TEACHER ? "/teacher" : ""}`}
-          >
-            기록보기
-          </S.NavLink>
-        )}
+        {user.authority && <S.NavLink to="record">기록보기</S.NavLink>}
         <S.SearchBar>
           <S.SearchInput
             value={searchText}
