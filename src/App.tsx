@@ -35,15 +35,7 @@ function App() {
                 element={<UpdatePassword />}
               />
               <Route path="/look" element={<Look />} />
-              <Route
-                path="/record"
-                element={
-                  <AuthRequired
-                    children={<RecordStudent />}
-                    authority={STUDENT}
-                  />
-                }
-              />
+              <Route path="/record" />
               <Route
                 path="/application/:applicationId/*"
                 element={<Application />}
