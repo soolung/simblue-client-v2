@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { TEACHER } from "../../../constants/user/auth.constant";
 import { useUser } from "../../../hooks/useUser";
 import { HeaderLayout } from "../../layout/HeaderLayout";
 import * as S from "./Header.style";

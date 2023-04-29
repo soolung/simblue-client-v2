@@ -13,7 +13,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { RecordStudent } from "./pages/record/student/RecordStudent";
 import ReactModal from "react-modal";
 import { ModalProvider } from "./components/shared/Modal/ModalProvider";
-import { STUDENT, TEACHER } from "./constants/user/auth.constant";
 import { Application } from "./pages/application/Application";
 import { UpdatePassword } from "./pages/auth/password/UpdatePassword";
 
