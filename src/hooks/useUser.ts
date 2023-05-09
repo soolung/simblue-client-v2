@@ -9,6 +9,7 @@ import { USER_INFO } from "../types/user.type";
 import { useNavigate } from "react-router-dom";
 import { Storage } from "../lib/storage";
 
+
 export const useUser = () => {
   const navigate = useNavigate();
   const [user, setUser] = useRecoilState(userState);
@@ -20,6 +21,8 @@ export const useUser = () => {
   useEffect(() => {
     if (data) setUser(data);
   }, [setUser, data, navigate]);
+
+  
 
   return {
     user: user || {

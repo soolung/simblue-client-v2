@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "react-query";
 import { getGoogleAuthLink, loginUser } from "../../../apis/auth";
 import { LOGIN_AUTH } from "../../../types/auth.type";
-import { ACCESS_KEY, REFRESH_KEY } from "../../../constants/user/auth.constant";
+import {
+  ACCESS_KEY,
+  REFRESH_KEY,
+  TEACHER,
+} from "../../../constants/user/auth.constant";
 import { GOOGLE_AUTH_LINK } from "../../../constants/keys/auth.key";
 import * as S from "./Login.style";
 import { Storage } from "../../../lib/storage";
@@ -20,6 +24,10 @@ export const Login = () => {
 
   const { mutate } = useMutation(loginUser, {
     onSuccess: (data) => {
+      if (TEACHER) {
+        alert("쌤청이로 로그인하세요");
+      }
+
       Storage.setItem(ACCESS_KEY, data.accessToken);
       Storage.setItem(REFRESH_KEY, data.refreshToken);
 
@@ -61,8 +69,17 @@ export const Login = () => {
         </S.Title>
         <S.SubTitle>학교 계정으로 로그인</S.SubTitle>
         <S.InputBox>
-          <Input onChange={handleChange} name="email" placeholder="이메일을 입력해주세요." />
-          <Input onChange={handleChange} name="password" type="password" placeholder="비밀번호를 입력해주세요." />
+          <Input
+            onChange={handleChange}
+            name="email"
+            placeholder="이메일을 입력해주세요."
+          />
+          <Input
+            onChange={handleChange}
+            name="password"
+            type="password"
+            placeholder="비밀번호를 입력해주세요."
+          />
         </S.InputBox>
         <S.InputBox>
           <AuthBtn onClick={login} value={"로그인"} />
@@ -73,7 +90,9 @@ export const Login = () => {
         </S.InputBox>
         <S.SignUp>
           아직 회원이 아니신가요?
-          <S.Span onClick={() => window.location.replace(data)}>구글 계정으로 회원가입</S.Span>
+          <S.Span onClick={() => window.location.replace(data)}>
+            구글 계정으로 회원가입
+          </S.Span>
         </S.SignUp>
       </S.Form>
     </S.Login>
