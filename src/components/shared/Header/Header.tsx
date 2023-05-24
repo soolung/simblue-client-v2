@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { TEACHER } from "../../../constants/user/auth.constant";
 import { useUser } from "../../../hooks/useUser";
 import { HeaderLayout } from "../../layout/HeaderLayout";
 import * as S from "./Header.style";
@@ -19,16 +18,7 @@ export const Header = () => {
           alt="logo"
         />
         <S.NavLink to="look">둘러보기</S.NavLink>
-        {user.authority && (
-          <S.NavLink
-            to={`/record${user.authority === TEACHER ? "/teacher" : ""}`}
-          >
-            기록보기
-          </S.NavLink>
-        )}
-        {user.authority === "ROLE_TEACHER" && (
-          <S.NavLink to="record">기록보기</S.NavLink>
-        )}
+        {user.authority && <S.NavLink to="record">기록보기</S.NavLink>}
         <S.SearchBar>
           <S.SearchInput
             value={searchText}
@@ -53,3 +43,4 @@ export const Header = () => {
     </HeaderLayout>
   );
 };
+  

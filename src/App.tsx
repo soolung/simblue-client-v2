@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { Layout } from "./components/layout/Layout";
 import { AuthRequired } from "./components/shared/AuthRequired/AuthRequired";
-import { Create } from "./components/shared/Create/Create";
 import { Footer } from "./components/shared/Footer/Footer";
 import { Header } from "./components/shared/Header/Header";
 import { Login } from "./pages/auth/login/Login";
@@ -12,10 +11,8 @@ import { SignUp } from "./pages/auth/signUp/SignUp";
 import { Home } from "./pages/home/Home";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecordStudent } from "./pages/record/student/RecordStudent";
-import { RecordTeacher } from "./pages/record/teacher/RecordTeacher";
 import ReactModal from "react-modal";
 import { ModalProvider } from "./components/shared/Modal/ModalProvider";
-import { STUDENT, TEACHER } from "./constants/user/auth.constant";
 import { Application } from "./pages/application/Application";
 import { UpdatePassword } from "./pages/auth/password/UpdatePassword";
 
@@ -32,12 +29,19 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/auth/update/password" element={<UpdatePassword />} />
+              <Route
+                path="/auth/update/password"
+                element={<UpdatePassword />}
+              />
               <Route path="/look" element={<Look />} />
-              <Route path="/record" element={<AuthRequired children={<RecordStudent />} authority={STUDENT} />} />
-              <Route path="/record/teacher" element={<AuthRequired children={<RecordTeacher />} authority={TEACHER} />} />
-              <Route path="/application/:applicationId/*" element={<Application />} />
-              <Route path="/create" element={<AuthRequired children={<Create />} />} />
+              <Route
+                path="/record"
+                element={<AuthRequired children={<RecordStudent />} />}
+              />
+              <Route
+                path="/application/:applicationId/*"
+                element={<Application />}
+              />
             </Routes>
           </Layout>
           <Footer />
