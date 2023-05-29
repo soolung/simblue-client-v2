@@ -24,8 +24,9 @@ export const Login = () => {
 
   const { mutate } = useMutation(loginUser, {
     onSuccess: (data) => {
-      if (TEACHER) {
+      if (data.authority === TEACHER) {
         alert("쌤청이로 로그인하세요");
+        window.location.replace("https://www.ssamblue.kro.kr");
       }
 
       Storage.setItem(ACCESS_KEY, data.accessToken);

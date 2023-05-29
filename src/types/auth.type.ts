@@ -1,3 +1,5 @@
+import { AUTHORITY } from '../constants/user/auth.constant';
+
 export type LOGIN_AUTH = {
   email: string;
   password: string;
@@ -11,5 +13,6 @@ export type RESET_REQUEST = {
 export type USER = {
   accessToken: string;
   refreshToken: string;
-  login?: boolean;
+  authority: AUTHORITY;
+  login: boolean;
 };

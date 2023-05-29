@@ -1,4 +1,3 @@
-import { authorization } from "../../utils/auth/index";
 import { LOGIN_AUTH, RESET_REQUEST, USER } from "../../types/auth.type";
 import server from "../client";
 
